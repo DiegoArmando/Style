@@ -42,8 +42,8 @@ class Player extends FlxGroup
 		y = InY;
 		
 		LegsYOffset  = -64;
-		TorsoYOffset = -64*2;
-		HeadYOffset  = -64 * 3 + 16;
+		TorsoYOffset = -64*2+32;
+		HeadYOffset  = -64 * 2;
 		
 		{
 			Torsos = [];
@@ -52,7 +52,7 @@ class Player extends FlxGroup
 			
 			/// Outfit A
 			var Torso = new FlxSprite( InX, InY + TorsoYOffset);
-			Torso.loadGraphic("assets/images/Sprite Sheets/minionbotnew.png",true,64,64);
+			Torso.loadGraphic("assets/images/DemoRobot.png",true,64,64);
 			Torso.animation.add("Still", [1], 0, false);
 			Torso.animation.play("Still");
 			Torsos.push(Torso);
@@ -67,7 +67,7 @@ class Player extends FlxGroup
 			add( Legs);
 			
 			var Head = new FlxSprite( InX, InY + HeadYOffset);
-			Head.loadGraphic("assets/images/Sprite Sheets/minionbotnew.png",true,64,64);
+			Head.loadGraphic("assets/images/DemoRobot.png",true,64,64);
 			Head.animation.add("Still", [0], 0, false);
 			Head.animation.play("Still");
 			Heads.push( Head);
