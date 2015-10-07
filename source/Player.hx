@@ -46,14 +46,14 @@ class Player extends FlxGroup
 		
 		LegsYOffset  = -64;
 		TorsoYOffset = -64*2;
-		HeadYOffset  = -64 * 3 + 24;
+		HeadYOffset  = -64 * 3 + 64*.25;
 		
 		TorsoArray = [];
 		LegsArray = [];
 		HeadArray = [];
 		
-		AddOutfit( "assets/images/sprite_sheets/DemoRobot.png");   /// OUTFIT 1 - TEST ROBOT
-		AddOutfit( "assets/images/sprite_sheets/minion_bot.png");  /// OUTFIT 2 - MINION BOT
+		AddOutfit( "assets/images/sprite_sheets/DemoRobot.png");     /// OUTFIT 0 - TEST ROBOT
+		AddOutfit( "assets/images/sprite_sheets/minion_bot.png");  /// OUTFIT 1 - MINION BOT
 		
 		TorsoArray[OutfitIndex].revive();
 		LegsArray[OutfitIndex].revive();
