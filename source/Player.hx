@@ -10,29 +10,32 @@ import flixel.FlxSprite;
  * @author Andrew Dunetz
  */
 
- enum Outfits
-{
-	OutfitA;
-	OutfitB;
-}
-
+ /*
+  * TODO (Andrew) :  
+  * X - Make Outfit Switch System
+  * Make Outfit Switch Interface
+  * Rewrite Object Activation Code
+  */
+  
 class Player extends FlxGroup
 {
-	
 	public static inline var RUN_SPEED_SEC:Int = 64*3;
 	public var x: Float = 0;
 	public var y: Float = 0;
 	
-	private var Torso: FlxSprite;
-	private var TorsoYOffset : Float;
-	private var Legs: FlxSprite;
-	private var LegsYOffset : Float;
-	private var Head: FlxSprite;
-	private var HeadYOffset : Float;
+	private var OutfitIndex : Int = 1;
 	
-	private var Torsos : Array<FlxSprite>;
+	private var TorsoArray : Array<FlxSprite>;
+	private var TorsoSprite : FlxSprite;
+	private var TorsoYOffset : Float;
+	
 	private var LegsArray : Array<FlxSprite>;
-	private var Heads : Array<FlxSprite>;
+	private var LegsSprite: FlxSprite;
+	private var LegsYOffset : Float;
+	
+	private var HeadArray : Array <FlxSprite>;
+	private var HeadSprite: FlxSprite;
+	private var HeadYOffset : Float;
 	
 	public function new( InX : Float, InY : Float) 
 	{
@@ -42,40 +45,23 @@ class Player extends FlxGroup
 		y = InY;
 		
 		LegsYOffset  = -64;
-		TorsoYOffset = -64*2+32;
-		HeadYOffset  = -64 * 2;
+		TorsoYOffset = -64*2;
+		HeadYOffset  = -64 * 3 + 24;
 		
-		{
-			Torsos = [];
-			LegsArray = [];
-			Heads = [];
-			
-			/// Outfit A
-			var Torso = new FlxSprite( InX, InY + TorsoYOffset);
-			Torso.loadGraphic("assets/images/DemoRobot.png",true,64,64);
-			Torso.animation.add("Still", [1], 0, false);
-			Torso.animation.play("Still");
-			Torsos.push(Torso);
-			add( Torso);
-			
-			Legs = new FlxSprite( InX, InY + LegsYOffset);
-			Legs.loadGraphic("assets/images/DemoRobot.png",true,64,64);
-			Legs.animation.add("Walk", [2,3,4,5], 8, true);
-			Legs.animation.add("Still", [2]);
-			Legs.animation.play("Still");
-			LegsArray.push(Legs);
-			add( Legs);
-			
-			var Head = new FlxSprite( InX, InY + HeadYOffset);
-			Head.loadGraphic("assets/images/DemoRobot.png",true,64,64);
-			Head.animation.add("Still", [0], 0, false);
-			Head.animation.play("Still");
-			Heads.push( Head);
-			add( Head);
-		}
+		TorsoArray = [];
+		LegsArray = [];
+		HeadArray = [];
 		
-		Head = Heads[0];
-		Torso = Torsos[0];
+		AddOutfit( "assets/images/sprite_sheets/DemoRobot.png");   /// OUTFIT 1 - TEST ROBOT
+		AddOutfit( "assets/images/sprite_sheets/minion_bot.png");  /// OUTFIT 2 - MINION BOT
+		
+		TorsoArray[OutfitIndex].revive();
+		LegsArray[OutfitIndex].revive();
+		HeadArray[OutfitIndex].revive();
+		
+		HeadSprite = HeadArray[OutfitIndex];
+		TorsoSprite = TorsoArray[OutfitIndex];
+		LegsSprite = LegsArray[OutfitIndex];
 	}
 	
 	override public function update()
@@ -125,19 +111,19 @@ class Player extends FlxGroup
 		
 		if (IsRunning)
 		{
-			Legs.animation.play("Walk");
+			LegsSprite.animation.play("Walk");
 		}
 		else
 		{
-			Legs.animation.play("Still");
+			LegsSprite.animation.play("Still");
 		}
 		
 		/// Update the position of all the component sprites
 		{
-			if ( Legs.animation.name == "Walk")
+			if ( LegsSprite.animation.name == "Walk")
 			{
 				/// Offset our x just a little bit in either direction as we walk.
-				var Side : Int = Legs.animation.frameIndex;
+				var Side : Int = LegsSprite.animation.frameIndex;
 				var nX : Float;
 				if (Side == 3)
 				{ nX = x - 8; }
@@ -145,9 +131,9 @@ class Player extends FlxGroup
 				{ nX = x + 8; }
 				else
 				{ nX = x;     }
-				Torso.x = nX;
-				Head.x  = nX;
-				Legs.x  = nX;
+				TorsoSprite.x = nX;
+				HeadSprite.x  = nX;
+				LegsSprite.x  = nX;
 				
 				/// Offset our y position just a little bit as we walk.
 				var nY : Float;
@@ -155,11 +141,40 @@ class Player extends FlxGroup
 				{ nY = y;     }
 				else
 				{ nY = y - 8; }
-				Head.y = nY + HeadYOffset;
-				Torso.y = nY + TorsoYOffset;
-				Legs.y = nY + LegsYOffset;
+				HeadSprite.y = nY + HeadYOffset;
+				TorsoSprite.y = nY + TorsoYOffset;
+				LegsSprite.y = nY + LegsYOffset;
 			}
 		}
 		super.update();
+	}
+	
+	public function AddOutfit( Path : String)
+	{
+		/// Outfit A
+		var nTorsoSprite = new FlxSprite( x, y + TorsoYOffset);
+		nTorsoSprite.loadGraphic(Path,true,64,64);
+		nTorsoSprite.animation.add("Still", [1], 0, false);
+		nTorsoSprite.animation.play("Still");
+		TorsoArray.push(nTorsoSprite);
+		add( nTorsoSprite);
+		nTorsoSprite.kill();
+		
+		var nLegsSprite = new FlxSprite( x, y + LegsYOffset);
+		nLegsSprite.loadGraphic(Path,true,64,64);
+		nLegsSprite.animation.add("Walk", [2,3,4,5], 8, true);
+		nLegsSprite.animation.add("Still", [2]);
+		nLegsSprite.animation.play("Still");
+		LegsArray.push(nLegsSprite);
+		add( nLegsSprite);
+		nLegsSprite.kill();
+		
+		var nHeadSprite = new FlxSprite( x, y + HeadYOffset);
+		nHeadSprite.loadGraphic(Path,true,64,64);
+		nHeadSprite.animation.add("Still", [0], 0, false);
+		nHeadSprite.animation.play("Still");
+		HeadArray.push(nHeadSprite);
+		add( nHeadSprite);
+		nHeadSprite.kill();
 	}
 }

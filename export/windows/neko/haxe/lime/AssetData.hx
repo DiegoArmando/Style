@@ -34,6 +34,10 @@ class AssetData {
 			type.set ("assets/images/DemoRobot.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/images-go-here.txt", "assets/images/images-go-here.txt");
 			type.set ("assets/images/images-go-here.txt", Reflect.field (AssetType, "text".toUpperCase ()));
+			path.set ("assets/images/sprite_sheets/DemoRobot.png", "assets/images/sprite_sheets/DemoRobot.png");
+			type.set ("assets/images/sprite_sheets/DemoRobot.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/sprite_sheets/minion_bot.png", "assets/images/sprite_sheets/minion_bot.png");
+			type.set ("assets/images/sprite_sheets/minion_bot.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/TestAsset.png", "assets/images/TestAsset.png");
 			type.set ("assets/images/TestAsset.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/Tile 1.png", "assets/images/Tile 1.png");
