@@ -13,7 +13,7 @@ import flixel.FlxSprite;
 class Player extends FlxGroup
 {
 	
-	public static inline var RUN_SPEED_SEC:Int = 1;
+	public static inline var RUN_SPEED_SEC:Int = 64*3;
 	public var x: Float = 0;
 	public var y: Float = 0;
 	
@@ -64,22 +64,22 @@ class Player extends FlxGroup
 		
 		if (FlxG.keys.anyPressed(["right","d"]))
 		{
-			x += 1;
+			xOffset += 1;
 			IsRunning = true;
 		}
 		if (FlxG.keys.anyPressed(["left","a"]))
 		{
-			x += -1;
+			xOffset += -1;
 			IsRunning = true;
 		}
 		if (FlxG.keys.anyPressed(["up","w"]))
 		{
-			y += -1;
+			yOffset += -1;
 			IsRunning = true;
 		}
 		if (FlxG.keys.anyPressed(["down","s"]))
 		{
-			y += 1;
+			yOffset += 1;
 			IsRunning = true;
 		}
 		
@@ -87,14 +87,17 @@ class Player extends FlxGroup
 		{
 			var Calc : Float = (xOffset * xOffset) + (yOffset * yOffset);
 			var Magnitude : Float = Math.sqrt(Calc);
-			xOffset = xOffset / Magnitude;
-			yOffset /= Magnitude;
-			
-			xOffset *= (RUN_SPEED_SEC * FlxG.elapsed);
-			yOffset *= (RUN_SPEED_SEC * FlxG.elapsed);
-			
-			//x += xOffset;
-			//y += yOffset;
+			if (Magnitude != 0)
+			{
+				xOffset = xOffset / Magnitude;
+				yOffset /= Magnitude;
+				
+				xOffset *= (RUN_SPEED_SEC * FlxG.elapsed);
+				yOffset *= (RUN_SPEED_SEC * FlxG.elapsed);
+				
+				x += xOffset;
+				y += yOffset;
+			}
 		}
 		
 		if (IsRunning)

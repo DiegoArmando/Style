@@ -34,8 +34,6 @@ class PlayState extends FlxState
 		// player ini
 		player = new Player(FlxG.width/2, FlxG.height/2);
 		add( player);
-		
-		
 	}
 	
 	/**
