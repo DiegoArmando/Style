@@ -63,6 +63,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_arial_ttf);
 		
@@ -72,12 +73,14 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("assets/data/data-goes-here.txt", __ASSET__assets_data_data_goes_here_txt);
 		type.set ("assets/data/data-goes-here.txt", AssetType.TEXT);
-		className.set ("assets/images/DemoParts.png", __ASSET__assets_images_demoparts_png);
-		type.set ("assets/images/DemoParts.png", AssetType.IMAGE);
 		className.set ("assets/images/DemoRobot.png", __ASSET__assets_images_demorobot_png);
 		type.set ("assets/images/DemoRobot.png", AssetType.IMAGE);
 		className.set ("assets/images/images-go-here.txt", __ASSET__assets_images_images_go_here_txt);
 		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
+		className.set ("assets/images/Sprite Sheets/defult_full.png", __ASSET__assets_images_sprite_sheets_defult_full_png);
+		type.set ("assets/images/Sprite Sheets/defult_full.png", AssetType.IMAGE);
+		className.set ("assets/images/Sprite Sheets/minion bot.png", __ASSET__assets_images_sprite_sheets_minion_bot_png);
+		type.set ("assets/images/Sprite Sheets/minion bot.png", AssetType.IMAGE);
 		className.set ("assets/images/TestAsset.png", __ASSET__assets_images_testasset_png);
 		type.set ("assets/images/TestAsset.png", AssetType.IMAGE);
 		className.set ("assets/music/music-goes-here.txt", __ASSET__assets_music_music_goes_here_txt);
@@ -105,10 +108,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.TEXT);
-		id = "assets/images/DemoParts.png";
-		path.set (id, id);
-		
-		type.set (id, AssetType.IMAGE);
 		id = "assets/images/DemoRobot.png";
 		path.set (id, id);
 		
@@ -117,6 +116,14 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.TEXT);
+		id = "assets/images/Sprite Sheets/defult_full.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Sprite Sheets/minion bot.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/TestAsset.png";
 		path.set (id, id);
 		
@@ -174,14 +181,17 @@ class DefaultAssetLibrary extends AssetLibrary {
 		className.set ("assets/data/data-goes-here.txt", __ASSET__assets_data_data_goes_here_txt);
 		type.set ("assets/data/data-goes-here.txt", AssetType.TEXT);
 		
-		className.set ("assets/images/DemoParts.png", __ASSET__assets_images_demoparts_png);
-		type.set ("assets/images/DemoParts.png", AssetType.IMAGE);
-		
 		className.set ("assets/images/DemoRobot.png", __ASSET__assets_images_demorobot_png);
 		type.set ("assets/images/DemoRobot.png", AssetType.IMAGE);
 		
 		className.set ("assets/images/images-go-here.txt", __ASSET__assets_images_images_go_here_txt);
 		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
+		
+		className.set ("assets/images/Sprite Sheets/defult_full.png", __ASSET__assets_images_sprite_sheets_defult_full_png);
+		type.set ("assets/images/Sprite Sheets/defult_full.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/Sprite Sheets/minion bot.png", __ASSET__assets_images_sprite_sheets_minion_bot_png);
+		type.set ("assets/images/Sprite Sheets/minion bot.png", AssetType.IMAGE);
 		
 		className.set ("assets/images/TestAsset.png", __ASSET__assets_images_testasset_png);
 		type.set ("assets/images/TestAsset.png", AssetType.IMAGE);
@@ -805,7 +815,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 			var bytes = ByteArray.readFile ("assets/manifest");
 			#elseif (mac && java)
 			var bytes = ByteArray.readFile ("../Resources/manifest");
-			#elseif (ios || tvos)
+			#elseif ios
 			var bytes = ByteArray.readFile ("assets/manifest");
 			#else
 			var bytes = ByteArray.readFile ("manifest");
@@ -827,7 +837,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 							
 							if (!className.exists (asset.id)) {
 								
-								#if (ios || tvos)
+								#if ios
 								path.set (asset.id, "assets/" + asset.path);
 								#else
 								path.set (asset.id, asset.path);
@@ -928,9 +938,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 #if flash
 
 @:keep @:bind #if display private #end class __ASSET__assets_data_data_goes_here_txt extends null { }
-@:keep @:bind #if display private #end class __ASSET__assets_images_demoparts_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_demorobot_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_images_go_here_txt extends null { }
+@:keep @:bind #if display private #end class __ASSET__assets_images_sprite_sheets_defult_full_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_sprite_sheets_minion_bot_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_testasset_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_music_music_goes_here_txt extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_sounds_sounds_go_here_txt extends null { }
@@ -955,6 +966,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
 @:keep #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends lime.text.Font { public function new () { super (); name = "Nokia Cellphone FC Small"; } } 
 @:keep #if display private #end class __ASSET__assets_fonts_arial_ttf extends lime.text.Font { public function new () { super (); name = "Arial"; } } 
 
@@ -967,9 +979,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 @:file("assets/data/data-goes-here.txt") #if display private #end class __ASSET__assets_data_data_goes_here_txt extends lime.utils.ByteArray {}
-@:image("assets/images/DemoParts.png") #if display private #end class __ASSET__assets_images_demoparts_png extends lime.graphics.Image {}
 @:image("assets/images/DemoRobot.png") #if display private #end class __ASSET__assets_images_demorobot_png extends lime.graphics.Image {}
 @:file("assets/images/images-go-here.txt") #if display private #end class __ASSET__assets_images_images_go_here_txt extends lime.utils.ByteArray {}
+@:image("assets/images/Sprite Sheets/defult_full.png") #if display private #end class __ASSET__assets_images_sprite_sheets_defult_full_png extends lime.graphics.Image {}
+@:image("assets/images/Sprite Sheets/minion bot.png") #if display private #end class __ASSET__assets_images_sprite_sheets_minion_bot_png extends lime.graphics.Image {}
 @:image("assets/images/TestAsset.png") #if display private #end class __ASSET__assets_images_testasset_png extends lime.graphics.Image {}
 @:file("assets/music/music-goes-here.txt") #if display private #end class __ASSET__assets_music_music_goes_here_txt extends lime.utils.ByteArray {}
 @:file("assets/sounds/sounds-go-here.txt") #if display private #end class __ASSET__assets_sounds_sounds_go_here_txt extends lime.utils.ByteArray {}

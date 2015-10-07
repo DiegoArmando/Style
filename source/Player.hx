@@ -10,6 +10,12 @@ import flixel.FlxSprite;
  * @author Andrew Dunetz
  */
 
+ enum Outfits
+{
+	OutfitA;
+	OutfitB;
+}
+
 class Player extends FlxGroup
 {
 	
@@ -24,6 +30,10 @@ class Player extends FlxGroup
 	private var Head: FlxSprite;
 	private var HeadYOffset : Float;
 	
+	private var Torsos : Array<FlxSprite>;
+	private var LegsArray : Array<FlxSprite>;
+	private var Heads : Array<FlxSprite>;
+	
 	public function new( InX : Float, InY : Float) 
 	{
 		super( );
@@ -32,27 +42,41 @@ class Player extends FlxGroup
 		y = InY;
 		
 		LegsYOffset  = -64;
-		TorsoYOffset = -96;
-		HeadYOffset  = -128;
+		TorsoYOffset = -64*2;
+		HeadYOffset  = -64 * 3 + 32;
 		
-		Torso = new FlxSprite( InX, InY + TorsoYOffset);
-		Torso.loadGraphic("assets/images/DemoRobot.png",true,64,64);
-		Torso.animation.add("Still", [1], 0, false);
-		Torso.animation.play("Still");
-		add( Torso);
+		{
+			Torsos = [];
+			LegsArray = [];
+			Heads = [];
+			
+			/// Outfit A
+			var Torso = new FlxSprite( InX, InY + TorsoYOffset);
+			Torso.loadGraphic("assets/images/Sprite Sheets/minion bot.png",true,64,64);
+			Torso.animation.add("Still", [1], 0, false);
+			Torso.animation.play("Still");
+			Torsos.push(Torso);
+			add( Torso);
+			
+			var Legs = new FlxSprite( InX, InY + LegsYOffset);
+			Legs.loadGraphic("assets/images/Sprite Sheets/minion bot.png",true,64,64);
+			Legs.animation.add("Walk", [2,3], 8, true);
+			Legs.animation.add("Still", [2]);
+			Legs.animation.play("Still");
+			LegsArray.push(Legs);
+			add( Legs);
+			
+			var Head = new FlxSprite( InX, InY + HeadYOffset);
+			Head.loadGraphic("assets/images/Sprite Sheets/minion bot.png",true,64,64);
+			Head.animation.add("Still", [0], 0, false);
+			Head.animation.play("Still");
+			Heads.push( Head);
+			add( Head);
+		}
 		
-		Legs = new FlxSprite( InX, InY + LegsYOffset);
-		add( Legs);
-		Legs.loadGraphic("assets/images/DemoRobot.png",true,64,64);
-		Legs.animation.add("Walk", [2,3,4,5], 8, true);
-		Legs.animation.add("Still", [2]);
-		Legs.animation.play("Still");
-		
-		Head = new FlxSprite( InX, InY + HeadYOffset);
-		Head.loadGraphic("assets/images/DemoRobot.png",true,64,64);
-		Head.animation.add("Still", [0], 0, false);
-		Head.animation.play("Still");
-		add( Head);
+		Head = Heads[0];
+		Torso = Torsos[0];
+		Legs = LegsArray[0];
 	}
 	
 	override public function update()
