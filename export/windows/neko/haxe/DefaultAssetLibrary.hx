@@ -66,6 +66,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
 		Font.registerFont (__ASSET__assets_fonts_nokiafc22_ttf);
 		Font.registerFont (__ASSET__assets_fonts_arial_ttf);
 		
@@ -73,6 +74,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -578,6 +580,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_arial_ttf);
 		
@@ -595,6 +598,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/Sprite Sheets/defult_full.png", AssetType.IMAGE);
 		path.set ("assets/images/Sprite Sheets/minion bot.png", "assets/images/Sprite Sheets/minion bot.png");
 		type.set ("assets/images/Sprite Sheets/minion bot.png", AssetType.IMAGE);
+		path.set ("assets/images/Sprite Sheets/minionbotnew.png", "assets/images/Sprite Sheets/minionbotnew.png");
+		type.set ("assets/images/Sprite Sheets/minionbotnew.png", AssetType.IMAGE);
 		path.set ("assets/images/TestAsset.png", "assets/images/TestAsset.png");
 		type.set ("assets/images/TestAsset.png", AssetType.IMAGE);
 		path.set ("assets/music/music-goes-here.txt", "assets/music/music-goes-here.txt");
@@ -627,6 +632,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/Sprite Sheets/minion bot.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/Sprite Sheets/minionbotnew.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/TestAsset.png";
@@ -669,6 +677,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -1413,11 +1422,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_arial_ttf extends null { }
 
 
 #elseif html5
+
 
 
 

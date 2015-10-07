@@ -26,6 +26,8 @@ class AssetData {
 			type.set ("assets/images/Sprite Sheets/defult_full.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/Sprite Sheets/minion bot.png", "assets/images/Sprite Sheets/minion bot.png");
 			type.set ("assets/images/Sprite Sheets/minion bot.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/Sprite Sheets/minionbotnew.png", "assets/images/Sprite Sheets/minionbotnew.png");
+			type.set ("assets/images/Sprite Sheets/minionbotnew.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/TestAsset.png", "assets/images/TestAsset.png");
 			type.set ("assets/images/TestAsset.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/music/music-goes-here.txt", "assets/music/music-goes-here.txt");
