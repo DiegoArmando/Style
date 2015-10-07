@@ -25,6 +25,7 @@ class Enemy extends FlxSprite
 	var poison_duration:Int = 0;
 	public var health_text:FlxText;
 	public var magic_text:FlxText;
+	var random_number:Float;
 	
 	public function new(Position:Int, Total_Number:Int, Name:String, Parent:Battle) 
 	{
@@ -54,6 +55,20 @@ class Enemy extends FlxSprite
 			this.y = FlxG.height / (Total_Number + 2) * Position;
 			hp = hpmax = 5;
 			speed = 3;
+		}
+		else if (Name.split(" ")[0] == "Lu-E") {
+			makeGraphic(64, 128, FlxColor.BROWN);
+			this.x = FlxG.width / 3 * 2;
+			this.y = FlxG.height / (Total_Number + 2) * Position;
+			hp = hpmax = 3;
+			speed = 1;
+		}
+		else if (Name.split(" ")[0] == "Hertz") {
+			makeGraphic(128, 128, FlxColor.CORAL);
+			this.x = FlxG.width / 3 * 2 - this.width / 2;
+			this.y = FlxG.height / (Total_Number + 2) * Position;
+			hp = hpmax = 7;
+			speed = 0;
 		}
 		health_text = new FlxText(0, 0, 64);
 		health_text.size = 20;
@@ -106,6 +121,17 @@ class Enemy extends FlxSprite
 		else if (name.split(" ")[0] == "Tough") {
 			PlayerObject.damage(3, [], this);
 			return name + " bashes down the Player!";
+		}
+		else if (name.split(" ")[0] == "Lu-E") {
+			PlayerObject.damage(1, [], this);
+			return name + " smacks the Player with his robot-purse";
+		}
+		else if (name.split(" ")[0] == "Hertz") {
+			random_number = Math.random() * 100.1;
+			if (random_number < 30) {
+				PlayerObject.damage(3, [], this);
+				return name + " batter you back and forth";
+			}
 		}
 		return "Error...";
 	}

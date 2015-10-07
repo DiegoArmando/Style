@@ -34,32 +34,22 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.TEXT);
 		
 		
-<<<<<<< HEAD
-=======
 		urls.push ("assets/images/DemoRobot.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
->>>>>>> player
 		urls.push ("assets/images/images-go-here.txt");
 		types.push (lime.Assets.AssetType.TEXT);
-		
-		
-<<<<<<< HEAD
-=======
-		urls.push ("assets/images/Sprite Sheets/defult_full.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("assets/images/Sprite Sheets/minion bot.png");
-		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
 		urls.push ("assets/images/TestAsset.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
->>>>>>> player
+		urls.push ("assets/music/Culex.wav");
+		types.push (lime.Assets.AssetType.SOUND);
+		
+		
 		urls.push ("assets/music/music-goes-here.txt");
 		types.push (lime.Assets.AssetType.TEXT);
 		
@@ -152,19 +142,11 @@ class ApplicationMain {
 		
 		config = {
 			
-<<<<<<< HEAD
 			build: "1",
 			company: "HaxeFlixel",
 			file: "Stylish Combat",
 			fps: 60,
 			name: "Stylish Combat",
-=======
-			build: "184",
-			company: "HaxeFlixel",
-			file: "Style",
-			fps: 60,
-			name: "Style",
->>>>>>> player
 			orientation: "portrait",
 			packageName: "com.example.myapp",
 			version: "0.0.1",
@@ -178,7 +160,6 @@ class ApplicationMain {
 					display: 0,
 					fullscreen: false,
 					hardware: true,
-<<<<<<< HEAD
 					height: 768,
 					parameters: "{}",
 					resizable: true,
@@ -186,15 +167,6 @@ class ApplicationMain {
 					title: "Stylish Combat",
 					vsync: true,
 					width: 1024,
-=======
-					height: 480,
-					parameters: "{}",
-					resizable: true,
-					stencilBuffer: true,
-					title: "Style",
-					vsync: true,
-					width: 640,
->>>>>>> player
 					x: null,
 					y: null
 				},
@@ -212,11 +184,7 @@ class ApplicationMain {
 		
 		#if (js && html5)
 		#if (munit || utest)
-<<<<<<< HEAD
 		openfl.Lib.embed (null, 1024, 768, "000000");
-=======
-		openfl.Lib.embed (null, 640, 480, "000000");
->>>>>>> player
 		#end
 		#else
 		create ();

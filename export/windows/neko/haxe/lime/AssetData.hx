@@ -18,25 +18,14 @@ class AssetData {
 			
 			path.set ("assets/data/data-goes-here.txt", "assets/data/data-goes-here.txt");
 			type.set ("assets/data/data-goes-here.txt", Reflect.field (AssetType, "text".toUpperCase ()));
-<<<<<<< HEAD
-			path.set ("assets/images/images-go-here.txt", "assets/images/images-go-here.txt");
-			type.set ("assets/images/images-go-here.txt", Reflect.field (AssetType, "text".toUpperCase ()));
-			path.set ("assets/music/Culex.wav", "assets/music/Culex.wav");
-			type.set ("assets/music/Culex.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
-=======
 			path.set ("assets/images/DemoRobot.png", "assets/images/DemoRobot.png");
 			type.set ("assets/images/DemoRobot.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/images-go-here.txt", "assets/images/images-go-here.txt");
 			type.set ("assets/images/images-go-here.txt", Reflect.field (AssetType, "text".toUpperCase ()));
-			path.set ("assets/images/Sprite Sheets/defult_full.png", "assets/images/Sprite Sheets/defult_full.png");
-			type.set ("assets/images/Sprite Sheets/defult_full.png", Reflect.field (AssetType, "image".toUpperCase ()));
-			path.set ("assets/images/Sprite Sheets/minion bot.png", "assets/images/Sprite Sheets/minion bot.png");
-			type.set ("assets/images/Sprite Sheets/minion bot.png", Reflect.field (AssetType, "image".toUpperCase ()));
-			path.set ("assets/images/Sprite Sheets/minionbotnew.png", "assets/images/Sprite Sheets/minionbotnew.png");
-			type.set ("assets/images/Sprite Sheets/minionbotnew.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/TestAsset.png", "assets/images/TestAsset.png");
 			type.set ("assets/images/TestAsset.png", Reflect.field (AssetType, "image".toUpperCase ()));
->>>>>>> player
+			path.set ("assets/music/Culex.wav", "assets/music/Culex.wav");
+			type.set ("assets/music/Culex.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
 			path.set ("assets/music/music-goes-here.txt", "assets/music/music-goes-here.txt");
 			type.set ("assets/music/music-goes-here.txt", Reflect.field (AssetType, "text".toUpperCase ()));
 			path.set ("assets/sounds/sounds-go-here.txt", "assets/sounds/sounds-go-here.txt");
