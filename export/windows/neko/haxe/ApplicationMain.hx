@@ -26,7 +26,11 @@ class ApplicationMain {
 	
 	public static function main () {
 		
+<<<<<<< HEAD
 		flash.Lib.setPackage ("HaxeFlixel", "Stylish Combat", "com.example.myapp", "0.0.1");
+=======
+		flash.Lib.setPackage ("HaxeFlixel", "Style", "com.example.myapp", "0.0.1");
+>>>>>>> player
 		
 		
 		#if ios
@@ -40,7 +44,11 @@ class ApplicationMain {
 		telemetryConfig = new hxtelemetry.HxTelemetry.Config ();
 		telemetryConfig.allocations = true;
 		telemetryConfig.host = "localhost";
+<<<<<<< HEAD
 		telemetryConfig.app_name = "Stylish Combat";
+=======
+		telemetryConfig.app_name = "Style";
+>>>>>>> player
 		#end
 		
 		
@@ -57,8 +65,13 @@ class ApplicationMain {
 				
 				#if mobile
 				
+<<<<<<< HEAD
 				forceWidth = 1024;
 				forceHeight = 768;
+=======
+				forceWidth = 640;
+				forceHeight = 480;
+>>>>>>> player
 				
 				container = new flash.display.Sprite ();
 				barA = new flash.display.Sprite ();
@@ -127,7 +140,11 @@ class ApplicationMain {
 				}
 				
 			},
+<<<<<<< HEAD
 			1024, 768, 
+=======
+			640, 480, 
+>>>>>>> player
 			60, 
 			0,
 			(true ? flash.Lib.HARDWARE : 0) |
@@ -141,7 +158,11 @@ class ApplicationMain {
 			(false ? flash.Lib.FULLSCREEN : 0) |
 			(0 == 4 ? flash.Lib.HW_AA_HIRES : 0) |
 			(0 == 2 ? flash.Lib.HW_AA : 0),
+<<<<<<< HEAD
 			"Stylish Combat",
+=======
+			"Style",
+>>>>>>> player
 			null
 			#if mobile, ScaledStage #end
 		);
@@ -248,13 +269,21 @@ class ScaledStage extends flash.display.Stage {
 	
 	private override function get_stageHeight ():Int {
 		
+<<<<<<< HEAD
 		return 768;
+=======
+		return 480;
+>>>>>>> player
 	
 	}
 	
 	private override function get_stageWidth ():Int {
 		
+<<<<<<< HEAD
 		return 1024;
+=======
+		return 640;
+>>>>>>> player
 	
 	}
 	
@@ -318,18 +347,30 @@ class ApplicationMain {
 	public static function main () {
 		
 		#if openfl
+<<<<<<< HEAD
 		flash.Lib.setPackage ("HaxeFlixel", "Stylish Combat", "com.example.myapp", "0.0.1");
+=======
+		flash.Lib.setPackage ("HaxeFlixel", "Style", "com.example.myapp", "0.0.1");
+>>>>>>> player
 		
 		#end
 		
 		wx.App.boot (function () {
 			
 			
+<<<<<<< HEAD
 			frame = wx.Frame.create (null, null, "Stylish Combat", null, { width: 1024, height: 768 });
 			
 			
 			#if openfl
 			var stage = wx.NMEStage.create (frame, null, null, { width: 1024, height: 768 });
+=======
+			frame = wx.Frame.create (null, null, "Style", null, { width: 640, height: 480 });
+			
+			
+			#if openfl
+			var stage = wx.NMEStage.create (frame, null, null, { width: 640, height: 480 });
+>>>>>>> player
 			#end
 			
 			var hasMain = false;
@@ -499,11 +540,19 @@ class ApplicationMain {
 		
 		config = {
 			
+<<<<<<< HEAD
 			build: "186",
 			company: "HaxeFlixel",
 			file: "Stylish Combat",
 			fps: 60,
 			name: "Stylish Combat",
+=======
+			build: "192",
+			company: "HaxeFlixel",
+			file: "Style",
+			fps: 60,
+			name: "Style",
+>>>>>>> player
 			orientation: "landscape",
 			packageName: "com.example.myapp",
 			version: "0.0.1",
@@ -517,6 +566,7 @@ class ApplicationMain {
 					display: 0,
 					fullscreen: false,
 					hardware: true,
+<<<<<<< HEAD
 					height: 768,
 					parameters: "{}",
 					resizable: true,
@@ -524,6 +574,15 @@ class ApplicationMain {
 					title: "Stylish Combat",
 					vsync: true,
 					width: 1024,
+=======
+					height: 480,
+					parameters: "{}",
+					resizable: true,
+					stencilBuffer: false,
+					title: "Style",
+					vsync: true,
+					width: 640,
+>>>>>>> player
 					x: null,
 					y: null
 				},
@@ -533,7 +592,11 @@ class ApplicationMain {
 		
 		#if (js && html5)
 		#if (munit || utest)
+<<<<<<< HEAD
 		openfl.Lib.embed (null, 1024, 768, "null");
+=======
+		openfl.Lib.embed (null, 640, 480, "null");
+>>>>>>> player
 		#end
 		#else
 		create ();

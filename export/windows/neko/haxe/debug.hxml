@@ -17,7 +17,10 @@
 -D openfl-native
 -D lime-native
 -D FLX_RENDER_TILE
+<<<<<<< HEAD
 -D fdb
+=======
+>>>>>>> player
 -D windows
 -D desktop
 --remap flash:openfl
