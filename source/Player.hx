@@ -13,7 +13,7 @@ import flixel.FlxSprite;
  /*
   * TODO (Andrew) :  
   * X - Make Outfit Switch System
-  * Make Outfit Switch Interface
+  * X - Make Outfit Switch Interface
   * Rewrite Object Activation Code
   */
   
@@ -23,7 +23,9 @@ class Player extends FlxGroup
 	public var x: Float = 0;
 	public var y: Float = 0;
 	
-	private var OutfitIndex : Int = 1;
+	private var LegsIndex : Int = 0;
+	private var TorsoIndex : Int = 0;
+	private var HeadsIndex : Int = 0;
 	
 	private var TorsoArray : Array<FlxSprite>;
 	private var TorsoSprite : FlxSprite;
@@ -52,20 +54,27 @@ class Player extends FlxGroup
 		LegsArray = [];
 		HeadArray = [];
 		
-		AddOutfit( "assets/images/sprite_sheets/DemoRobot.png");     /// OUTFIT 0 - TEST ROBOT
+		AddOutfit( "assets/images/sprite_sheets/DemoRobot.png");   /// OUTFIT 0 - TEST ROBOT
 		AddOutfit( "assets/images/sprite_sheets/minion_bot.png");  /// OUTFIT 1 - MINION BOT
 		
-		TorsoArray[OutfitIndex].revive();
-		LegsArray[OutfitIndex].revive();
-		HeadArray[OutfitIndex].revive();
+		TorsoArray[TorsoIndex].revive();
+		LegsArray[LegsIndex].revive();
+		HeadArray[HeadsIndex].revive();
 		
-		HeadSprite = HeadArray[OutfitIndex];
-		TorsoSprite = TorsoArray[OutfitIndex];
-		LegsSprite = LegsArray[OutfitIndex];
+		HeadSprite = HeadArray[HeadsIndex];
+		TorsoSprite = TorsoArray[TorsoIndex];
+		LegsSprite = LegsArray[LegsIndex];
 	}
 	
 	override public function update()
 	{
+		/// Test the outfit switching code
+		if (FlxG.keys.anyJustPressed(["z"]))
+		{
+			var result : Int = SwitchOutfit(1,TorsoIndex+1);
+		}
+		
+		
 		var IsRunning : Bool = false;
 		
 		var xOffset : Float = 0;
@@ -145,8 +154,70 @@ class Player extends FlxGroup
 				TorsoSprite.y = nY + TorsoYOffset;
 				LegsSprite.y = nY + LegsYOffset;
 			}
+			else 
+			{
+				TorsoSprite.x = x;
+				HeadSprite.x  = x;
+				LegsSprite.x  = x;
+				HeadSprite.y = y + HeadYOffset;
+				TorsoSprite.y = y + TorsoYOffset;
+				LegsSprite.y = y + LegsYOffset;
+			}
 		}
 		super.update();
+	}
+	
+	public function SwitchOutfit( PartType : Int, NewPartIndex : Int) : Int
+	{
+		/*
+		 * PARTTYPE VALUES:
+		 * 	0 : Legs
+		 *  1 : Torso
+		 *  2 : Head
+		 */
+		
+		var INVALID_PARTTYPE  : Int = 0;
+		var INVALID_OUTFIT    : Int = 1;
+		var ALREADY_WEARING   : Int = 2;
+		var SUCCESSFUL_SWITCH : Int = 3;
+		 
+		/// Validate that the switch is actually possible.
+		if (PartType < 0 || PartType > 2)
+		{ return INVALID_PARTTYPE; }
+		if (NewPartIndex < 0 || NewPartIndex >= TorsoArray.length)
+		{ return INVALID_OUTFIT; }
+	    
+		/// Perform the switch
+		if (PartType == 0)
+		{
+			if (NewPartIndex == LegsIndex)
+			{ return ALREADY_WEARING; }
+			trace ("PartIndex: "+NewPartIndex);
+			LegsSprite.kill();
+			LegsArray[NewPartIndex].revive();
+			LegsSprite = LegsArray[NewPartIndex];
+			LegsSprite.x = x; LegsSprite.y = y + LegsYOffset;
+		}
+		else if (PartType == 1)
+		{
+			if (NewPartIndex == TorsoIndex)
+			{ return ALREADY_WEARING; }
+			TorsoSprite.kill();
+			TorsoArray[NewPartIndex].revive();
+			TorsoSprite = TorsoArray[NewPartIndex];
+			TorsoSprite.x = x; TorsoSprite.y = y + TorsoYOffset;
+		}
+		else if (PartType == 2)
+		{
+			if (NewPartIndex == HeadsIndex)
+			{ return ALREADY_WEARING; }
+			HeadSprite.kill();
+			HeadArray[NewPartIndex].revive();
+			HeadSprite = HeadArray[NewPartIndex];
+			HeadSprite.x = x; HeadSprite.y = y + HeadYOffset;
+		}
+		
+		return SUCCESSFUL_SWITCH;
 	}
 	
 	public function AddOutfit( Path : String)
