@@ -12,9 +12,6 @@ import flixel.FlxSprite;
 
  /*
   * TODO (Andrew) :  
-  * X - Make Outfit Switch System
-  * X - Make Outfit Switch Interface
-  * Rewrite Object Activation Code
   */
   
 class Player extends FlxGroup
@@ -22,6 +19,8 @@ class Player extends FlxGroup
 	public static inline var RUN_SPEED_SEC:Int = 64*3;
 	public var x: Float = 0;
 	public var y: Float = 0;
+	
+	private var Parent : Dynamic;
 	
 	private var LegsIndex : Int = 0;
 	private var TorsoIndex : Int = 0;
@@ -39,9 +38,11 @@ class Player extends FlxGroup
 	private var HeadSprite: FlxSprite;
 	private var HeadYOffset : Float;
 	
-	public function new( InX : Float, InY : Float) 
+	public function new( InX : Float, InY : Float, InParent : Dynamic) 
 	{
 		super( );
+		
+		Parent = InParent;
 		
 		x = InX;
 		y = InY;
@@ -68,13 +69,6 @@ class Player extends FlxGroup
 	
 	override public function update()
 	{
-		/// Test the outfit switching code
-		if (FlxG.keys.anyJustPressed(["z"]))
-		{
-			var result : Int = SwitchOutfit(1,TorsoIndex+1);
-		}
-		
-		
 		var IsRunning : Bool = false;
 		
 		var xOffset : Float = 0;
