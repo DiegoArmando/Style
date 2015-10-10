@@ -12,23 +12,18 @@ class Interactable extends FlxSprite
 	public function new(InX : Float, InY : Float) 
 	{
 		super( InX, InY);
+		loadGraphic("assets/images/TestAsset.png", true, 64, 64);
+		animation.add("Normal", [0,1,2], 0, false);
+		animation.play("Normal");
 	}
 	
-	public function interact( InX : Float, InY : Float)
+	public function interact( )
 	{
-		/// Check if the point is within us.
-		if ((InX > x) && (InX < x + width) && (InY > y) && (InY < y + height))
-		{
-			action();
-		}
-		else
-		{
-			//trace("I was not clicked!");
-		}
+		trace("Yeah! I was interacted with!");
 	}
 	
-	public function action()
+	public function setSubimage( subImage : Int)
 	{
-		trace("Did Action");
+		animation.frameIndex = subImage;
 	}
 }

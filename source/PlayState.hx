@@ -19,6 +19,8 @@ class PlayState extends FlxState
 {
 	public var player : Player;
 	public var interactables : Array<Interactable>;
+	public var interactableIndex : Int = -1;
+	public var selectedInteractable : Int = -1;
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
@@ -51,12 +53,23 @@ class PlayState extends FlxState
 		interactables = [];
 		/// Add something to it.
 		var Disk : Interactable = new Interactable(FlxG.width/2+64, FlxG.height/2);
-		Disk.loadGraphic("assets/images/TestAsset.png");
 		add (Disk);
 		interactables.push(Disk);
 		
+		var Disk1 : Interactable = new Interactable(FlxG.width/2+64, FlxG.height/2+128);
+		add (Disk1);
+		interactables.push(Disk1);
+		
+		var Disk2 : Interactable = new Interactable(FlxG.width/2, FlxG.height/2+128);
+		add (Disk2);
+		interactables.push(Disk2);
+		
+		var Disk3 : Interactable = new Interactable(FlxG.width/2, FlxG.height/2);
+		add (Disk3);
+		interactables.push(Disk3);
+		
 		// player ini
-		player = new Player(FlxG.width/2, FlxG.height/2);
+		player = new Player(FlxG.width/2, FlxG.height/2, this);
 		add( player);
 	}
 	
@@ -74,12 +87,62 @@ class PlayState extends FlxState
 	 */
 	override public function update():Void
 	{
-		/// Check to see if we triggered any interactable objects.
-		if (FlxG.mouse.justPressed)
+		var itemIndex : Int = 0;
+		var itemSelected : Bool = false;
+		var itemsInRange : Int = 0;
+		
+		
+		if (FlxG.keys.anyJustPressed(["tab"]))
 		{
-			for (item in interactables)
+			interactableIndex++;
+		}
+		
+		/// Check to see if there are any objects within range that can be activated
+		for (item in interactables)
+		{
+			/// Check if this item is in range.
+			if ((item.x > player.x - 96) && (item.x < player.x + 96) &&
+			    (item.y > player.y - 128) && (item.y < player.y + 64))
 			{
-				item.interact( FlxG.mouse.x, FlxG.mouse.y);
+				itemsInRange++;
+				if (interactableIndex == -1)
+				{
+					interactableIndex = itemsInRange;
+					selectedInteractable = itemIndex;
+					itemSelected = true;
+					item.setSubimage(2);
+				}
+				else
+				{
+					if (interactableIndex == itemsInRange)
+					{
+						itemSelected = true;
+						item.setSubimage(2);
+					}
+					else
+					{
+						item.setSubimage(1);
+					}
+				}
+			}
+			else
+			{
+				item.setSubimage(0);
+			}
+			itemIndex++;
+		}
+		
+		if (!itemSelected)
+		{ 
+			interactableIndex = -1; 
+			selectedInteractable = -1;
+		}
+		
+		if (FlxG.keys.anyJustPressed(["space"]))
+		{
+			if (selectedInteractable >= 0 && selectedInteractable <= interactables.length)
+			{
+				interactables[selectedInteractable].interact();
 			}
 		}
 		
