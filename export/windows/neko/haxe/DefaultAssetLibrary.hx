@@ -78,6 +78,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
+		
+		
 		Font.registerFont (__ASSET__assets_fonts_nokiafc22_ttf);
 		Font.registerFont (__ASSET__assets_fonts_arial_ttf);
 		
@@ -85,6 +89,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -614,6 +622,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
+		
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_arial_ttf);
 		
@@ -639,12 +651,20 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/DemoRobot.png", AssetType.IMAGE);
 		path.set ("assets/images/images-go-here.txt", "assets/images/images-go-here.txt");
 		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
+		path.set ("assets/images/sprite_sheets/android.png", "assets/images/sprite_sheets/android.png");
+		type.set ("assets/images/sprite_sheets/android.png", AssetType.IMAGE);
+		path.set ("assets/images/sprite_sheets/baymax.png", "assets/images/sprite_sheets/baymax.png");
+		type.set ("assets/images/sprite_sheets/baymax.png", AssetType.IMAGE);
 		path.set ("assets/images/sprite_sheets/DemoRobot.png", "assets/images/sprite_sheets/DemoRobot.png");
 		type.set ("assets/images/sprite_sheets/DemoRobot.png", AssetType.IMAGE);
 		path.set ("assets/images/sprite_sheets/minion_bot.png", "assets/images/sprite_sheets/minion_bot.png");
 		type.set ("assets/images/sprite_sheets/minion_bot.png", AssetType.IMAGE);
 		path.set ("assets/images/sprite_sheets/minion_bot_L.png", "assets/images/sprite_sheets/minion_bot_L.png");
 		type.set ("assets/images/sprite_sheets/minion_bot_L.png", AssetType.IMAGE);
+		path.set ("assets/images/sprite_sheets/mummy.png", "assets/images/sprite_sheets/mummy.png");
+		type.set ("assets/images/sprite_sheets/mummy.png", AssetType.IMAGE);
+		path.set ("assets/images/sprite_sheets/octobot.png", "assets/images/sprite_sheets/octobot.png");
+		type.set ("assets/images/sprite_sheets/octobot.png", AssetType.IMAGE);
 		path.set ("assets/images/TestAsset.png", "assets/images/TestAsset.png");
 		type.set ("assets/images/TestAsset.png", AssetType.IMAGE);
 		path.set ("assets/images/Tile 1.png", "assets/images/Tile 1.png");
@@ -701,6 +721,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/images/images-go-here.txt";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
+		id = "assets/images/sprite_sheets/android.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/sprite_sheets/baymax.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/sprite_sheets/DemoRobot.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
@@ -708,6 +734,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/sprite_sheets/minion_bot_L.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/sprite_sheets/mummy.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/sprite_sheets/octobot.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/TestAsset.png";
@@ -765,6 +797,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -1533,11 +1569,19 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
+
+
+
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_arial_ttf extends null { }
 
 
 #elseif html5
+
+
+
+
 
 
 
