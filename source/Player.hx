@@ -68,6 +68,7 @@ class Player extends FlxGroup
 		TorsoSprite = TorsoArray[TorsoIndex];
 		LegsSprite = LegsArray[LegsIndex];
 		
+		
 		referenceSprite = TorsoSprite;
 	}
 	

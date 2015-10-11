@@ -7,6 +7,7 @@ import flixel.FlxState;
 import flixel.group.FlxGroup;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
+import flixel.FlxObject;
 import flixel.util.FlxMath;
 import flixel.tile.FlxTilemap;
 import openfl.Assets;
@@ -37,12 +38,15 @@ class PlayState extends FlxState
 		//load tile map
 		//add tile map
 		
-		trace("We are getting into create");
+		//trace("We are getting into create");
 		levelTiles = new FlxTilemap();
 		
 		//levelTiles.auto = FlxTilemap.OFF;
 		
 		levelTiles.loadMap(Assets.getText("assets/images/Background3.csv"), "assets/images/TileMap3.png", TILE_WIDTH, TILE_HEIGHT, FlxTilemap.OFF);
+		levelTiles.setTileProperties(1, FlxObject.NONE);
+		levelTiles.setTileProperties(2, FlxObject.ANY);
+		levelTiles.setTileProperties(3, FlxObject.ANY);
 		add(levelTiles);
 		
 		_highlightBox = new FlxSprite(0, 0);
@@ -94,10 +98,12 @@ class PlayState extends FlxState
 	 */
 	override public function update():Void
 	{
+		super.update();
 		var itemIndex : Int = 0;
 		var itemSelected : Bool = false;
 		var itemsInRange : Int = 0;
 		
+		FlxG.collide(player, levelTiles);
 		
 		if (FlxG.keys.anyJustPressed(["tab"]))
 		{
@@ -153,6 +159,6 @@ class PlayState extends FlxState
 			}
 		}
 		
-		super.update();
+		
 	}	
 }

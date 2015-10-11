@@ -17,7 +17,7 @@ class NPC extends Interactable
 	
 	public override function interact()
 	{
-		FlxG.switchState(new MenuState());
+		FlxG.switchState(new Battle());
 	}
 	
 }
