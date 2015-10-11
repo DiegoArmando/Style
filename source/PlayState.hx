@@ -12,6 +12,7 @@ import flixel.tile.FlxTilemap;
 import openfl.Assets;
 import flixel.util.FlxColor;
 import flixel.util.FlxSpriteUtil;
+import flixel.FlxCamera;
 /**
  * A FlxState which can be used for the actual gameplay.
  */
@@ -24,8 +25,8 @@ class PlayState extends FlxState
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
-	private static inline var TILE_WIDTH:Int = 128;
-	private static inline var TILE_HEIGHT:Int = 128;
+	private static inline var TILE_WIDTH:Int = 64;
+	private static inline var TILE_HEIGHT:Int = 64;
 	
 	var levelTiles:FlxTilemap;
 	private var _highlightBox:FlxSprite;
@@ -41,7 +42,7 @@ class PlayState extends FlxState
 		
 		//levelTiles.auto = FlxTilemap.OFF;
 		
-		levelTiles.loadMap(Assets.getText("assets/images/Background.csv"), "assets/images/TileMap2.png", TILE_WIDTH, TILE_HEIGHT, FlxTilemap.OFF);
+		levelTiles.loadMap(Assets.getText("assets/images/Background3.csv"), "assets/images/TileMap3.png", TILE_WIDTH, TILE_HEIGHT, FlxTilemap.OFF);
 		add(levelTiles);
 		
 		_highlightBox = new FlxSprite(0, 0);
@@ -71,6 +72,8 @@ class PlayState extends FlxState
 		// player ini
 		player = new Player(FlxG.width/2, FlxG.height/2, this);
 		add( player);
+		
+		FlxG.camera.follow(player.referenceSprite, FlxCamera.STYLE_TOPDOWN, 1);
 	}
 	
 	/**

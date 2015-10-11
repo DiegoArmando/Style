@@ -20,6 +20,8 @@ class Player extends FlxGroup
 	public var x: Float = 0;
 	public var y: Float = 0;
 	
+	public var referenceSprite: FlxObject;
+	
 	private var Parent : Dynamic;
 	
 	private var LegsIndex : Int = 0;
@@ -65,6 +67,8 @@ class Player extends FlxGroup
 		HeadSprite = HeadArray[HeadsIndex];
 		TorsoSprite = TorsoArray[TorsoIndex];
 		LegsSprite = LegsArray[LegsIndex];
+		
+		referenceSprite = TorsoSprite;
 	}
 	
 	override public function update()
