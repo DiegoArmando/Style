@@ -69,6 +69,10 @@ class PlayState extends FlxState
 		add (Disk3);
 		interactables.push(Disk3);
 		
+		var testEnemy : NPC = new NPC(FlxG.width / 2 - 200, FlxG.height / 2 - 200, "arm1");
+		add(testEnemy);
+		interactables.push(testEnemy);
+		
 		// player ini
 		player = new Player(FlxG.width/2, FlxG.height/2, this);
 		add( player);
