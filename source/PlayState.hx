@@ -37,7 +37,7 @@ class PlayState extends FlxState
 		//load tile map
 		//add tile map
 		
-		trace("We are getting into create");
+		//trace("We are getting into create");
 		levelTiles = new FlxTilemap();
 		
 		//levelTiles.auto = FlxTilemap.OFF;
@@ -57,21 +57,13 @@ class PlayState extends FlxState
 		add (Disk);
 		interactables.push(Disk);
 		
-		var Disk1 : Interactable = new Interactable(FlxG.width/2+64, FlxG.height/2+128);
-		add (Disk1);
-		interactables.push(Disk1);
-		
-		var Disk2 : Interactable = new Interactable(FlxG.width/2, FlxG.height/2+128);
-		add (Disk2);
-		interactables.push(Disk2);
-		
-		var Disk3 : Interactable = new Interactable(FlxG.width/2, FlxG.height/2);
-		add (Disk3);
-		interactables.push(Disk3);
-		
-		var testEnemy : NPC = new NPC(FlxG.width / 2 - 200, FlxG.height / 2 - 200, "arm1");
+		var testEnemy : NPC = new NPC(FlxG.width / 2 - 200, FlxG.height / 2 - 200, true,"android");
 		add(testEnemy);
 		interactables.push(testEnemy);
+		
+		var otherEnemy : NPC = new NPC(FlxG.width / 2 - 100, FlxG.height / 2 - 200, true,"mummy");
+		add(otherEnemy);
+		interactables.push(otherEnemyh);
 		
 		// player ini
 		player = new Player(FlxG.width/2, FlxG.height/2, this);
@@ -107,6 +99,7 @@ class PlayState extends FlxState
 		/// Check to see if there are any objects within range that can be activated
 		for (item in interactables)
 		{
+			//trace(itemIndex);
 			/// Check if this item is in range.
 			if ((item.x > player.x - 96) && (item.x < player.x + 96) &&
 			    (item.y > player.y - 128) && (item.y < player.y + 64))
