@@ -75,10 +75,12 @@ class NPC extends Interactable
 		}
 	}
 	
-	public override function interact()
+	public override function interact(playerArg : Player)
 	{
 		StateManager.ENEMIES = ["", name2, ""];
-		FlxG.switchState(new Battle());
+		var battleState = new Battle();
+		battleState.setPlayer(playerArg);
+		FlxG.switchState(battleState);
 	}
 	
 	public override function setSubimage( subImage : Int)

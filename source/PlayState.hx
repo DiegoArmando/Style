@@ -14,12 +14,14 @@ import flixel.util.FlxColor;
 import flixel.util.FlxSpriteUtil;
 import flixel.FlxCamera;
 
+
 /**
  * A FlxState which can be used for the actual gameplay.
  */
 class PlayState extends FlxState
 {
-	public var player : Player;
+	
+	public static var player : Player;
 	//public static var menu : MenuState;
 	public var interactables : Array<Interactable>;
 	
@@ -34,18 +36,13 @@ class PlayState extends FlxState
 	var levelTiles:FlxTilemap;
 	private var _highlightBox:FlxSprite;
 	
-	private var hasLoaded = false;
-	
 	override public function create():Void
 	{
 		super.create();
-		//menu = new MenuState();
-		//menu.stateMem = this;
-		//load tile map
-		//add tile map
-		
-		
 
+		
+		//trace("PLayer Position after create: " + player.x + ", " + player.y);
+		
 		//trace("We are getting into create");
 		levelTiles = new FlxTilemap();
 		
@@ -75,7 +72,13 @@ class PlayState extends FlxState
 		interactables.push(otherEnemy);
 		
 		// player ini
-		player = new Player(FlxG.width/2, FlxG.height/2, this);
+	
+		
+		if (player == null)
+		{
+			player = new Player(FlxG.width / 2, FlxG.height / 2, this);	
+		}
+
 		add( player);
 
 		FlxG.camera.follow(player.referenceSprite, FlxCamera.STYLE_TOPDOWN, 1);
@@ -95,6 +98,9 @@ class PlayState extends FlxState
 	 */
 	override public function update():Void
 	{
+		
+		trace(player.x + ", " + player.y);
+		
 		var itemIndex : Int = 0;
 		var itemSelected : Bool = false;
 		var itemsInRange : Int = 0;
@@ -151,12 +157,19 @@ class PlayState extends FlxState
 		{
 			if (selectedInteractable >= 0 && selectedInteractable <= interactables.length)
 			{
-				//menu.stateMem = this;
-				interactables[selectedInteractable].interact();
+				trace("Player position before interacting: " + player.x + ", " + player.y);
+				//_gameSave.flush();
+				interactables[selectedInteractable].interact(player);
 				
 			}
 		}
 		
 		super.update();
-	}	
+	}
+	
+	public function setPlayer(playerArg : Player)
+	{
+		player = playerArg;
+		
+	}
 }

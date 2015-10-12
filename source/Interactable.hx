@@ -28,7 +28,7 @@ class Interactable extends FlxGroup
 		add (Sprite);
 	}
 	
-	public function interact( )
+	public function interact(playerArg : Player)
 	{
 		trace("Yeah! I was interacted with!");
 	}

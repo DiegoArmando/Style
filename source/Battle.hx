@@ -15,6 +15,7 @@ class Battle extends FlxState
 {
 	
 	var player:Enemy;
+	var playerObject : Player;
 	var enemy1:Enemy;
 	var enemy2:Enemy;
 	var enemy3:Enemy;
@@ -58,6 +59,8 @@ class Battle extends FlxState
 	 */
 	override public function create():Void
 	{
+		trace("PLayer Position: " + playerObject.x + ", " + playerObject.y);
+		
 		
 		enemy1 = new Enemy(1, StateManager.ENEMIES.length, StateManager.ENEMIES[0], this);
 		enemy2 = new Enemy(2, StateManager.ENEMIES.length, StateManager.ENEMIES[1], this);
@@ -614,7 +617,9 @@ class Battle extends FlxState
 					fight_state = "Victory";
 					message_text.text = "Player has won!";
 					//FlxG.switchState(StateManager.play);
-					FlxG.switchState(new PlayState());
+					var newState : PlayState = new PlayState();
+					newState.setPlayer(playerObject);
+					FlxG.switchState(newState);
 					return;
 				}
 				whose_turn += 1;
@@ -659,5 +664,10 @@ class Battle extends FlxState
 		}
 		
 		super.update();
+	}
+	
+	public function setPlayer(playerArg : Player)
+	{
+		playerObject = playerArg;
 	}
 }

@@ -77,9 +77,10 @@ class Player extends FlxGroup
 		
 		var xOffset : Float = 0;
 		var yOffset : Float = 0;
-		
+		trace("player is updating");
 		if (FlxG.keys.anyPressed(["right","d"]))
 		{
+			
 			xOffset += 1;
 			IsRunning = true;
 		}
