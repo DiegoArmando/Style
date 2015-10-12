@@ -106,6 +106,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
 		Font.registerFont (__ASSET__assets_fonts_nokiafc22_ttf);
 		Font.registerFont (__ASSET__assets_fonts_arial_ttf);
 		
@@ -113,6 +115,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -698,6 +702,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_arial_ttf);
 		
@@ -769,8 +775,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/sprite_sheets/android.png", AssetType.IMAGE);
 		path.set ("assets/images/sprite_sheets/baymax.png", "assets/images/sprite_sheets/baymax.png");
 		type.set ("assets/images/sprite_sheets/baymax.png", AssetType.IMAGE);
+		path.set ("assets/images/sprite_sheets/default.png", "assets/images/sprite_sheets/default.png");
+		type.set ("assets/images/sprite_sheets/default.png", AssetType.IMAGE);
 		path.set ("assets/images/sprite_sheets/DemoRobot.png", "assets/images/sprite_sheets/DemoRobot.png");
 		type.set ("assets/images/sprite_sheets/DemoRobot.png", AssetType.IMAGE);
+		path.set ("assets/images/sprite_sheets/kirisame_marisa.png", "assets/images/sprite_sheets/kirisame_marisa.png");
+		type.set ("assets/images/sprite_sheets/kirisame_marisa.png", AssetType.IMAGE);
 		path.set ("assets/images/sprite_sheets/minion_bot.png", "assets/images/sprite_sheets/minion_bot.png");
 		type.set ("assets/images/sprite_sheets/minion_bot.png", AssetType.IMAGE);
 		path.set ("assets/images/sprite_sheets/minion_bot_L.png", "assets/images/sprite_sheets/minion_bot_L.png");
@@ -910,7 +920,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/images/sprite_sheets/baymax.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+		id = "assets/images/sprite_sheets/default.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/sprite_sheets/DemoRobot.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/sprite_sheets/kirisame_marisa.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/sprite_sheets/minion_bot.png";
@@ -989,6 +1005,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -1813,11 +1831,15 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
+
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_arial_ttf extends null { }
 
 
 #elseif html5
+
+
 
 
 

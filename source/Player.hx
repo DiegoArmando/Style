@@ -77,56 +77,23 @@ class Player extends FlxSpriteGroup
 		
 		if (FlxG.keys.anyPressed(["right","d"]))
 		{
-			// Calculate the what tile is to the right of us.
-			var TileX : Int = Math.floor( x / 64 );
-			var TileY : Int = Math.floor( y / 64 );
-			
-			var CollisionTile : UInt = Parent.levelTiles.getTile(TileX + 1, TileY);
-			if (CollisionTile == 1)
-			{
-				xOffset += 1;
-				IsRunning = true;
-			}
-			trace (CollisionTile);
+			xOffset += 1;
+			IsRunning = true;
 		}
 		if (FlxG.keys.anyPressed(["left","a"]))
 		{
-			// Calculate the what tile is to the right of us.
-			var TileX : Int = Math.floor( x / 64 );
-			var TileY : Int = Math.floor( y / 64 );
-			
-			var CollisionTile : UInt = Parent.levelTiles.getTile(TileX, TileY);
-			if (CollisionTile == 1)
-			{
-				xOffset -= 1;
-				IsRunning = true;
-			}
+			xOffset -= 1;
+			IsRunning = true;
 		}
 		if (FlxG.keys.anyPressed(["up","w"]))
 		{
-			// Calculate the what tile is to the right of us.
-			var TileX : Int = Math.floor( x / 64 );
-			var TileY : Int = Math.floor( (y-32) / 64 );
-			
-			var CollisionTile : UInt = Parent.levelTiles.getTile(TileX, TileY);
-			if (CollisionTile == 1)
-			{
-				yOffset -= 1;
-				IsRunning = true;
-			}
+			yOffset -= 1;
+			IsRunning = true;
 		}
 		if (FlxG.keys.anyPressed(["down","s"]))
 		{
-			// Calculate the what tile is to the right of us.
-			var TileX : Int = Math.floor( x / 64 );
-			var TileY : Int = Math.floor( (y+32) / 64 );
-			
-			var CollisionTile : UInt = Parent.levelTiles.getTile(TileX, TileY);
-			if (CollisionTile == 1)
-			{
-				yOffset += 1;
-				IsRunning = true;
-			}
+			yOffset += 1;
+			IsRunning = true;
 		}
 		
 		/// Scale xOffset and yOffset
@@ -140,9 +107,63 @@ class Player extends FlxSpriteGroup
 				
 				xOffset *= (RUN_SPEED_SEC * FlxG.elapsed);
 				yOffset *= (RUN_SPEED_SEC * FlxG.elapsed);
+			}
+		}
+		
+		// Check for collisions on the tile map and prevent movement when there is one.
+		{
+			var TileSize = 64;
+			
+			var TileXOffset : Int = 1;
+			if (xOffset <= 0) { TileXOffset = 0; }
+			
+			var TileYOffset : Int = 1;
+			if (yOffset <= 0) { TileYOffset = 0; }
+			
+			// Check for Collisions in the x direction
+		    {
+				var currentTileX : Int = Math.floor (x / TileSize);
+				var currentTileY : Int = Math.floor (y / TileSize);
 				
-				x += xOffset;
-				y += yOffset;
+				var nextTileX : Int;
+				if (xOffset > 0) { nextTileX = Math.floor ( (x + 32 + xOffset) / TileSize); }
+				else { nextTileX = Math.floor ( (x + (-32) + xOffset) / TileSize); }
+				
+				var nextTileY : Int;
+				if (yOffset > 0) { nextTileY = Math.floor ( (y + 32 + yOffset) / TileSize); }
+				else { nextTileY = Math.floor ( (y + (-32) + yOffset) / TileSize); }
+				
+				if (currentTileX != nextTileX)
+				{
+					if (Parent.levelTiles.getTile(nextTileX, currentTileY) == 1)
+					{
+						x += xOffset;
+					}
+					else
+					{
+						trace ("X Collide");
+					}
+				}
+				else
+				{
+					x += xOffset;
+				}
+				
+				if (currentTileY != nextTileY)
+				{
+					if (Parent.levelTiles.getTile(currentTileX, nextTileY) == 1)
+					{
+						y += yOffset;
+					}
+					else
+					{
+						trace ("Y Collide");
+					}
+				}
+				else
+				{
+					y += yOffset;
+				}
 			}
 		}
 		
@@ -163,11 +184,11 @@ class Player extends FlxSpriteGroup
 				var Side : Int = LegsSprite.animation.frameIndex;
 				var nX : Float;
 				if (Side == 3)
-				{ nX = x - 8; }
+				{ nX = x - 8 - 32; }
 				else if (Side == 5)
-				{ nX = x + 8; }
+				{ nX = x + 8 - 32; }
 				else
-				{ nX = x;     }
+				{ nX = x - 32;     }
 				TorsoSprite.x = nX;
 				HeadSprite.x  = nX;
 				LegsSprite.x  = nX;
@@ -184,9 +205,9 @@ class Player extends FlxSpriteGroup
 			}
 			else 
 			{
-				TorsoSprite.x = x;
-				HeadSprite.x  = x;
-				LegsSprite.x  = x;
+				TorsoSprite.x = x - 32;
+				HeadSprite.x  = x - 32;
+				LegsSprite.x  = x - 32;
 				HeadSprite.y = y + HeadYOffset;
 				TorsoSprite.y = y + TorsoYOffset;
 				LegsSprite.y = y + LegsYOffset;

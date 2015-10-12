@@ -80,8 +80,12 @@ class AssetData {
 			type.set ("assets/images/sprite_sheets/android.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/sprite_sheets/baymax.png", "assets/images/sprite_sheets/baymax.png");
 			type.set ("assets/images/sprite_sheets/baymax.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/sprite_sheets/default.png", "assets/images/sprite_sheets/default.png");
+			type.set ("assets/images/sprite_sheets/default.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/sprite_sheets/DemoRobot.png", "assets/images/sprite_sheets/DemoRobot.png");
 			type.set ("assets/images/sprite_sheets/DemoRobot.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/sprite_sheets/kirisame_marisa.png", "assets/images/sprite_sheets/kirisame_marisa.png");
+			type.set ("assets/images/sprite_sheets/kirisame_marisa.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/sprite_sheets/minion_bot.png", "assets/images/sprite_sheets/minion_bot.png");
 			type.set ("assets/images/sprite_sheets/minion_bot.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/sprite_sheets/minion_bot_L.png", "assets/images/sprite_sheets/minion_bot_L.png");
