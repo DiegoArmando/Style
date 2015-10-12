@@ -23,8 +23,17 @@ class Enemy extends FlxSprite
 	public var name:String;
 	public var poisoned = false;
 	var poison_duration:Int = 0;
+	public var burned:Bool = false;
+	var burn_duration:Int = 0;
 	public var health_text:FlxText;
 	public var magic_text:FlxText;
+	var random_number:Float;
+	var waiting:Bool = false;
+	public var enraged:Bool = false;
+	var enraged_duration:Int = 0;
+	public var protecting:Bool = false;
+	public var blinded:Bool = false;
+	var blinded_duration:Int = 0;
 	
 	public function new(Position:Int, Total_Number:Int, Name:String, Parent:Battle) 
 	{
@@ -37,7 +46,7 @@ class Enemy extends FlxSprite
 			makeGraphic(64, 128, FlxColor.WHITE);
 			this.x = FlxG.width / 3;
 			this.y = FlxG.height / 2;
-			hp = hpmax = 10;
+			hp = hpmax = 20;
 			speed = 2;
 			mp = 10;
 		}
@@ -54,6 +63,69 @@ class Enemy extends FlxSprite
 			this.y = FlxG.height / (Total_Number + 2) * Position;
 			hp = hpmax = 5;
 			speed = 3;
+		}
+		else if (Name.split(" ")[0] == "Lu-E") {
+			makeGraphic(64, 128, FlxColor.BROWN);
+			this.x = FlxG.width / 3 * 2;
+			this.y = FlxG.height / (Total_Number + 2) * Position;
+			hp = hpmax = 3;
+			speed = 1;
+		}
+		else if (Name.split(" ")[0] == "Hertz") {
+			makeGraphic(128, 128, FlxColor.CORAL);
+			this.x = FlxG.width / 3 * 2 - this.width / 2;
+			this.y = FlxG.height / (Total_Number + 2) * Position;
+			hp = hpmax = 7;
+			speed = 0;
+		}
+		else if (Name.split(" ")[0] == "Arm_Many") {
+			makeGraphic(64, 128, FlxColor.ROYAL_BLUE);
+			this.x = FlxG.width / 3 * 2;
+			this.y = FlxG.height / (Total_Number + 2) * Position;
+			hp = hpmax = 5;
+			speed = 1;
+		}
+		else if (Name.split(" ")[0] == "Prodder") {
+			makeGraphic(64, 128, FlxColor.HOT_PINK);
+			this.x = FlxG.width / 3 * 2;
+			this.y = FlxG.height / (Total_Number + 2) * Position;
+			hp = hpmax = 5;
+			speed = 1;
+		}
+		else if (Name.split(" ")[0] == "Cocoa") {
+			makeGraphic(64, 128, FlxColor.CRIMSON);
+			this.x = FlxG.width / 3 * 2;
+			this.y = FlxG.height / (Total_Number + 2) * Position;
+			hp = hpmax = 6;
+			speed = 1;
+		}
+		else if (Name.split(" ")[0] == "Channel") {
+			makeGraphic(64, 128, FlxColor.PURPLE);
+			this.x = FlxG.width / 3 * 2;
+			this.y = FlxG.height / (Total_Number + 2) * Position;
+			hp = hpmax = 6;
+			speed = 1;
+		}
+		else if (Name.split(" ")[0] == "Fobio") {
+			makeGraphic(64, 128, FlxColor.GOLDENROD);
+			this.x = FlxG.width / 3 * 2;
+			this.y = FlxG.height / (Total_Number + 2) * Position;
+			hp = hpmax = 10;
+			speed = 2;
+		}
+		else if (Name.split(" ")[0] == "Kitschy") {
+			makeGraphic(128, 128, FlxColor.CORAL);
+			this.x = FlxG.width / 3 * 2;
+			this.y = FlxG.height / (Total_Number + 2) * Position;
+			hp = hpmax = 15;
+			speed = 0;
+		}
+		else if (Name.split(" ")[0] == "Curve-A") {
+			makeGraphic(64, 128, FlxColor.SILVER);
+			this.x = FlxG.width / 3 * 2;
+			this.y = FlxG.height / (Total_Number + 2) * Position;
+			hp = hpmax = 20;
+			speed = 1;
 		}
 		health_text = new FlxText(0, 0, 64);
 		health_text.size = 20;
@@ -74,6 +146,9 @@ class Enemy extends FlxSprite
 	public function attack(AttackName:String, Target:Enemy, PlayerObject:Enemy):String {
 		var returner:String;
 		if (name == "Player") {
+			if (blinded && (Math.random() * 100) < 50) {
+				return "The player couldn't see a thing!";
+			}
 			if (AttackName == "Attack") {
 				returner = "Player attacks " + Target.name + "!";
 				Target.damage(1, [], this);
@@ -107,10 +182,161 @@ class Enemy extends FlxSprite
 			PlayerObject.damage(3, [], this);
 			return name + " bashes down the Player!";
 		}
+		else if (name.split(" ")[0] == "Lu-E") {
+			random_number = Math.random() * 100;
+			if (random_number < 25) {
+				return name + " is too busy adjusting his purse-strap.";
+			}
+			else{
+				PlayerObject.damage(1, [], this);
+				return name + " smacks the Player with his robot-purse!";
+			}
+		}
+		else if (name.split(" ")[0] == "Hertz") {
+			random_number = Math.random() * 100;
+			if (random_number < 10) {
+				return name + " is too busy bickering over their style!";
+			}
+			else if (random_number < 40) {
+				PlayerObject.damage(3, [], this);
+				return name + " hit their stride and smack the Player!";
+			}
+			else {
+				PlayerObject.damage(2, [], this);
+				return name + " flail around and manage to hit the Player!";
+			}
+		}
+		else if (name.split(" ")[0] == "Arm_Many") {
+			if (waiting) {
+				waiting = false;
+				return name + " is trying to untangle his arms...";
+			}
+			random_number = Math.random() * 100;
+			if (random_number < 25) {
+				PlayerObject.damage(3, [], this);
+				return name + " did a twirl as he smacked the Player!";
+			}
+			else if (random_number < 50) {
+				PlayerObject.damage(2, [], this);
+				return name + " shoved the Player away with his arms!";
+			}
+			else if (random_number < 75) {
+				PlayerObject.damage(1, [], this);
+				return name + " smeared your make-up with an arm!";
+			}
+			else {
+				PlayerObject.damage(4, [], this);
+				waiting = true;
+				return name + " struck a pose and put the Player to shame!";
+			}
+		}
+		else if (name.split(" ")[0] == "Prodder") {
+			random_number = Math.random() * 100;
+			if (random_number < 50 && PlayerObject.enraged == false) {
+				PlayerObject.damage(0, ["Enrage"], this);
+				return name + " has insulted the Player's fashion!";
+			}
+			else {
+				PlayerObject.damage(2, [], this);
+				return name + " drove her heel into the Player's foot!";
+			}
+		}
+		else if (name.split(" ")[0] == "Cocoa") {
+			random_number = Math.random() * 100;
+			if (random_number < 50 && PlayerObject.burned == false) {
+				PlayerObject.damage(1, ["Burn"], this);
+				return name + " has scalded the Player with hot cocoa!";
+			}
+			else {
+				PlayerObject.damage(1, [], this);
+				return name + " blew a lot of hot air at the Player!";
+			}
+		}
+		else if (name.split(" ")[0] == "Channel") {
+			random_number = Math.random() * 100;
+			if (random_number < 50) {
+				PlayerObject.damage(1, [], this);
+				return name + " blares a very loud noise!";
+			}
+			else {
+				PlayerObject.damage(2, [], this);
+				return name + " flashes an image of a bad makeover!";
+			}
+		}
+		else if (name.split(" ")[0] == "Fobio") {
+			if (waiting) {
+				waiting = false;
+				PlayerObject.damage(4, [], this);
+				return name + " has completely stunned you with his beauty!";
+			}
+			random_number = Math.random() * 100;
+			if (random_number < 20) {
+				PlayerObject.damage(2, ["Burn"], this);
+				return name + " burned you with his hotness!";
+			}
+			else if (random_number < 40) {
+				waiting = true;
+				return name + " is preparing for the big move!";
+			}
+			else if (random_number < 70) {
+				PlayerObject.damage(2, [], this);
+				return name + " squeezes you with his glutes!";
+			}
+			else {
+				PlayerObject.damage(2, [], this);
+				return name + " flexes his circuits into your face!";
+			}
+		}
+		else if (name.split(" ")[0] == "Kitschy") {
+			if (protecting) {
+				protecting = false;
+				return name + " is no longer protecting herself!";
+			}
+			random_number = Math.random() * 100;
+			if (random_number < 30) {
+				protecting = true;
+				return name + " is defending... in a stylish way.";
+			}
+			else if (random_number < 50) {
+				PlayerObject.damage(2, ["Poison"], this);
+				return name + " spews rotten food all over you!";
+			}
+			else if (random_number < 75) {
+				PlayerObject.damage(2, [], this);
+				return name + " slams her doors on your head!";
+			}
+			else {
+				PlayerObject.damage(Math.round(Math.random() * 3 + 1), [], this);
+				return name + " throws a random food at you!";
+			}
+		}
+		else if (name.split(" ")[0] == "Curve-A") {
+			random_number = Math.random() * 100;
+			if (random_number < 20) {
+				PlayerObject.damage(2, ["Blind"], this);
+				return name + " suffocates you in his/her dress!";
+			}
+			else if (random_number < 40) {
+				PlayerObject.damage(2, ["Burn"], this);
+				return name + " lazers your clothes on fire!";
+			}
+			else if (random_number < 80) {
+				PlayerObject.damage(Math.round(Math.random() * 4 + 1), [], this);
+				return name + " chucks various accessories at you!";
+			}
+			else {
+				PlayerObject.damage(2, ["Enrage"], this);
+				return name + " throws a lot of insults, and a rock!";
+			}
+		}
 		return "Error...";
 	}
 	
 	public function damage(Damage:Int, Status:Array<String>, Attacker:Enemy) {
+		if (protecting) {
+			Battle.second_message.push(name + " protected themself!");
+			return;
+		}
 		hp = hp - Damage;
 		if (Damage == 0 && Status.length == 0) {
 			Battle.second_message.push(Attacker.name + " dealt no damage to " + name + "!");
@@ -121,9 +347,56 @@ class Enemy extends FlxSprite
 		health_text.text = hp + "";
 		for (effect in Status) {
 			if (effect == "Poison") {
-				poisoned = true;
-				poison_duration = Math.round(Math.random() * 5);
-				Battle.second_message.push(name + " is poisoned!");
+				if (poisoned && Damage == 0) {
+					Battle.second_message.push("But " + name + " is already poisoned!");
+				}
+				else if (poisoned && Damage != 0) {
+					continue;
+				}
+				else{
+					poisoned = true;
+					poison_duration = Math.round(Math.random() * 5);
+					Battle.second_message.push(name + " is poisoned!");
+				}
+			}
+			else if (effect == "Burn") {
+				if (burned && Damage == 0) {
+					Battle.second_message.push("But " + name + " is already burned!");
+				}
+				else if (burned && Damage != 0) {
+					continue;
+				}
+				else{
+					burned = true;
+					burn_duration = Math.round(Math.random() * 5);
+					Battle.second_message.push(name + " is burned!");
+				}
+			}
+			else if (effect == "Enrage") {
+				if (enraged && Damage == 0) {
+					Battle.second_message.push("But " + name + " is already annoyed!");
+				}
+				else if (enraged && Damage != 0) {
+					continue;
+				}
+				else{
+					enraged = true;
+					enraged_duration = Math.round(Math.random() * 5);
+					Battle.second_message.push(name + " got too annoyed to focus!");
+				}
+			}
+			else if (effect == "Blind") {
+				if (blinded && Damage == 0) {
+					Battle.second_message.push("But " + name + " is already blinded!");
+				}
+				else if (blinded && Damage != 0) {
+					continue;
+				}
+				else{
+					blinded = true;
+					blinded_duration = Math.round(Math.random() * 5);
+					Battle.second_message.push(name + " was badly blinded!");
+				}
 			}
 		}
 		if (hp <= 0 && name != "Player") {
@@ -149,12 +422,42 @@ class Enemy extends FlxSprite
 				poisoned = false;
 				Battle.second_message.push("The poison in " + name + " has worn off!");
 			}
-			if (hp <= 0 && name != "Player") {
+		}
+		if (burned) {
+			hp -= 1;
+			health_text.text = hp + "";
+			Battle.second_message.push(name + "'s burn has dealt 1 damage!");
+			burn_duration -= 1;
+			if (burn_duration == 0) {
+				burned = false;
+				Battle.second_message.push(name + "'s burn has healed!");
+			}
+		}
+		if (enraged) {
+			enraged_duration -= 1;
+			if (enraged_duration == 0) {
+				enraged = false;
+				Battle.second_message.push(name + " has cooled down enough to think!");
+			}
+			else {
+				Battle.second_message.push(name + " is still fuming!");
+			}
+		}
+		if (blinded) {
+			blinded_duration -= 1;
+			if (blinded_duration == 0) {
+				blinded = false;
+				Battle.second_message.push(name + " can see clearly now! (The rain has gone).");
+			}
+			else {
+				Battle.second_message.push(name + " is still blind as a bat.");
+			}
+		}
+		if (hp <= 0 && name != "Player") {
 			Battle.second_message.push(name + " has been defeated!");
 			visible = false;
 			name = "";
 			health_text.visible = false;
-		}
 		}
 	}
 	

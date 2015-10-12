@@ -62,10 +62,10 @@ class AssetData {
 			type.set ("assets/images/enemies/lue1.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/enemies/lue2.png", "assets/images/enemies/lue2.png");
 			type.set ("assets/images/enemies/lue2.png", Reflect.field (AssetType, "image".toUpperCase ()));
-			path.set ("assets/images/enemies/pro2.png", "assets/images/enemies/pro2.png");
-			type.set ("assets/images/enemies/pro2.png", Reflect.field (AssetType, "image".toUpperCase ()));
-			path.set ("assets/images/enemies/prod.png", "assets/images/enemies/prod.png");
-			type.set ("assets/images/enemies/prod.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/enemies/prod1.png", "assets/images/enemies/prod1.png");
+			type.set ("assets/images/enemies/prod1.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/enemies/prod2.png", "assets/images/enemies/prod2.png");
+			type.set ("assets/images/enemies/prod2.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/floor.png", "assets/images/floor.png");
 			type.set ("assets/images/floor.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/gate.png", "assets/images/gate.png");

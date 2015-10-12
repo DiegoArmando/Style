@@ -754,10 +754,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/enemies/lue1.png", AssetType.IMAGE);
 		path.set ("assets/images/enemies/lue2.png", "assets/images/enemies/lue2.png");
 		type.set ("assets/images/enemies/lue2.png", AssetType.IMAGE);
-		path.set ("assets/images/enemies/pro2.png", "assets/images/enemies/pro2.png");
-		type.set ("assets/images/enemies/pro2.png", AssetType.IMAGE);
-		path.set ("assets/images/enemies/prod.png", "assets/images/enemies/prod.png");
-		type.set ("assets/images/enemies/prod.png", AssetType.IMAGE);
+		path.set ("assets/images/enemies/prod1.png", "assets/images/enemies/prod1.png");
+		type.set ("assets/images/enemies/prod1.png", AssetType.IMAGE);
+		path.set ("assets/images/enemies/prod2.png", "assets/images/enemies/prod2.png");
+		type.set ("assets/images/enemies/prod2.png", AssetType.IMAGE);
 		path.set ("assets/images/floor.png", "assets/images/floor.png");
 		type.set ("assets/images/floor.png", AssetType.IMAGE);
 		path.set ("assets/images/gate.png", "assets/images/gate.png");
@@ -888,10 +888,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/images/enemies/lue2.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
-		id = "assets/images/enemies/pro2.png";
+		id = "assets/images/enemies/prod1.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
-		id = "assets/images/enemies/prod.png";
+		id = "assets/images/enemies/prod2.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/floor.png";
