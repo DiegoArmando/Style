@@ -21,6 +21,8 @@ class Player extends FlxSpriteGroup
 	
 	private var Parent : Dynamic;
 	
+	public var AllowMovement : Bool = true;
+	
 	private var LegsIndex : Int = 0;
 	private var TorsoIndex : Int = 0;
 	private var HeadsIndex : Int = 0;
@@ -75,25 +77,28 @@ class Player extends FlxSpriteGroup
 		var xOffset : Float = 0;
 		var yOffset : Float = 0;
 		
-		if (FlxG.keys.anyPressed(["right","d"]))
+		if (AllowMovement)
 		{
-			xOffset += 1;
-			IsRunning = true;
-		}
-		if (FlxG.keys.anyPressed(["left","a"]))
-		{
-			xOffset -= 1;
-			IsRunning = true;
-		}
-		if (FlxG.keys.anyPressed(["up","w"]))
-		{
-			yOffset -= 1;
-			IsRunning = true;
-		}
-		if (FlxG.keys.anyPressed(["down","s"]))
-		{
-			yOffset += 1;
-			IsRunning = true;
+			if (FlxG.keys.anyPressed(["right","d"]))
+			{
+				xOffset += 1;
+				IsRunning = true;
+			}
+			if (FlxG.keys.anyPressed(["left","a"]))
+			{
+				xOffset -= 1;
+				IsRunning = true;
+			}
+			if (FlxG.keys.anyPressed(["up","w"]))
+			{
+				yOffset -= 1;
+				IsRunning = true;
+			}
+			if (FlxG.keys.anyPressed(["down","s"]))
+			{
+				yOffset += 1;
+				IsRunning = true;
+			}
 		}
 		
 		/// Scale xOffset and yOffset
@@ -139,10 +144,6 @@ class Player extends FlxSpriteGroup
 					{
 						x += xOffset;
 					}
-					else
-					{
-						trace ("X Collide");
-					}
 				}
 				else
 				{
@@ -154,10 +155,6 @@ class Player extends FlxSpriteGroup
 					if (Parent.levelTiles.getTile(currentTileX, nextTileY) == 1)
 					{
 						y += yOffset;
-					}
-					else
-					{
-						trace ("Y Collide");
 					}
 				}
 				else
