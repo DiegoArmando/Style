@@ -107,7 +107,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+<<<<<<< HEAD
 		
+=======
+>>>>>>> Combat_Initiation
 		Font.registerFont (__ASSET__assets_fonts_nokiafc22_ttf);
 		Font.registerFont (__ASSET__assets_fonts_arial_ttf);
 		
@@ -166,7 +169,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
+<<<<<<< HEAD
 		useManifest = true;
+=======
+>>>>>>> Combat_Initiation
 		
 		className.set ("assets/fonts/nokiafc22.ttf", __ASSET__assets_fonts_nokiafc22_ttf);
 		type.set ("assets/fonts/nokiafc22.ttf", AssetType.FONT);
@@ -703,7 +709,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+<<<<<<< HEAD
 		
+=======
+>>>>>>> Combat_Initiation
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_arial_ttf);
 		
@@ -765,6 +774,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/floor.png", AssetType.IMAGE);
 		path.set ("assets/images/gate.png", "assets/images/gate.png");
 		type.set ("assets/images/gate.png", AssetType.IMAGE);
+		path.set ("assets/images/halo.png", "assets/images/halo.png");
+		type.set ("assets/images/halo.png", AssetType.IMAGE);
 		path.set ("assets/images/images-go-here.txt", "assets/images/images-go-here.txt");
 		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
 		path.set ("assets/images/plant1.png", "assets/images/plant1.png");
@@ -903,6 +914,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/gate.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/halo.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/images-go-here.txt";
@@ -1056,7 +1070,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
+<<<<<<< HEAD
 		useManifest = true;
+=======
+>>>>>>> Combat_Initiation
 		
 		className.set ("assets/fonts/nokiafc22.ttf", __ASSET__assets_fonts_nokiafc22_ttf);
 		type.set ("assets/fonts/nokiafc22.ttf", AssetType.FONT);
@@ -1832,7 +1849,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> Combat_Initiation
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_arial_ttf extends null { }
 
@@ -1890,7 +1910,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> Combat_Initiation
 @:keep #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends lime.text.Font { public function new () { super (); name = "Nokia Cellphone FC Small"; } } 
 @:keep #if display private #end class __ASSET__assets_fonts_arial_ttf extends lime.text.Font { public function new () { super (); name = "Arial"; } } 
 
