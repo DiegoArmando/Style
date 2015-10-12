@@ -65,7 +65,7 @@ class Player extends FlxSpriteGroup
 		TorsoSprite = TorsoArray[TorsoIndex];
 		LegsSprite = LegsArray[LegsIndex];
 		
-		referenceSprite = TorsoSprite;
+		referenceSprite = new FlxObject();
 	}
 	
 	override public function update()
@@ -178,6 +178,8 @@ class Player extends FlxSpriteGroup
 		
 		/// Update the position of all the component sprites
 		{
+			referenceSprite.x = x;
+			referenceSprite.y = y;
 			if ( LegsSprite.animation.name == "Walk")
 			{
 				/// Offset our x just a little bit in either direction as we walk.
