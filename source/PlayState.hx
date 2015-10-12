@@ -7,6 +7,7 @@ import flixel.FlxState;
 import flixel.group.FlxGroup;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
+import flixel.FlxObject;
 import flixel.util.FlxMath;
 import flixel.tile.FlxTilemap;
 import openfl.Assets;
@@ -19,6 +20,7 @@ import flixel.FlxCamera;
 class PlayState extends FlxState
 {
 	public var player : Player;
+	public var playerGroup : FlxGroup;
 	public var interactables : Array<Interactable>;
 	public var interactableIndex : Int = -1;
 	public var selectedInteractable : Int = -1;
@@ -37,12 +39,15 @@ class PlayState extends FlxState
 		//load tile map
 		//add tile map
 		
-		trace("We are getting into create");
+		//trace("We are getting into create");
 		levelTiles = new FlxTilemap();
 		
 		//levelTiles.auto = FlxTilemap.OFF;
 		
 		levelTiles.loadMap(Assets.getText("assets/images/Background3.csv"), "assets/images/TileMap3.png", TILE_WIDTH, TILE_HEIGHT, FlxTilemap.OFF);
+		levelTiles.setTileProperties(1, FlxObject.NONE);
+		levelTiles.setTileProperties(2, FlxObject.ANY);
+		levelTiles.setTileProperties(3, FlxObject.ANY);
 		add(levelTiles);
 		
 		_highlightBox = new FlxSprite(0, 0);
@@ -69,9 +74,15 @@ class PlayState extends FlxState
 		add (Disk3);
 		interactables.push(Disk3);
 		
+		var testEnemy : NPC = new NPC(FlxG.width / 2 - 200, FlxG.height / 2 - 200, "arm1");
+		add(testEnemy);
+		interactables.push(testEnemy);
+		
 		// player ini
+		playerGroup = new FlxGroup();
 		player = new Player(FlxG.width/2, FlxG.height/2, this);
-		add( player);
+		playerGroup.add(player);
+		add (playerGroup);
 		
 		FlxG.camera.follow(player.referenceSprite, FlxCamera.STYLE_TOPDOWN, 1);
 	}
@@ -84,16 +95,15 @@ class PlayState extends FlxState
 	{
 		super.destroy();
 	}
-
 	/**
 	 * Function that is called once every frame.
 	 */
 	override public function update():Void
 	{
+		super.update();
 		var itemIndex : Int = 0;
 		var itemSelected : Bool = false;
 		var itemsInRange : Int = 0;
-		
 		
 		if (FlxG.keys.anyJustPressed(["tab"]))
 		{
@@ -149,6 +159,6 @@ class PlayState extends FlxState
 			}
 		}
 		
-		super.update();
+		
 	}	
 }

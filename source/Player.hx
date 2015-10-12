@@ -2,7 +2,7 @@ package;
 
 import flixel.FlxG;
 import flixel.FlxObject;
-import flixel.group.FlxGroup;
+import flixel.group.FlxSpriteGroup;
 import flixel.FlxSprite;
 
 /**
@@ -13,12 +13,9 @@ import flixel.FlxSprite;
  /*
   * TODO (Andrew) :  
   */
-  
-class Player extends FlxGroup
+class Player extends FlxSpriteGroup
 {
-	public static inline var RUN_SPEED_SEC:Int = 64*3;
-	public var x: Float = 0;
-	public var y: Float = 0;
+	public static inline var RUN_SPEED_SEC:Int = 64 * 3;
 	
 	public var referenceSprite: FlxObject;
 	
@@ -29,15 +26,15 @@ class Player extends FlxGroup
 	private var HeadsIndex : Int = 0;
 	
 	private var TorsoArray : Array<FlxSprite>;
-	private var TorsoSprite : FlxSprite;
+	public var TorsoSprite : FlxSprite;
 	private var TorsoYOffset : Float;
 	
 	private var LegsArray : Array<FlxSprite>;
-	private var LegsSprite: FlxSprite;
+	public var LegsSprite: FlxSprite;
 	private var LegsYOffset : Float;
 	
 	private var HeadArray : Array <FlxSprite>;
-	private var HeadSprite: FlxSprite;
+	public var HeadSprite: FlxSprite;
 	private var HeadYOffset : Float;
 	
 	public function new( InX : Float, InY : Float, InParent : Dynamic) 
@@ -80,23 +77,56 @@ class Player extends FlxGroup
 		
 		if (FlxG.keys.anyPressed(["right","d"]))
 		{
-			xOffset += 1;
-			IsRunning = true;
+			// Calculate the what tile is to the right of us.
+			var TileX : Int = Math.floor( x / 64 );
+			var TileY : Int = Math.floor( y / 64 );
+			
+			var CollisionTile : UInt = Parent.levelTiles.getTile(TileX + 1, TileY);
+			if (CollisionTile == 1)
+			{
+				xOffset += 1;
+				IsRunning = true;
+			}
+			trace (CollisionTile);
 		}
 		if (FlxG.keys.anyPressed(["left","a"]))
 		{
-			xOffset += -1;
-			IsRunning = true;
+			// Calculate the what tile is to the right of us.
+			var TileX : Int = Math.floor( x / 64 );
+			var TileY : Int = Math.floor( y / 64 );
+			
+			var CollisionTile : UInt = Parent.levelTiles.getTile(TileX, TileY);
+			if (CollisionTile == 1)
+			{
+				xOffset -= 1;
+				IsRunning = true;
+			}
 		}
 		if (FlxG.keys.anyPressed(["up","w"]))
 		{
-			yOffset += -1;
-			IsRunning = true;
+			// Calculate the what tile is to the right of us.
+			var TileX : Int = Math.floor( x / 64 );
+			var TileY : Int = Math.floor( (y-32) / 64 );
+			
+			var CollisionTile : UInt = Parent.levelTiles.getTile(TileX, TileY);
+			if (CollisionTile == 1)
+			{
+				yOffset -= 1;
+				IsRunning = true;
+			}
 		}
 		if (FlxG.keys.anyPressed(["down","s"]))
 		{
-			yOffset += 1;
-			IsRunning = true;
+			// Calculate the what tile is to the right of us.
+			var TileX : Int = Math.floor( x / 64 );
+			var TileY : Int = Math.floor( (y+32) / 64 );
+			
+			var CollisionTile : UInt = Parent.levelTiles.getTile(TileX, TileY);
+			if (CollisionTile == 1)
+			{
+				yOffset += 1;
+				IsRunning = true;
+			}
 		}
 		
 		/// Scale xOffset and yOffset
