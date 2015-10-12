@@ -20,6 +20,7 @@ import flixel.FlxCamera;
 class PlayState extends FlxState
 {
 	public var player : Player;
+	public var playerGroup : FlxGroup;
 	public var interactables : Array<Interactable>;
 	public var interactableIndex : Int = -1;
 	public var selectedInteractable : Int = -1;
@@ -78,8 +79,10 @@ class PlayState extends FlxState
 		interactables.push(testEnemy);
 		
 		// player ini
+		playerGroup = new FlxGroup();
 		player = new Player(FlxG.width/2, FlxG.height/2, this);
-		add( player);
+		playerGroup.add(player);
+		add (playerGroup);
 		
 		FlxG.camera.follow(player.referenceSprite, FlxCamera.STYLE_TOPDOWN, 1);
 	}
@@ -92,7 +95,6 @@ class PlayState extends FlxState
 	{
 		super.destroy();
 	}
-
 	/**
 	 * Function that is called once every frame.
 	 */
@@ -102,8 +104,6 @@ class PlayState extends FlxState
 		var itemIndex : Int = 0;
 		var itemSelected : Bool = false;
 		var itemsInRange : Int = 0;
-		
-		FlxG.collide(player, levelTiles);
 		
 		if (FlxG.keys.anyJustPressed(["tab"]))
 		{
