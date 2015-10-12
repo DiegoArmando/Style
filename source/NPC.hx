@@ -10,6 +10,8 @@ class NPC extends Interactable
 {
 	public var IsMultipart : Bool;
 	
+	public var name : String;
+	
 	public var HeadSprite : FlxSprite;
 	public var HeadYOffset : Float;
 	public var TorsoSprite : FlxSprite;
@@ -19,9 +21,14 @@ class NPC extends Interactable
 	public var SelectSprite : FlxSprite;
 	public var SelectYOffset : Float;
 	
+	private var name2 : String;
+	
 	public override function new(InX:Float, InY:Float, InIsMultipart : Bool, Path :String) 
 	{
 		super(InX, InY);
+		name = Path;
+		
+		setName2();
 		
 		IsMultipart = InIsMultipart;
 		
@@ -70,12 +77,52 @@ class NPC extends Interactable
 	
 	public override function interact()
 	{
+		StateManager.ENEMIES = ["", name2, ""];
 		FlxG.switchState(new Battle());
 	}
 	
 	public override function setSubimage( subImage : Int)
 	{
 		SelectSprite.animation.frameIndex = subImage;
+	}
+	
+	private function setName2()
+	{
+		
+		/*OTHERNAME.set("arm1", "Arm_Many");
+		OTHERNAME.set("channel1", "Channel");
+		OTHERNAME.set("cocoa1", "Cocoa");
+		OTHERNAME.set("fobio1", "Fobio");
+		OTHERNAME.set("hm1", "Hertz");
+		OTHERNAME.set("kitsch1", "Kitschy");
+		OTHERNAME.set("lue1", "Lu-E");
+		OTHERNAME.set("prod1", "Prodder");
+		*/
+		 
+		
+		switch(name)
+		{
+			case "arm1" :
+				name2 = "Arm_Many";
+			case "channel1" :
+				name2 = "Channel";
+			case "cocoa1" :
+				name2 = "Cocoa";
+			case "fobio1":
+				name2 = "Fobio";
+			case "hm1" :
+				name2 = "Hertz";
+			case "kitsch1" :
+				name2 = "Kitschy";
+			case "lue1" :
+				name2 = "Lu-E";
+			case "prod1" :
+				name2 = "Prodder";
+			case "android":
+				name2 = "Basic";
+			case "mummy":
+				name2 = "Tough";
+		}
 	}
 	
 }

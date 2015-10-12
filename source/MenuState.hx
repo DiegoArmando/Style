@@ -17,6 +17,8 @@ class MenuState extends FlxState
 	public static inline var OPTIONS:Int = 2;
 	public static var ENEMIES:Array<String>;
 	
+	public var stateMem : PlayState;
+	
 	var option1Text:FlxText;
 	var option2Text:FlxText;
 	
@@ -80,7 +82,7 @@ class MenuState extends FlxState
 			switch(pointedOption) {
 				case 1: FlxG.state.bgColor = FlxColor.BLUE;
 						FlxG.switchState(new Battle());
-						ENEMIES = ["Basic A", "", "Basic B"];
+						ENEMIES = ["", "Curve-A", ""];
 						FlxG.sound.playMusic("assets/music/Culex.wav", 1, true);
 				case 2: FlxG.state.bgColor = FlxColor.RED;
 						FlxG.switchState(new Battle());

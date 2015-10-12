@@ -14,6 +14,7 @@ import openfl.Assets;
 import flixel.util.FlxColor;
 import flixel.util.FlxSpriteUtil;
 import flixel.FlxCamera;
+
 /**
  * A FlxState which can be used for the actual gameplay.
  */
@@ -22,6 +23,7 @@ class PlayState extends FlxState
 	public var player : Player;
 	public var playerGroup : FlxGroup;
 	public var interactables : Array<Interactable>;
+	
 	public var interactableIndex : Int = -1;
 	public var selectedInteractable : Int = -1;
 	/**
@@ -33,12 +35,18 @@ class PlayState extends FlxState
 	var levelTiles:FlxTilemap;
 	private var _highlightBox:FlxSprite;
 	
+	private var hasLoaded = false;
+	
 	override public function create():Void
 	{
 		super.create();
+		//menu = new MenuState();
+		//menu.stateMem = this;
 		//load tile map
 		//add tile map
 		
+		
+
 		//trace("We are getting into create");
 		levelTiles = new FlxTilemap();
 		
@@ -68,14 +76,13 @@ class PlayState extends FlxState
 		
 		var otherEnemy : NPC = new NPC(FlxG.width / 2 - 100, FlxG.height / 2 - 200, true,"mummy");
 		add(otherEnemy);
-		interactables.push(otherEnemyh);
+		interactables.push(otherEnemy);
 		
 		// player ini
 		playerGroup = new FlxGroup();
 		player = new Player(FlxG.width/2, FlxG.height/2, this);
 		playerGroup.add(player);
 		add (playerGroup);
-		
 		FlxG.camera.follow(player.referenceSprite, FlxCamera.STYLE_TOPDOWN, 1);
 	}
 	
@@ -148,7 +155,9 @@ class PlayState extends FlxState
 		{
 			if (selectedInteractable >= 0 && selectedInteractable <= interactables.length)
 			{
+				//menu.stateMem = this;
 				interactables[selectedInteractable].interact();
+				
 			}
 		}
 		

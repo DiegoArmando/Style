@@ -107,10 +107,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
-<<<<<<< HEAD
 		
-=======
->>>>>>> Combat_Initiation
+		
 		Font.registerFont (__ASSET__assets_fonts_nokiafc22_ttf);
 		Font.registerFont (__ASSET__assets_fonts_arial_ttf);
 		
@@ -169,10 +167,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
-<<<<<<< HEAD
 		useManifest = true;
-=======
->>>>>>> Combat_Initiation
+		useManifest = true;
 		
 		className.set ("assets/fonts/nokiafc22.ttf", __ASSET__assets_fonts_nokiafc22_ttf);
 		type.set ("assets/fonts/nokiafc22.ttf", AssetType.FONT);
@@ -709,10 +705,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
-<<<<<<< HEAD
 		
-=======
->>>>>>> Combat_Initiation
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_arial_ttf);
 		
@@ -766,10 +760,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/enemies/lue1.png", AssetType.IMAGE);
 		path.set ("assets/images/enemies/lue2.png", "assets/images/enemies/lue2.png");
 		type.set ("assets/images/enemies/lue2.png", AssetType.IMAGE);
-		path.set ("assets/images/enemies/pro2.png", "assets/images/enemies/pro2.png");
-		type.set ("assets/images/enemies/pro2.png", AssetType.IMAGE);
-		path.set ("assets/images/enemies/prod.png", "assets/images/enemies/prod.png");
-		type.set ("assets/images/enemies/prod.png", AssetType.IMAGE);
+		path.set ("assets/images/enemies/prod1.png", "assets/images/enemies/prod1.png");
+		type.set ("assets/images/enemies/prod1.png", AssetType.IMAGE);
+		path.set ("assets/images/enemies/prod2.png", "assets/images/enemies/prod2.png");
+		type.set ("assets/images/enemies/prod2.png", AssetType.IMAGE);
 		path.set ("assets/images/floor.png", "assets/images/floor.png");
 		type.set ("assets/images/floor.png", AssetType.IMAGE);
 		path.set ("assets/images/gate.png", "assets/images/gate.png");
@@ -904,10 +898,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/images/enemies/lue2.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
-		id = "assets/images/enemies/pro2.png";
+		id = "assets/images/enemies/prod1.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
-		id = "assets/images/enemies/prod.png";
+		id = "assets/images/enemies/prod2.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/floor.png";
@@ -1070,10 +1064,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
-<<<<<<< HEAD
 		useManifest = true;
-=======
->>>>>>> Combat_Initiation
+		useManifest = true;
 		
 		className.set ("assets/fonts/nokiafc22.ttf", __ASSET__assets_fonts_nokiafc22_ttf);
 		type.set ("assets/fonts/nokiafc22.ttf", AssetType.FONT);
@@ -1849,10 +1841,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> Combat_Initiation
+
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_arial_ttf extends null { }
 
@@ -1910,10 +1900,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> Combat_Initiation
+
 @:keep #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends lime.text.Font { public function new () { super (); name = "Nokia Cellphone FC Small"; } } 
 @:keep #if display private #end class __ASSET__assets_fonts_arial_ttf extends lime.text.Font { public function new () { super (); name = "Arial"; } } 
 

@@ -59,9 +59,9 @@ class Battle extends FlxState
 	override public function create():Void
 	{
 		
-		enemy1 = new Enemy(1, MenuState.ENEMIES.length, MenuState.ENEMIES[0], this);
-		enemy2 = new Enemy(2, MenuState.ENEMIES.length, MenuState.ENEMIES[1], this);
-		enemy3 = new Enemy(3, MenuState.ENEMIES.length, MenuState.ENEMIES[2], this);
+		enemy1 = new Enemy(1, StateManager.ENEMIES.length, StateManager.ENEMIES[0], this);
+		enemy2 = new Enemy(2, StateManager.ENEMIES.length, StateManager.ENEMIES[1], this);
+		enemy3 = new Enemy(3, StateManager.ENEMIES.length, StateManager.ENEMIES[2], this);
 		
 		add(enemy1);
 		add(enemy2);
@@ -132,16 +132,16 @@ class Battle extends FlxState
 		
 		
 		temp_enemy_text1 = new FlxText(0, 0, FlxG.width / 4);
-		temp_enemy_text1.text = MenuState.ENEMIES[0];
+		temp_enemy_text1.text = StateManager.ENEMIES[0];
 		temp_enemy_text1.size = 24;
 		temp_enemy_text1.x = target_box.x + 40;
 		temp_enemy_text1.y = message_box.y + (message_box.height / 4) - (temp_enemy_text1.size / 2);
 		temp_enemy_text1.color = FlxColor.BLACK;
 		temp_enemy_text1.visible = false;
 		
-		if (MenuState.ENEMIES.length > 1) {
+		if (StateManager.ENEMIES.length > 1) {
 			temp_enemy_text2 = new FlxText(0, 0, FlxG.width / 4);
-			temp_enemy_text2.text = MenuState.ENEMIES[1];
+			temp_enemy_text2.text = StateManager.ENEMIES[1];
 			temp_enemy_text2.size = 24;
 			temp_enemy_text2.x = target_box.x + 40;
 			temp_enemy_text2.y = message_box.y + (message_box.height / 4 * 2) - (temp_enemy_text2.size / 2);
@@ -153,9 +153,9 @@ class Battle extends FlxState
 			temp_enemy_text2.text = "";
 		}
 		
-		if (MenuState.ENEMIES.length > 2) {
+		if (StateManager.ENEMIES.length > 2) {
 			temp_enemy_text3 = new FlxText(0, 0, FlxG.width / 4);
-			temp_enemy_text3.text = MenuState.ENEMIES[2];
+			temp_enemy_text3.text = StateManager.ENEMIES[2];
 			temp_enemy_text3.size = 24;
 			temp_enemy_text3.x = target_box.x + 40;
 			temp_enemy_text3.y = message_box.y + (message_box.height / 4 * 3) - (temp_enemy_text3.size / 2);
@@ -180,7 +180,7 @@ class Battle extends FlxState
 		ability_box.visible = false;
 		
 		ability_text1 = new FlxText(0, 0, FlxG.width / 4);
-		ability_text1.text = "Double-Slap";
+		ability_text1.text = "2  Double-Slap";
 		ability_text1.size = 16;
 		ability_text1.x = ability_box.x + 40;
 		ability_text1.y = message_box.y + (message_box.height / 5) - (ability_text1.size / 2);
@@ -188,7 +188,7 @@ class Battle extends FlxState
 		ability_text1.visible = false;
 		
 		ability_text2 = new FlxText(0, 0, FlxG.width / 4);
-		ability_text2.text = "Heal";
+		ability_text2.text = "3  Heal";
 		ability_text2.size = 16;
 		ability_text2.x = ability_box.x + 40;
 		ability_text2.y = message_box.y + (message_box.height / 5 * 2) - (ability_text2.size / 2);
@@ -196,7 +196,7 @@ class Battle extends FlxState
 		ability_text2.visible = false;
 		
 		ability_text3 = new FlxText(0, 0, FlxG.width / 4);
-		ability_text3.text = "Poison";
+		ability_text3.text = "2  Poison";
 		ability_text3.size = 16;
 		ability_text3.x = ability_box.x + 40;
 		ability_text3.y = message_box.y + (message_box.height / 5 * 3) - (ability_text3.size / 2);
@@ -274,13 +274,13 @@ class Battle extends FlxState
 	public function sortAttackOrder(){
 		attack_order = new Array<Enemy>();
 		attack_order.push(player);
-		if (MenuState.ENEMIES[0] != "") {
+		if (StateManager.ENEMIES[0] != "") {
 			attack_order.push(enemy1);
 		}
-		if (MenuState.ENEMIES[1] != "") {
+		if (StateManager.ENEMIES[1] != "") {
 			attack_order.push(enemy2);
 		}
-		if (MenuState.ENEMIES[2] != "") {
+		if (StateManager.ENEMIES[2] != "") {
 			attack_order.push(enemy3);
 		}
 		var sorter:Int = 0;
@@ -302,6 +302,12 @@ class Battle extends FlxState
 		action_box.visible = true;
 		attack_text.visible = true;
 		special_attack_text.visible = true;
+		if (player.enraged) {
+			special_attack_text.color = FlxColor.WHITE;
+		}
+		else {
+			special_attack_text.color = FlxColor.BLACK;
+		}
 		flee_text.visible = true;
 		pointer.x = action_box.x + 10;
 		pointer.visible = true;
@@ -413,13 +419,18 @@ class Battle extends FlxState
 							previous_fight_state = fight_state;
 							attack_type = "Attack";
 							fight_state = "Choose Target";
-					case 2: abilityBoxAppear();
+					case 2: if (player.enraged) {
+								message_text.text = "Too annoyed to focus!";
+								return;
+							}
+							abilityBoxAppear();
 							previous_fight_state = fight_state;
 							fight_state = "Choose Ability";
 							updatePointer2();
 					case 3: message_text.text = "Escaped successfully";
 							actionBoxDisappear();
 							fight_state = "Victory";
+							FlxG.switchState(StateManager.play);
 				}
 			}
 		}
@@ -602,6 +613,8 @@ class Battle extends FlxState
 				if (checkForVictory()) {
 					fight_state = "Victory";
 					message_text.text = "Player has won!";
+					//FlxG.switchState(StateManager.play);
+					FlxG.switchState(new PlayState());
 					return;
 				}
 				whose_turn += 1;
