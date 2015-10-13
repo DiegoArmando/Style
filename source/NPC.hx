@@ -35,7 +35,7 @@ class NPC extends Interactable
 		setName2();
 		
 		IsMultipart = InIsMultipart;
-		
+		Dialog = new Array<String>();
 		SelectYOffset = -32;
 		
 		SelectSprite = new FlxSprite( x, y + SelectYOffset);
@@ -87,9 +87,9 @@ class NPC extends Interactable
 	
 	public override function interact()
 	{
-		trace("active dialog from "+this);
+		//trace("active dialog from "+this);
 		Parent.playerInDialog = true;
-		Parent.dialogHandler.startDialog(this);
+		Parent.dialogHandler.startDialog(this,this.goToBattle);
 	}
 	
 	public function goToBattle()

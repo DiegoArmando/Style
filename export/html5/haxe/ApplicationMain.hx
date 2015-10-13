@@ -34,24 +34,163 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.TEXT);
 		
 		
-<<<<<<< HEAD
-=======
+		urls.push ("assets/images/Background.csv");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("assets/images/Background.txt");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("assets/images/Background2.csv");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("assets/images/Background3.csv");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("assets/images/bars.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/default_auto.txt");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
 		urls.push ("assets/images/DemoRobot.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
->>>>>>> player
+		urls.push ("assets/images/enemies/arm1.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/enemies/arm2.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/enemies/channel1.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/enemies/channel2.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/enemies/cocoa1.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/enemies/cocoa2.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/enemies/enemies.7z");
+		types.push (lime.Assets.AssetType.BINARY);
+		
+		
+		urls.push ("assets/images/enemies/fobio1.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/enemies/fobio2.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/enemies/hm1.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/enemies/hm2.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/enemies/kitsch1.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/enemies/kitsch2.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/enemies/lue1.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/enemies/lue2.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/enemies/prod1.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/enemies/prod2.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/floor.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/gate.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/halo.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("assets/images/images-go-here.txt");
 		types.push (lime.Assets.AssetType.TEXT);
 		
 		
-<<<<<<< HEAD
-=======
-		urls.push ("assets/images/Sprite Sheets/defult_full.png");
+		urls.push ("assets/images/plant1.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-		urls.push ("assets/images/Sprite Sheets/minion bot.png");
+		urls.push ("assets/images/plant2.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/sprite_sheets/android.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/sprite_sheets/baymax.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/sprite_sheets/default.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/sprite_sheets/DemoRobot.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/sprite_sheets/kirisame_marisa.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/sprite_sheets/minion_bot.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/sprite_sheets/minion_bot_L.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/sprite_sheets/mondrian.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/sprite_sheets/mummy.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/sprite_sheets/octobot.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -59,7 +198,34 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
->>>>>>> player
+		urls.push ("assets/images/Tile 1.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/Tile 2.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/TileMap.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/TileMap2.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/TileMap3.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/wall.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/music/Culex.wav");
+		types.push (lime.Assets.AssetType.SOUND);
+		
+		
 		urls.push ("assets/music/music-goes-here.txt");
 		types.push (lime.Assets.AssetType.TEXT);
 		
@@ -152,19 +318,11 @@ class ApplicationMain {
 		
 		config = {
 			
-<<<<<<< HEAD
-			build: "1",
+			build: "133",
 			company: "HaxeFlixel",
 			file: "Stylish Combat",
 			fps: 60,
 			name: "Stylish Combat",
-=======
-			build: "184",
-			company: "HaxeFlixel",
-			file: "Style",
-			fps: 60,
-			name: "Style",
->>>>>>> player
 			orientation: "portrait",
 			packageName: "com.example.myapp",
 			version: "0.0.1",
@@ -178,7 +336,6 @@ class ApplicationMain {
 					display: 0,
 					fullscreen: false,
 					hardware: true,
-<<<<<<< HEAD
 					height: 768,
 					parameters: "{}",
 					resizable: true,
@@ -186,15 +343,6 @@ class ApplicationMain {
 					title: "Stylish Combat",
 					vsync: true,
 					width: 1024,
-=======
-					height: 480,
-					parameters: "{}",
-					resizable: true,
-					stencilBuffer: true,
-					title: "Style",
-					vsync: true,
-					width: 640,
->>>>>>> player
 					x: null,
 					y: null
 				},
@@ -212,11 +360,7 @@ class ApplicationMain {
 		
 		#if (js && html5)
 		#if (munit || utest)
-<<<<<<< HEAD
 		openfl.Lib.embed (null, 1024, 768, "000000");
-=======
-		openfl.Lib.embed (null, 640, 480, "000000");
->>>>>>> player
 		#end
 		#else
 		create ();

@@ -56,7 +56,7 @@ class Player extends FlxSpriteGroup
 		LegsArray = [];
 		HeadArray = [];
 		
-		AddOutfit( "assets/images/sprite_sheets/DemoRobot.png");   /// OUTFIT 0 - TEST ROBOT
+		AddOutfit( "assets/images/sprite_sheets/default.png");   /// OUTFIT 0 - Default
 		AddOutfit( "assets/images/sprite_sheets/minion_bot.png");  /// OUTFIT 1 - MINION BOT
 		
 		TorsoArray[TorsoIndex].revive();
@@ -82,11 +82,17 @@ class Player extends FlxSpriteGroup
 			if (FlxG.keys.anyPressed(["right","d"]))
 			{
 				xOffset += 1;
+				HeadSprite.scale.x = -1;
+				TorsoSprite.scale.x = -1;
+				LegsSprite.scale.x = -1;
 				IsRunning = true;
 			}
 			if (FlxG.keys.anyPressed(["left","a"]))
 			{
 				xOffset -= 1;
+				HeadSprite.scale.x = 1;
+				TorsoSprite.scale.x = 1;
+				LegsSprite.scale.x = 1;
 				IsRunning = true;
 			}
 			if (FlxG.keys.anyPressed(["up","w"]))

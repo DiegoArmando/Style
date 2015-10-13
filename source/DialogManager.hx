@@ -21,6 +21,8 @@ class DialogManager extends FlxSpriteGroup
 	
 	public var graphicFade : FlxSprite;
 	public var graphicBox : FlxSprite;
+	public var graphicText : FlxText;
+	public var graphicInput : FlxText;
 	
 	public var graphicPlayerHeadSprite : FlxSprite;
 	public var graphicPlayerTorsoSprite : FlxSprite;
@@ -29,6 +31,8 @@ class DialogManager extends FlxSpriteGroup
 	public var graphicNPCHeadSprite : FlxSprite;
 	public var graphicNPCTorsoSprite : FlxSprite;
 	public var graphicNPCLegsSprite : FlxSprite;
+	
+	public var callbackFunction : Dynamic;	
 	
 	public function new(InPlayer : Player, InState : PlayState) 
 	{
@@ -48,23 +52,47 @@ class DialogManager extends FlxSpriteGroup
 		graphicFade.y = 0;
 		
 		graphicBox = new FlxSprite();
-		graphicBox.makeGraphic(1024, 128, 0xffffffff);
-		graphicBox.y = camera.height - 128;
+		graphicBox.makeGraphic(1024, 256, 0xffffffff);
+		graphicBox.y = camera.height - 256;
+		
+		graphicText = new FlxText();
+		graphicText.alignment = "left";
+		graphicText.scrollFactor.x = 0;
+		graphicText.scrollFactor.y = 0;
+		graphicText.y = camera.height - (256 - 48);
+		graphicText.text = "Default Text";
+		graphicText.width = 1024 - 32;
+		graphicText.color = 0xff000000;
+		graphicText.size = 16;
+		graphicText.x = 16;
+		
+		graphicInput = new FlxText();
+		graphicInput.alignment = "left";
+		graphicInput.scrollFactor.x = 0;
+		graphicInput.scrollFactor.y = 0;
+		graphicInput.y = camera.height - (256 - 16);
+		graphicInput.text = "SPACE to Fight OR ENTER to Exit Dialog";
+		graphicInput.width = 1024 - 32;
+		graphicInput.color = 0xff992222;
+		graphicInput.size = 16;
+		graphicInput.x = 16;
 	}
 	
-	public function startDialog(InNpc : NPC )
+	public function startDialog( InNpc : NPC, InCallbackFunction : Dynamic )
 	{
-		trace("start dialog");
+		//trace("start dialog");
 		npc = InNpc;
-		if (player!=null && npc!=null)
+		if ( player!=null && npc!=null)
 		{
+			callbackFunction = InCallbackFunction;
+			
 			displayingDialog = true;
 			playState.playerInDialog = true;
 			player.AllowMovement = false;
 			
 			var closeScale = 3;
 			
-			add(graphicFade);
+			add( graphicFade);
 			graphicFade.scrollFactor.x = 0;
 			graphicFade.scrollFactor.y = 0;
 			
@@ -76,9 +104,15 @@ class DialogManager extends FlxSpriteGroup
 			graphicPlayerTorsoSprite = displayPart( player.TorsoSprite, closeScale, player.TorsoYOffset, 128 );
 			graphicPlayerLegsSprite = displayPart( player.LegsSprite, closeScale, player.LegsYOffset, 128 );
 			
-			add(graphicBox);
+			graphicPlayerHeadSprite.scale.x = -closeScale;
+			graphicPlayerTorsoSprite.scale.x = -closeScale;
+			graphicPlayerLegsSprite.scale.x = -closeScale;
+			
+			add( graphicBox);
 			graphicBox.scrollFactor.x = 0;
 			graphicBox.scrollFactor.y = 0;
+			add( graphicText);
+			graphicText.text = npc.Dialog[dialogIndex];
 		}
 	}
 	
@@ -99,7 +133,24 @@ class DialogManager extends FlxSpriteGroup
 	{		
 		if (displayingDialog)
 		{
-			if (FlxG.keys.anyJustPressed(["a"]))
+			if (FlxG.keys.anyJustPressed(["space"]))
+			{
+				dialogIndex++;
+				if (dialogIndex < npc.Dialog.length)
+				{
+					graphicText.text = npc.Dialog[dialogIndex];
+					if (dialogIndex == npc.Dialog.length - 1)
+					{
+						add(graphicInput);
+					}
+				}
+				else
+				{
+					terminateDialog();
+					callbackFunction();
+				}
+			}
+			else if ((dialogIndex >= npc.Dialog.length-1) && (FlxG.keys.anyJustPressed(["enter"])))
 			{
 				terminateDialog();
 			}
@@ -132,7 +183,10 @@ class DialogManager extends FlxSpriteGroup
 		
 		remove(graphicBox );
 		remove(graphicFade);
+		remove(graphicText);
+		remove(graphicInput);
 		
+		dialogIndex = 0;
 		npc = null;
 		
 		displayingDialog = false;
