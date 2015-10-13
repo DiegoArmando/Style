@@ -7,13 +7,14 @@ import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
 import flixel.util.FlxColor;
+import flixel.group.FlxSpriteGroup;
 
 
 /**
  * ...
  * @author ...
  */
-class Enemy extends FlxSprite
+class Enemy extends FlxSpriteGroup
 {
 	var parent:Battle;
 	public var speed:Int;
@@ -35,15 +36,25 @@ class Enemy extends FlxSprite
 	public var blinded:Bool = false;
 	var blinded_duration:Int = 0;
 	
+	public var sprite : FlxSprite;
+	public var LegsSprite : FlxSprite;
+	public var TorsoSprite : FlxSprite;
+	public var HeadSprite : FlxSprite;
+	
 	public function new(Position:Int, Total_Number:Int, Name:String, Parent:Battle) 
 	{
 		super();
 		name = Name;
+		
+		var EnemyIsComplex : Bool = false;
+		
+		sprite = new FlxSprite();
+		
 		if (Name == "") {
 			return;
 		}
 		else if (Name == "Player"){
-			makeGraphic(64, 128, FlxColor.WHITE);
+			sprite.makeGraphic(64, 128, FlxColor.WHITE);
 			this.x = FlxG.width / 3;
 			this.y = FlxG.height / 2;
 			hp = hpmax = 20;
@@ -51,96 +62,169 @@ class Enemy extends FlxSprite
 			mp = 10;
 		}
 		else if (Name.split(" ")[0] == "Basic"){
-			makeGraphic(64, 128, FlxColor.GREEN);
+			sprite.makeGraphic(64, 128, FlxColor.GREEN);
 			this.x = FlxG.width / 3 * 2;
 			this.y = FlxG.height / (Total_Number + 2) * Position;
 			hp = hpmax = 2;
 			speed = 1;
 		}
 		else if (Name.split(" ")[0] == "Tough") {
-			makeGraphic(64, 128, FlxColor.YELLOW);
+			sprite.makeGraphic(64, 128, FlxColor.YELLOW);
 			this.x = FlxG.width / 3 * 2;
 			this.y = FlxG.height / (Total_Number + 2) * Position;
 			hp = hpmax = 5;
 			speed = 3;
 		}
 		else if (Name.split(" ")[0] == "Lu-E") {
-			makeGraphic(64, 128, FlxColor.BROWN);
+			sprite.loadGraphic("assets/images/enemies/lueSheet.png", true, 192, 192);
 			this.x = FlxG.width / 3 * 2;
 			this.y = FlxG.height / (Total_Number + 2) * Position;
 			hp = hpmax = 3;
 			speed = 1;
 		}
 		else if (Name.split(" ")[0] == "Hertz") {
-			makeGraphic(128, 128, FlxColor.CORAL);
+			sprite.loadGraphic("assets/images/enemies/hmSheet.png", true, 192, 192);
 			this.x = FlxG.width / 3 * 2 - this.width / 2;
 			this.y = FlxG.height / (Total_Number + 2) * Position;
 			hp = hpmax = 7;
 			speed = 0;
 		}
-		else if (Name.split(" ")[0] == "Arm_Many") {
-			makeGraphic(64, 128, FlxColor.ROYAL_BLUE);
+		else if (Name.split(" ")[0] == "Arm-Many") {
+			sprite.loadGraphic("assets/images/enemies/armSheet.png", true, 192, 192);
 			this.x = FlxG.width / 3 * 2;
 			this.y = FlxG.height / (Total_Number + 2) * Position;
 			hp = hpmax = 5;
 			speed = 1;
 		}
 		else if (Name.split(" ")[0] == "Prodder") {
-			makeGraphic(64, 128, FlxColor.HOT_PINK);
+			sprite.loadGraphic("assets/images/enemies/prodSheet.png", true, 192, 192);
 			this.x = FlxG.width / 3 * 2;
 			this.y = FlxG.height / (Total_Number + 2) * Position;
 			hp = hpmax = 5;
 			speed = 1;
 		}
 		else if (Name.split(" ")[0] == "Cocoa") {
-			makeGraphic(64, 128, FlxColor.CRIMSON);
+			sprite.loadGraphic("assets/images/enemies/cocoaSheet.png", true, 192, 192);
 			this.x = FlxG.width / 3 * 2;
 			this.y = FlxG.height / (Total_Number + 2) * Position;
 			hp = hpmax = 6;
 			speed = 1;
 		}
 		else if (Name.split(" ")[0] == "Channel") {
-			makeGraphic(64, 128, FlxColor.PURPLE);
+			sprite.loadGraphic("assets/images/enemies/channelSheet.png", true, 192, 192);
 			this.x = FlxG.width / 3 * 2;
 			this.y = FlxG.height / (Total_Number + 2) * Position;
 			hp = hpmax = 6;
 			speed = 1;
 		}
 		else if (Name.split(" ")[0] == "Fobio") {
-			makeGraphic(64, 128, FlxColor.GOLDENROD);
+			sprite.loadGraphic("assets/images/enemies/fabioSheet.png", true, 192, 192);
 			this.x = FlxG.width / 3 * 2;
 			this.y = FlxG.height / (Total_Number + 2) * Position;
 			hp = hpmax = 10;
 			speed = 2;
 		}
 		else if (Name.split(" ")[0] == "Kitschy") {
-			makeGraphic(128, 128, FlxColor.CORAL);
+			sprite.loadGraphic("assets/images/enemies/kitschSheet.png", true, 192, 192);
 			this.x = FlxG.width / 3 * 2;
 			this.y = FlxG.height / (Total_Number + 2) * Position;
 			hp = hpmax = 15;
 			speed = 0;
 		}
 		else if (Name.split(" ")[0] == "Curve-A") {
-			makeGraphic(64, 128, FlxColor.SILVER);
+			sprite.makeGraphic(64, 128, FlxColor.PINK);
 			this.x = FlxG.width / 3 * 2;
 			this.y = FlxG.height / (Total_Number + 2) * Position;
 			hp = hpmax = 20;
 			speed = 1;
 		}
+		else 
+		{
+			/// If the enemy is an NPC of multiple sprites.
+			EnemyIsComplex = true;
+			LegsSprite = new FlxSprite();
+			TorsoSprite = new FlxSprite();
+			HeadSprite = new FlxSprite();
+			if (Name.split(" ")[0] == "Android")
+			{
+				setNPCSpritesToSheet(20, 1, Position, Total_Number, "android");
+			}
+			else if (Name.split(" ")[0] == "Baymax")
+			{
+				setNPCSpritesToSheet(20, 1, Position, Total_Number, "baymax");
+			}
+			else if (Name.split(" ")[0] == "Kirimsame Marisa")
+			{
+				setNPCSpritesToSheet(20, 1, Position, Total_Number, "kirimsame_marisa");
+			}
+			else if (Name.split(" ")[0] == "Minion")
+			{
+				setNPCSpritesToSheet(20, 1, Position, Total_Number, "minion_bot");
+			} 
+			else if (Name.split(" ")[0] == "Mondrian")
+			{
+				setNPCSpritesToSheet(20, 1, Position, Total_Number, "mondrian");
+			}
+			else if (Name.split(" ")[0] == "Mummy")
+			{
+				setNPCSpritesToSheet(20, 1, Position, Total_Number, "mummy");
+			}
+			else if (Name.split(" ")[0] == "Octobot")
+			{
+				setNPCSpritesToSheet(20, 1, Position, Total_Number, "octobot");
+			}
+		}
+		
+		sprite.animation.add("idle", [0, 1], 2, true);
+		sprite.animation.play("idle");
+		add(sprite);
+		
 		health_text = new FlxText(0, 0, 64);
 		health_text.size = 20;
-		health_text.color = FlxColor.BLACK;
+		health_text.color = FlxColor.RED;
 		health_text.text = hpmax + "";
-		health_text.x = this.x;
+		health_text.x = this.x + sprite.width;
 		health_text.y = this.y + this.height / 2;
 		
 		magic_text = new FlxText(0, 0, 64);
 		magic_text.size = 20;
 		magic_text.color = FlxColor.NAVY_BLUE;
 		magic_text.text = mp + "";
-		magic_text.x = this.x;
+		magic_text.x = this.x + sprite.width;
 		magic_text.y = this.y + this.height / 2 - magic_text.size;
 		
+	}
+	
+	public function setNPCSpritesToSheet(HP : Int, Speed : Int, Position : Int, Total_Number : Int ,fileName : String)
+	{
+		
+		hp = hpmax = HP;
+		speed = Speed;
+		
+		var LegsYOffset  = -64;
+		var TorsoYOffset = -64*2;
+		var HeadYOffset  = -64 * 3 + 64 * .25;
+		
+		var graphicX = FlxG.width / 3 * 2;
+		var graphicY = FlxG.height / (Total_Number + 2) * Position;
+		
+		TorsoSprite = new FlxSprite( graphicX, graphicY + TorsoYOffset);
+		TorsoSprite.loadGraphic("assets/images/sprite_sheets/" + fileName + ".png", true, 64, 64);
+		TorsoSprite.animation.add("Still", [1], 0, false);
+		TorsoSprite.animation.play("Still");
+		add( TorsoSprite);
+		
+		LegsSprite = new FlxSprite( graphicX, graphicY + LegsYOffset);
+		LegsSprite.loadGraphic("assets/images/sprite_sheets/" + fileName + ".png",true,64,64);
+		LegsSprite.animation.add("Still", [2]);
+		LegsSprite.animation.play("Still");
+		add( LegsSprite);
+		
+		HeadSprite = new FlxSprite( graphicX, graphicY + HeadYOffset);
+		HeadSprite.loadGraphic("assets/images/sprite_sheets/" + fileName + ".png",true,64,64);
+		HeadSprite.animation.add("Still", [0], 0, false);
+		HeadSprite.animation.play("Still");
+		add( HeadSprite);
 	}
 	
 	public function attack(AttackName:String, Target:Enemy, PlayerObject:Enemy):String {
@@ -206,7 +290,7 @@ class Enemy extends FlxSprite
 				return name + " flail around and manage to hit the Player!";
 			}
 		}
-		else if (name.split(" ")[0] == "Arm_Many") {
+		else if (name.split(" ")[0] == "Arm-Many") {
 			if (waiting) {
 				waiting = false;
 				return name + " is trying to untangle his arms...";

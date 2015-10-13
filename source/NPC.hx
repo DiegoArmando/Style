@@ -26,10 +26,10 @@ class NPC extends Interactable
 	
 	private var name2 : String;
 	
-	public override function new(InX:Float, InY:Float, InIsMultipart : Bool, Path : String, InParent : Dynamic) 
+	public override function new(InX:Float, InY:Float, InIsMultipart : Bool, fileName : String, Name : String, InParent : Dynamic) 
 	{
 		super(InX, InY, "");
-		name = Path;
+		name = Name;
 		Parent = InParent;
 		
 		setName2();
@@ -38,7 +38,7 @@ class NPC extends Interactable
 		Dialog = new Array<String>();
 		SelectYOffset = -32;
 		
-		SelectSprite = new FlxSprite( x, y + SelectYOffset);
+		SelectSprite = new FlxSprite( x-32, y + SelectYOffset);
 		SelectSprite.loadGraphic("assets/images/halo.png", true, 64, 64);
 		SelectSprite.animation.add("Normal", [0,1,2], 0, false);
 		SelectSprite.animation.play("Normal");
@@ -51,29 +51,29 @@ class NPC extends Interactable
 			HeadYOffset  = -64 * 3 + 64 * .25;
 			remove (Sprite);
 			
-			TorsoSprite = new FlxSprite( x, y + TorsoYOffset);
-			TorsoSprite.loadGraphic("assets/images/sprite_sheets/" + Path + ".png", true, 64, 64);
+			TorsoSprite = new FlxSprite( x-32, y + TorsoYOffset);
+			TorsoSprite.loadGraphic("assets/images/sprite_sheets/" + fileName + ".png", true, 64, 64);
 			TorsoSprite.animation.add("Still", [1], 0, false);
 			TorsoSprite.animation.play("Still");
 			add( TorsoSprite);
 			
-			LegsSprite = new FlxSprite( x, y + LegsYOffset);
-			LegsSprite.loadGraphic("assets/images/sprite_sheets/" + Path + ".png",true,64,64);
+			LegsSprite = new FlxSprite( x-32, y + LegsYOffset);
+			LegsSprite.loadGraphic("assets/images/sprite_sheets/" + fileName + ".png",true,64,64);
 			LegsSprite.animation.add("Still", [2]);
 			LegsSprite.animation.play("Still");
 			add( LegsSprite);
 			
-			HeadSprite = new FlxSprite( x, y + HeadYOffset);
-			HeadSprite.loadGraphic("assets/images/sprite_sheets/" + Path + ".png",true,64,64);
+			HeadSprite = new FlxSprite( x-32, y + HeadYOffset);
+			HeadSprite.loadGraphic("assets/images/sprite_sheets/" + fileName + ".png",true,64,64);
 			HeadSprite.animation.add("Still", [0], 0, false);
 			HeadSprite.animation.play("Still");
 			add( HeadSprite);
 		}
 		else
 		{
-			Sprite = new FlxSprite( x, y);
-			Sprite.loadGraphic("assets/images/enemies/" + Path + ".png", true, 64, 64);
-			Sprite.animation.add("Still", [1], 0, false);
+			Sprite = new FlxSprite( x-(192/2), y-192);
+			Sprite.loadGraphic("assets/images/enemies/" + fileName + "Sheet.png", true, 192, 192);
+			Sprite.animation.add("still", [0,1], 1, true);
 			Sprite.animation.play("Still");
 			add( Sprite);
 		}
@@ -94,7 +94,7 @@ class NPC extends Interactable
 	
 	public function goToBattle()
 	{
-		StateManager.ENEMIES = ["", name2, ""];
+		StateManager.ENEMIES = ["", name+" A", ""];
 		FlxG.switchState(new Battle());
 	}
 	

@@ -33,6 +33,8 @@ class DialogManager extends FlxSpriteGroup
 	public var graphicNPCTorsoSprite : FlxSprite;
 	public var graphicNPCLegsSprite : FlxSprite;
 	
+	public var graphicNPCSimple : FlxSprite;
+	
 	public var callbackFunction : Dynamic;	
 	
 	public function new(InPlayer : Player, InState : PlayState) 
@@ -109,11 +111,16 @@ class DialogManager extends FlxSpriteGroup
 			var closeScale = 3;
 			
 			add( graphicFade);
-			
-			graphicNPCHeadSprite = displayPart( npc.HeadSprite, closeScale, npc.HeadYOffset, camera.width - 128 );
-			graphicNPCTorsoSprite = displayPart( npc.TorsoSprite, closeScale, npc.TorsoYOffset, camera.width - 128 );
-			graphicNPCLegsSprite = displayPart( npc.LegsSprite, closeScale, npc.LegsYOffset, camera.width - 128 );
-			
+			if (npc.IsMultipart)
+			{
+				graphicNPCHeadSprite = displayPart( npc.HeadSprite, closeScale, npc.HeadYOffset, camera.width - 128 );
+				graphicNPCTorsoSprite = displayPart( npc.TorsoSprite, closeScale, npc.TorsoYOffset, camera.width - 128 );
+				graphicNPCLegsSprite = displayPart( npc.LegsSprite, closeScale, npc.LegsYOffset, camera.width - 128 );
+			}
+			else
+			{
+				graphicNPCSimple = displayPart( npc.Sprite, closeScale, -128, camera.width - 192 );
+			}
 			graphicPlayerHeadSprite = displayPart( player.HeadSprite, closeScale, player.HeadYOffset, 128 );
 			graphicPlayerTorsoSprite = displayPart( player.TorsoSprite, closeScale, player.TorsoYOffset, 128 );
 			graphicPlayerLegsSprite = displayPart( player.LegsSprite, closeScale, player.LegsYOffset, 128 );
@@ -176,6 +183,8 @@ class DialogManager extends FlxSpriteGroup
 	
 	public function terminateDialog()
 	{
+		if (npc.IsMultipart)
+		{
 		remove(graphicNPCHeadSprite    );
 		remove(graphicNPCTorsoSprite   );
 		remove(graphicNPCLegsSprite    );
@@ -196,6 +205,13 @@ class DialogManager extends FlxSpriteGroup
 		 graphicPlayerHeadSprite = null;
 		graphicPlayerTorsoSprite = null;
 		 graphicPlayerLegsSprite = null;
+		}
+		else
+		{
+			remove(graphicNPCSimple);
+			graphicNPCSimple.destroy();
+			graphicNPCSimple = null;
+		}
 		
 		remove(graphicBox );
 		remove(graphicFade);

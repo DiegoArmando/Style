@@ -110,6 +110,21 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		Font.registerFont (__ASSET__assets_fonts_nokiafc22_ttf);
 		Font.registerFont (__ASSET__assets_fonts_arial_ttf);
 		
@@ -117,6 +132,21 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -710,6 +740,21 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_arial_ttf);
 		
@@ -729,26 +774,48 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/Background3.csv", AssetType.TEXT);
 		path.set ("assets/images/bars.png", "assets/images/bars.png");
 		type.set ("assets/images/bars.png", AssetType.IMAGE);
+		path.set ("assets/images/bookshelf_book.png", "assets/images/bookshelf_book.png");
+		type.set ("assets/images/bookshelf_book.png", AssetType.IMAGE);
+		path.set ("assets/images/bookshelf_l.png", "assets/images/bookshelf_l.png");
+		type.set ("assets/images/bookshelf_l.png", AssetType.IMAGE);
+		path.set ("assets/images/chest.png", "assets/images/chest.png");
+		type.set ("assets/images/chest.png", AssetType.IMAGE);
+		path.set ("assets/images/computer.png", "assets/images/computer.png");
+		type.set ("assets/images/computer.png", AssetType.IMAGE);
+		path.set ("assets/images/computer_l.png", "assets/images/computer_l.png");
+		type.set ("assets/images/computer_l.png", AssetType.IMAGE);
 		path.set ("assets/images/default_auto.txt", "assets/images/default_auto.txt");
 		type.set ("assets/images/default_auto.txt", AssetType.TEXT);
 		path.set ("assets/images/DemoRobot.png", "assets/images/DemoRobot.png");
 		type.set ("assets/images/DemoRobot.png", AssetType.IMAGE);
 		path.set ("assets/images/dialogPanel.png", "assets/images/dialogPanel.png");
 		type.set ("assets/images/dialogPanel.png", AssetType.IMAGE);
+		path.set ("assets/images/drawers.png", "assets/images/drawers.png");
+		type.set ("assets/images/drawers.png", AssetType.IMAGE);
+		path.set ("assets/images/drawers_l.png", "assets/images/drawers_l.png");
+		type.set ("assets/images/drawers_l.png", AssetType.IMAGE);
 		path.set ("assets/images/enemies/arm1.png", "assets/images/enemies/arm1.png");
 		type.set ("assets/images/enemies/arm1.png", AssetType.IMAGE);
 		path.set ("assets/images/enemies/arm2.png", "assets/images/enemies/arm2.png");
 		type.set ("assets/images/enemies/arm2.png", AssetType.IMAGE);
+		path.set ("assets/images/enemies/armSheet.png", "assets/images/enemies/armSheet.png");
+		type.set ("assets/images/enemies/armSheet.png", AssetType.IMAGE);
 		path.set ("assets/images/enemies/channel1.png", "assets/images/enemies/channel1.png");
 		type.set ("assets/images/enemies/channel1.png", AssetType.IMAGE);
 		path.set ("assets/images/enemies/channel2.png", "assets/images/enemies/channel2.png");
 		type.set ("assets/images/enemies/channel2.png", AssetType.IMAGE);
+		path.set ("assets/images/enemies/channelSheet.png", "assets/images/enemies/channelSheet.png");
+		type.set ("assets/images/enemies/channelSheet.png", AssetType.IMAGE);
 		path.set ("assets/images/enemies/cocoa1.png", "assets/images/enemies/cocoa1.png");
 		type.set ("assets/images/enemies/cocoa1.png", AssetType.IMAGE);
 		path.set ("assets/images/enemies/cocoa2.png", "assets/images/enemies/cocoa2.png");
 		type.set ("assets/images/enemies/cocoa2.png", AssetType.IMAGE);
+		path.set ("assets/images/enemies/cocoaSheet.png", "assets/images/enemies/cocoaSheet.png");
+		type.set ("assets/images/enemies/cocoaSheet.png", AssetType.IMAGE);
 		path.set ("assets/images/enemies/enemies.7z", "assets/images/enemies/enemies.7z");
 		type.set ("assets/images/enemies/enemies.7z", AssetType.BINARY);
+		path.set ("assets/images/enemies/fabioSheet.png", "assets/images/enemies/fabioSheet.png");
+		type.set ("assets/images/enemies/fabioSheet.png", AssetType.IMAGE);
 		path.set ("assets/images/enemies/fobio1.png", "assets/images/enemies/fobio1.png");
 		type.set ("assets/images/enemies/fobio1.png", AssetType.IMAGE);
 		path.set ("assets/images/enemies/fobio2.png", "assets/images/enemies/fobio2.png");
@@ -757,18 +824,26 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/enemies/hm1.png", AssetType.IMAGE);
 		path.set ("assets/images/enemies/hm2.png", "assets/images/enemies/hm2.png");
 		type.set ("assets/images/enemies/hm2.png", AssetType.IMAGE);
+		path.set ("assets/images/enemies/hmSheet.png", "assets/images/enemies/hmSheet.png");
+		type.set ("assets/images/enemies/hmSheet.png", AssetType.IMAGE);
 		path.set ("assets/images/enemies/kitsch1.png", "assets/images/enemies/kitsch1.png");
 		type.set ("assets/images/enemies/kitsch1.png", AssetType.IMAGE);
 		path.set ("assets/images/enemies/kitsch2.png", "assets/images/enemies/kitsch2.png");
 		type.set ("assets/images/enemies/kitsch2.png", AssetType.IMAGE);
+		path.set ("assets/images/enemies/kitschSheet.png", "assets/images/enemies/kitschSheet.png");
+		type.set ("assets/images/enemies/kitschSheet.png", AssetType.IMAGE);
 		path.set ("assets/images/enemies/lue1.png", "assets/images/enemies/lue1.png");
 		type.set ("assets/images/enemies/lue1.png", AssetType.IMAGE);
 		path.set ("assets/images/enemies/lue2.png", "assets/images/enemies/lue2.png");
 		type.set ("assets/images/enemies/lue2.png", AssetType.IMAGE);
+		path.set ("assets/images/enemies/lueSheet.png", "assets/images/enemies/lueSheet.png");
+		type.set ("assets/images/enemies/lueSheet.png", AssetType.IMAGE);
 		path.set ("assets/images/enemies/prod1.png", "assets/images/enemies/prod1.png");
 		type.set ("assets/images/enemies/prod1.png", AssetType.IMAGE);
 		path.set ("assets/images/enemies/prod2.png", "assets/images/enemies/prod2.png");
 		type.set ("assets/images/enemies/prod2.png", AssetType.IMAGE);
+		path.set ("assets/images/enemies/prodSheet.png", "assets/images/enemies/prodSheet.png");
+		type.set ("assets/images/enemies/prodSheet.png", AssetType.IMAGE);
 		path.set ("assets/images/floor.png", "assets/images/floor.png");
 		type.set ("assets/images/floor.png", AssetType.IMAGE);
 		path.set ("assets/images/gate.png", "assets/images/gate.png");
@@ -852,6 +927,21 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/images/bars.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+		id = "assets/images/bookshelf_book.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/bookshelf_l.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/chest.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/computer.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/computer_l.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/default_auto.txt";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
@@ -861,10 +951,19 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/images/dialogPanel.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+		id = "assets/images/drawers.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/drawers_l.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/enemies/arm1.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/enemies/arm2.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/enemies/armSheet.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/enemies/channel1.png";
@@ -873,15 +972,24 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/images/enemies/channel2.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+		id = "assets/images/enemies/channelSheet.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/enemies/cocoa1.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/enemies/cocoa2.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+		id = "assets/images/enemies/cocoaSheet.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/enemies/enemies.7z";
 		path.set (id, id);
 		type.set (id, AssetType.BINARY);
+		id = "assets/images/enemies/fabioSheet.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/enemies/fobio1.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
@@ -894,10 +1002,16 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/images/enemies/hm2.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+		id = "assets/images/enemies/hmSheet.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/enemies/kitsch1.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/enemies/kitsch2.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/enemies/kitschSheet.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/enemies/lue1.png";
@@ -906,10 +1020,16 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/images/enemies/lue2.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+		id = "assets/images/enemies/lueSheet.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/enemies/prod1.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/enemies/prod2.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/enemies/prodSheet.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/floor.png";
@@ -1021,6 +1141,21 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -1853,11 +1988,41 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_arial_ttf extends null { }
 
 
 #elseif html5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

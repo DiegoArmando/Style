@@ -72,14 +72,14 @@ class PlayState extends FlxState
 		add (Disk);
 		interactables.push(Disk);
 		
-		var testEnemy : NPC = new NPC(1500, FlxG.height / 2 - 200, true, "android", this);
+		var testEnemy : NPC = new NPC(1500, FlxG.height / 2 - 200, true, "android", "Android", this);
 		testEnemy.Dialog.push("Do not argue about which language is the worst!");
 		testEnemy.Dialog.push("For that language is Java.");
 		testEnemy.Dialog.push("I would know.");
 		add(testEnemy);
 		interactables.push(testEnemy);
 		
-		var otherEnemy : NPC = new NPC(1400, FlxG.height / 2 - 200, true,"mummy",this);
+		var otherEnemy : NPC = new NPC(1400, FlxG.height / 2 - 200,false,"arm", "Arm-Many",this);
 		otherEnemy.Dialog.push("Did you know King Tut was probably murdered!");
 		otherEnemy.Dialog.push("It was probably me.");
 		otherEnemy.Dialog.push("I would know.");
