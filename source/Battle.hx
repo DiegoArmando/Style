@@ -7,15 +7,16 @@ import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
 import flixel.util.FlxColor;
+import flixel.FlxSubState;
 
 /**
  * A FlxState which can be used for the actual gameplay.
  */
-class Battle extends FlxState
+class Battle extends FlxSubState
 {
 	
 	var player:Enemy;
-	var playerObject : Player;
+	public var playerObject : Player;
 	var enemy1:Enemy;
 	var enemy2:Enemy;
 	var enemy3:Enemy;
@@ -59,7 +60,7 @@ class Battle extends FlxState
 	 */
 	override public function create():Void
 	{
-		trace("PLayer Position: " + playerObject.x + ", " + playerObject.y);
+		//trace("Player members in battle scene: " + playerObject.members);
 		
 		
 		enemy1 = new Enemy(1, StateManager.ENEMIES.length, StateManager.ENEMIES[0], this);
@@ -433,7 +434,8 @@ class Battle extends FlxState
 					case 3: message_text.text = "Escaped successfully";
 							actionBoxDisappear();
 							fight_state = "Victory";
-							FlxG.switchState(StateManager.play);
+							close();
+							//FlxG.switchState(StateManager.play);
 				}
 			}
 		}
@@ -617,9 +619,10 @@ class Battle extends FlxState
 					fight_state = "Victory";
 					message_text.text = "Player has won!";
 					//FlxG.switchState(StateManager.play);
-					var newState : PlayState = new PlayState();
-					newState.setPlayer(playerObject);
-					FlxG.switchState(newState);
+					//var newState : PlayState = new PlayState();
+					//newState.setPlayer(playerObject);
+					//FlxG.switchState(newState);
+					close();
 					return;
 				}
 				whose_turn += 1;
@@ -652,13 +655,13 @@ class Battle extends FlxState
 		}
 		else if (fight_state == "Game Over") {
 			if (FlxG.keys.justPressed.ESCAPE) {
-				FlxG.switchState(new MenuState());
+				close();
 				FlxG.sound.pause();
 			}
 		}
 		else if (fight_state == "Victory") {
 			if (FlxG.keys.justPressed.ESCAPE) {
-				FlxG.switchState(new MenuState());
+				close();
 				FlxG.sound.pause();
 			}
 		}

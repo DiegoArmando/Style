@@ -1,6 +1,8 @@
 package;
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.FlxState;
+import flixel.FlxSubState;
 
 /**
  * ...
@@ -12,6 +14,7 @@ class NPC extends Interactable
 	
 	public var name : String;
 	
+	//private var parent : FlxState;
 	public var HeadSprite : FlxSprite;
 	public var HeadYOffset : Float;
 	public var TorsoSprite : FlxSprite;
@@ -23,11 +26,11 @@ class NPC extends Interactable
 	
 	private var name2 : String;
 	
-	public override function new(InX:Float, InY:Float, InIsMultipart : Bool, Path :String) 
+	public override function new(InX:Float, InY:Float, InIsMultipart : Bool, Path :String, parentRef : PlayState) 
 	{
 		super(InX, InY);
 		name = Path;
-		
+		parent = parentRef;
 		setName2();
 		
 		IsMultipart = InIsMultipart;
@@ -77,10 +80,16 @@ class NPC extends Interactable
 	
 	public override function interact(playerArg : Player)
 	{
+		trace("Player members in interact: " + playerArg.members);
 		StateManager.ENEMIES = ["", name2, ""];
 		var battleState = new Battle();
-		battleState.setPlayer(playerArg);
-		FlxG.switchState(battleState);
+		//battleState.setPlayer(playerArg);
+		
+		//trace("Player members in battlestate before state switch: " + battleState.playerObject.members);
+		//parent.remove(parent.
+		
+		parent.openSubState(battleState);
+		//openSubState(battleState);
 	}
 	
 	public override function setSubimage( subImage : Int)

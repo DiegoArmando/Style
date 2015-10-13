@@ -13,6 +13,8 @@ import openfl.Assets;
 import flixel.util.FlxColor;
 import flixel.util.FlxSpriteUtil;
 import flixel.FlxCamera;
+import flixel.util.FlxRandom;
+import flixel.FlxSubState;
 
 
 /**
@@ -24,6 +26,8 @@ class PlayState extends FlxState
 	public static var player : Player;
 	//public static var menu : MenuState;
 	public var interactables : Array<Interactable>;
+	
+	public var IDNUM : Int;
 	
 	public var interactableIndex : Int = -1;
 	public var selectedInteractable : Int = -1;
@@ -40,7 +44,7 @@ class PlayState extends FlxState
 	{
 		super.create();
 
-		
+		IDNUM = FlxRandom.int();
 		//trace("PLayer Position after create: " + player.x + ", " + player.y);
 		
 		//trace("We are getting into create");
@@ -63,11 +67,11 @@ class PlayState extends FlxState
 		add (Disk);
 		interactables.push(Disk);
 		
-		var testEnemy : NPC = new NPC(FlxG.width / 2 - 200, FlxG.height / 2 - 200, true,"android");
+		var testEnemy : NPC = new NPC(FlxG.width / 2 - 200, FlxG.height / 2 - 200, true,"android", this);
 		add(testEnemy);
 		interactables.push(testEnemy);
 		
-		var otherEnemy : NPC = new NPC(FlxG.width / 2 - 100, FlxG.height / 2 - 200, true,"mummy");
+		var otherEnemy : NPC = new NPC(FlxG.width / 2 - 100, FlxG.height / 2 - 200, true,"mummy", this);
 		add(otherEnemy);
 		interactables.push(otherEnemy);
 		
@@ -77,6 +81,18 @@ class PlayState extends FlxState
 		if (player == null)
 		{
 			player = new Player(FlxG.width / 2, FlxG.height / 2, this);	
+			trace("Player information: ");
+			trace("Player: " + player);
+			trace("X: " + player.x + ", Y: " + player.y);
+			trace("Player members: " + player.members);
+		}
+		else
+		{
+			trace("Player information: ");
+			trace("Player: " + player);
+			trace("X: " + player.x + ", Y: " + player.y);
+			trace("Player members: " + player.members);
+			//player.set_exists(true);
 		}
 
 		add( player);
@@ -98,8 +114,9 @@ class PlayState extends FlxState
 	 */
 	override public function update():Void
 	{
+		//player.update(); 
 		
-		trace(player.x + ", " + player.y);
+		//trace(player);
 		
 		var itemIndex : Int = 0;
 		var itemSelected : Bool = false;
@@ -170,6 +187,6 @@ class PlayState extends FlxState
 	public function setPlayer(playerArg : Player)
 	{
 		player = playerArg;
-		
+		player.Parent = this;
 	}
 }

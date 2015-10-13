@@ -2,6 +2,7 @@ package;
 
 import flixel.FlxSprite;
 import flixel.group.FlxGroup;
+import flixel.FlxState;
 
 /**
  * ...
@@ -10,7 +11,7 @@ import flixel.group.FlxGroup;
 class Interactable extends FlxGroup
 {
 	public var Sprite : FlxSprite;
-	
+	private var parent : FlxState;
 	public var x : Float;
 	public var y : Float;
 	

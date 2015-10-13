@@ -22,7 +22,7 @@ class Player extends FlxGroup
 	
 	public var referenceSprite: FlxObject;
 	
-	private var Parent : Dynamic;
+	public var Parent : Dynamic;
 	
 	private var LegsIndex : Int = 0;
 	private var TorsoIndex : Int = 0;
@@ -77,7 +77,7 @@ class Player extends FlxGroup
 		
 		var xOffset : Float = 0;
 		var yOffset : Float = 0;
-		trace("player is updating");
+		//trace("player is updating");
 		if (FlxG.keys.anyPressed(["right","d"]))
 		{
 			
