@@ -56,8 +56,14 @@ class Player extends FlxSpriteGroup
 		LegsArray = [];
 		HeadArray = [];
 		
-		AddOutfit( "assets/images/sprite_sheets/default.png");   /// OUTFIT 0 - Default
-		AddOutfit( "assets/images/sprite_sheets/minion_bot.png");  /// OUTFIT 1 - MINION BOT
+		AddOutfit( "assets/images/sprite_sheets/default.png");     	    /// OUTFIT 0
+		AddOutfit( "assets/images/sprite_sheets/minion_bot.png"); 	    /// OUTFIT 1
+		AddOutfit( "assets/images/sprite_sheets/android.png");  	    /// OUTFIT 2
+		AddOutfit( "assets/images/sprite_sheets/baymax.png");           /// OUTFIT 3
+		AddOutfit( "assets/images/sprite_sheets/kirisame_marisa.png");  /// OUTFIT 4
+		AddOutfit( "assets/images/sprite_sheets/mondrian.png");  		/// OUTFIT 5
+		AddOutfit( "assets/images/sprite_sheets/mummy.png");  			/// OUTFIT 6
+		AddOutfit( "assets/images/sprite_sheets/octobot.png");  		/// OUTFIT 7
 		
 		TorsoArray[TorsoIndex].revive();
 		LegsArray[LegsIndex].revive();

@@ -23,6 +23,7 @@ class DialogManager extends FlxSpriteGroup
 	public var graphicBox : FlxSprite;
 	public var graphicText : FlxText;
 	public var graphicInput : FlxText;
+	public var graphicLabel : FlxText;
 	
 	public var graphicPlayerHeadSprite : FlxSprite;
 	public var graphicPlayerTorsoSprite : FlxSprite;
@@ -46,20 +47,35 @@ class DialogManager extends FlxSpriteGroup
 		
 		graphicFade = new FlxSprite();
 		graphicFade.makeGraphic(1024, 768, 0x88000000);
+		graphicFade.scrollFactor.x = 0;
+		graphicFade.scrollFactor.y = 0;
 		graphicFade.offset.x = 0;
 		graphicFade.offset.y = 0;
 		graphicFade.x = 0;
 		graphicFade.y = 0;
 		
 		graphicBox = new FlxSprite();
+		graphicBox.scrollFactor.x = 0;
+		graphicBox.scrollFactor.y = 0;
 		graphicBox.loadGraphic("assets/images/dialogPanel.png", false, 1024, 256);
 		graphicBox.y = camera.height - 256;
+		
+		graphicLabel = new FlxText();
+		graphicLabel.alignment = "left";
+		graphicLabel.scrollFactor.x = 0;
+		graphicLabel.scrollFactor.y = 0;
+		graphicLabel.y = camera.height - (256 - 36);
+		graphicLabel.text = "Default Text";
+		graphicLabel.width = 1024 - 32;
+		graphicLabel.color = 0xff000000;
+		graphicLabel.size = 16;
+		graphicLabel.x = 16;
 		
 		graphicText = new FlxText();
 		graphicText.alignment = "left";
 		graphicText.scrollFactor.x = 0;
 		graphicText.scrollFactor.y = 0;
-		graphicText.y = camera.height - (256 - 32);
+		graphicText.y = camera.height - (256 - 64);
 		graphicText.text = "Default Text";
 		graphicText.width = 1024 - 32;
 		graphicText.color = 0xff000000;
@@ -93,8 +109,6 @@ class DialogManager extends FlxSpriteGroup
 			var closeScale = 3;
 			
 			add( graphicFade);
-			graphicFade.scrollFactor.x = 0;
-			graphicFade.scrollFactor.y = 0;
 			
 			graphicNPCHeadSprite = displayPart( npc.HeadSprite, closeScale, npc.HeadYOffset, camera.width - 128 );
 			graphicNPCTorsoSprite = displayPart( npc.TorsoSprite, closeScale, npc.TorsoYOffset, camera.width - 128 );
@@ -109,9 +123,10 @@ class DialogManager extends FlxSpriteGroup
 			graphicPlayerLegsSprite.scale.x = -closeScale;
 			
 			add( graphicBox);
-			graphicBox.scrollFactor.x = 0;
-			graphicBox.scrollFactor.y = 0;
 			add( graphicText);
+			add(graphicLabel);
+			
+			graphicLabel.text = npc.name;
 			graphicText.text = npc.Dialog[dialogIndex];
 		}
 	}
@@ -122,7 +137,7 @@ class DialogManager extends FlxSpriteGroup
 		newSprite.scale.x = closeScale;  
 		newSprite.scale.y = closeScale;
 		newSprite.x = xLocation;
-		newSprite.y = camera.height + PartOffset * closeScale;
+		newSprite.y = camera.height + PartOffset * closeScale - 64;
 		newSprite.scrollFactor.x = 0;
 		newSprite.scrollFactor.y = 0;
 		add(newSprite );
@@ -133,7 +148,7 @@ class DialogManager extends FlxSpriteGroup
 	{		
 		if (displayingDialog)
 		{
-			if (FlxG.keys.anyJustPressed(["space"]))
+			if (FlxG.keys.anyJustReleased(["space"]))
 			{
 				dialogIndex++;
 				if (dialogIndex < npc.Dialog.length)
@@ -147,12 +162,13 @@ class DialogManager extends FlxSpriteGroup
 				else
 				{
 					terminateDialog();
-					callbackFunction();
+					playState.delayInteract = true;
 				}
 			}
-			else if ((dialogIndex >= npc.Dialog.length-1) && (FlxG.keys.anyJustPressed(["enter"])))
+			else if ((dialogIndex >= npc.Dialog.length-1) && (FlxG.keys.anyJustReleased(["enter"])))
 			{
 				terminateDialog();
+				callbackFunction();
 			}
 		}
 		super.update();
@@ -185,6 +201,7 @@ class DialogManager extends FlxSpriteGroup
 		remove(graphicFade);
 		remove(graphicText);
 		remove(graphicInput);
+		remove(graphicLabel);
 		
 		dialogIndex = 0;
 		npc = null;

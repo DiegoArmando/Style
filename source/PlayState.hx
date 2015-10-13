@@ -24,6 +24,7 @@ class PlayState extends FlxState
 	public var playerGroup : FlxGroup;
 	public var interactables : Array<Interactable>;
 	public var playerInDialog : Bool = false;
+	public var delayInteract : Bool = false;
 	
 	public var interactableIndex : Int = -1;
 	public var selectedInteractable : Int = -1;
@@ -164,13 +165,17 @@ class PlayState extends FlxState
 			selectedInteractable = -1;
 		}
 		
-		if (FlxG.keys.anyJustPressed(["space"]) && !playerInDialog)
+		if (FlxG.keys.anyJustReleased(["space"]) && !playerInDialog)
 		{
-			if (selectedInteractable >= 0 && selectedInteractable <= interactables.length)
+			if (selectedInteractable >= 0 && selectedInteractable <= interactables.length && !delayInteract)
 			{
 				//menu.stateMem = this;
 				//trace (selectedInteractable);
 				interactables[selectedInteractable].interact();
+			}
+			else if (delayInteract)
+			{
+				delayInteract = false;
 			}
 		}
 		

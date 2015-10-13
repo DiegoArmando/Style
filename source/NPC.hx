@@ -10,7 +10,7 @@ class NPC extends Interactable
 {
 	public var IsMultipart : Bool;
 	
-	public var name : String;
+	public var name : String = "def name";
 	public var Parent : Dynamic;
 	
 	public var Dialog : Array<String>;
