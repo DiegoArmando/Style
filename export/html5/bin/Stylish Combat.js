@@ -39,6 +39,8 @@ ApplicationMain.create = function() {
 	types.push("TEXT");
 	urls.push("assets/images/DemoRobot.png");
 	types.push("IMAGE");
+	urls.push("assets/images/dialogPanel.png");
+	types.push("IMAGE");
 	urls.push("assets/images/enemies/arm1.png");
 	types.push("IMAGE");
 	urls.push("assets/images/enemies/arm2.png");
@@ -159,7 +161,7 @@ ApplicationMain.init = function() {
 	if(total == 0) ApplicationMain.start();
 };
 ApplicationMain.main = function() {
-	ApplicationMain.config = { build : "133", company : "HaxeFlixel", file : "Stylish Combat", fps : 60, name : "Stylish Combat", orientation : "portrait", packageName : "com.example.myapp", version : "0.0.1", windows : [{ antialiasing : 0, background : 0, borderless : false, depthBuffer : false, display : 0, fullscreen : false, hardware : true, height : 768, parameters : "{}", resizable : true, stencilBuffer : true, title : "Stylish Combat", vsync : true, width : 1024, x : null, y : null}]};
+	ApplicationMain.config = { build : "143", company : "HaxeFlixel", file : "Stylish Combat", fps : 60, name : "Stylish Combat", orientation : "portrait", packageName : "com.example.myapp", version : "0.0.1", windows : [{ antialiasing : 0, background : 0, borderless : false, depthBuffer : false, display : 0, fullscreen : false, hardware : true, height : 768, parameters : "{}", resizable : true, stencilBuffer : true, title : "Stylish Combat", vsync : true, width : 1024, x : null, y : null}]};
 };
 ApplicationMain.start = function() {
 	var hasMain = false;
@@ -2470,6 +2472,9 @@ var DefaultAssetLibrary = function() {
 	this.path.set(id,id);
 	this.type.set(id,"TEXT");
 	id = "assets/images/DemoRobot.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "assets/images/dialogPanel.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
 	id = "assets/images/enemies/arm1.png";
@@ -4808,7 +4813,7 @@ var DialogManager = function(InPlayer,InState) {
 	this.player = InPlayer;
 	this.playState = InState;
 	this.graphicFade = new flixel_FlxSprite();
-	this.graphicFade.makeGraphic(1024,768,-2013265920);
+	this.graphicFade.loadGraphic("assets/images/dialogPanel.png",false,1024,256);
 	this.graphicFade.offset.set_x(0);
 	this.graphicFade.offset.set_y(0);
 	this.graphicFade.set_x(0);
@@ -4820,12 +4825,22 @@ var DialogManager = function(InPlayer,InState) {
 	this.graphicText.set_alignment("left");
 	this.graphicText.scrollFactor.set_x(0);
 	this.graphicText.scrollFactor.set_y(0);
-	this.graphicText.set_y(this.get_camera().height - 240);
+	this.graphicText.set_y(this.get_camera().height - 208);
 	this.graphicText.set_text("Default Text");
 	this.graphicText.set_width(992);
 	this.graphicText.set_color(-16777216);
 	this.graphicText.set_size(16);
 	this.graphicText.set_x(16);
+	this.graphicInput = new flixel_text_FlxText();
+	this.graphicInput.set_alignment("left");
+	this.graphicInput.scrollFactor.set_x(0);
+	this.graphicInput.scrollFactor.set_y(0);
+	this.graphicInput.set_y(this.get_camera().height - 240);
+	this.graphicInput.set_text("SPACE to Fight OR ENTER to Exit Dialog");
+	this.graphicInput.set_width(992);
+	this.graphicInput.set_color(-6741470);
+	this.graphicInput.set_size(16);
+	this.graphicInput.set_x(16);
 };
 $hxClasses["DialogManager"] = DialogManager;
 DialogManager.__name__ = ["DialogManager"];
@@ -4864,6 +4879,9 @@ DialogManager.prototype = $extend(flixel_group_FlxSpriteGroup.prototype,{
 			this.graphicPlayerHeadSprite = this.displayPart(this.player.HeadSprite,closeScale,this.player.HeadYOffset,128);
 			this.graphicPlayerTorsoSprite = this.displayPart(this.player.TorsoSprite,closeScale,this.player.TorsoYOffset,128);
 			this.graphicPlayerLegsSprite = this.displayPart(this.player.LegsSprite,closeScale,this.player.LegsYOffset,128);
+			this.graphicPlayerHeadSprite.scale.set_x(-closeScale);
+			this.graphicPlayerTorsoSprite.scale.set_x(-closeScale);
+			this.graphicPlayerLegsSprite.scale.set_x(-closeScale);
 			this.add(this.graphicBox);
 			this.graphicBox.scrollFactor.set_x(0);
 			this.graphicBox.scrollFactor.set_y(0);
@@ -4886,11 +4904,14 @@ DialogManager.prototype = $extend(flixel_group_FlxSpriteGroup.prototype,{
 		if(this.displayingDialog) {
 			if(flixel_FlxG.keys.checkKeyStatus(["space"],2)) {
 				this.dialogIndex++;
-				if(_$UInt_UInt_$Impl_$.gt(this.npc.Dialog.length,this.dialogIndex)) this.graphicText.set_text(this.npc.Dialog[this.dialogIndex]); else {
+				if(_$UInt_UInt_$Impl_$.gt(this.npc.Dialog.length,this.dialogIndex)) {
+					this.graphicText.set_text(this.npc.Dialog[this.dialogIndex]);
+					if(this.dialogIndex == this.npc.Dialog.length - 1) this.add(this.graphicInput);
+				} else {
 					this.terminateDialog();
 					this.callbackFunction();
 				}
-			}
+			} else if(_$UInt_UInt_$Impl_$.gte(this.dialogIndex,this.npc.Dialog.length - 1) && flixel_FlxG.keys.checkKeyStatus(["enter"],2)) this.terminateDialog();
 		}
 		flixel_group_FlxSpriteGroup.prototype.update.call(this);
 	}
@@ -4916,6 +4937,7 @@ DialogManager.prototype = $extend(flixel_group_FlxSpriteGroup.prototype,{
 		this.remove(this.graphicBox);
 		this.remove(this.graphicFade);
 		this.remove(this.graphicText);
+		this.remove(this.graphicInput);
 		this.dialogIndex = 0;
 		this.npc = null;
 		this.displayingDialog = false;
@@ -5806,7 +5828,7 @@ var Player = function(InX,InY,InParent) {
 	this.TorsoArray = [];
 	this.LegsArray = [];
 	this.HeadArray = [];
-	this.AddOutfit("assets/images/sprite_sheets/DemoRobot.png");
+	this.AddOutfit("assets/images/sprite_sheets/default.png");
 	this.AddOutfit("assets/images/sprite_sheets/minion_bot.png");
 	this.TorsoArray[this.TorsoIndex].revive();
 	this.LegsArray[this.LegsIndex].revive();
@@ -5842,10 +5864,16 @@ Player.prototype = $extend(flixel_group_FlxSpriteGroup.prototype,{
 		if(this.AllowMovement) {
 			if(flixel_FlxG.keys.checkKeyStatus(["right","d"],1)) {
 				xOffset += 1;
+				this.HeadSprite.scale.set_x(-1);
+				this.TorsoSprite.scale.set_x(-1);
+				this.LegsSprite.scale.set_x(-1);
 				IsRunning = true;
 			}
 			if(flixel_FlxG.keys.checkKeyStatus(["left","a"],1)) {
 				xOffset -= 1;
+				this.HeadSprite.scale.set_x(1);
+				this.TorsoSprite.scale.set_x(1);
+				this.LegsSprite.scale.set_x(1);
 				IsRunning = true;
 			}
 			if(flixel_FlxG.keys.checkKeyStatus(["up","w"],1)) {
@@ -5928,7 +5956,7 @@ Player.prototype = $extend(flixel_group_FlxSpriteGroup.prototype,{
 		if(NewPartIndex < 0 || NewPartIndex >= this.TorsoArray.length) return INVALID_OUTFIT;
 		if(PartType == 0) {
 			if(NewPartIndex == this.LegsIndex) return ALREADY_WEARING;
-			haxe_Log.trace("PartIndex: " + NewPartIndex,{ fileName : "Player.hx", lineNumber : 243, className : "Player", methodName : "SwitchOutfit"});
+			haxe_Log.trace("PartIndex: " + NewPartIndex,{ fileName : "Player.hx", lineNumber : 249, className : "Player", methodName : "SwitchOutfit"});
 			this.LegsSprite.kill();
 			this.LegsArray[NewPartIndex].revive();
 			this.LegsSprite = this.LegsArray[NewPartIndex];
@@ -6303,6 +6331,11 @@ _$UInt_UInt_$Impl_$.gt = function(a,b) {
 	var aNeg = a < 0;
 	var bNeg = b < 0;
 	if(aNeg != bNeg) return aNeg; else return a > b;
+};
+_$UInt_UInt_$Impl_$.gte = function(a,b) {
+	var aNeg = a < 0;
+	var bNeg = b < 0;
+	if(aNeg != bNeg) return aNeg; else return a >= b;
 };
 _$UInt_UInt_$Impl_$.toFloat = function(this1) {
 	var $int = this1;

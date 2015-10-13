@@ -32,6 +32,8 @@ class AssetData {
 			type.set ("assets/images/default_auto.txt", Reflect.field (AssetType, "text".toUpperCase ()));
 			path.set ("assets/images/DemoRobot.png", "assets/images/DemoRobot.png");
 			type.set ("assets/images/DemoRobot.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/dialogPanel.png", "assets/images/dialogPanel.png");
+			type.set ("assets/images/dialogPanel.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/enemies/arm1.png", "assets/images/enemies/arm1.png");
 			type.set ("assets/images/enemies/arm1.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/enemies/arm2.png", "assets/images/enemies/arm2.png");

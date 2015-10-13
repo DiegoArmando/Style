@@ -62,6 +62,10 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("assets/images/dialogPanel.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("assets/images/enemies/arm1.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -318,7 +322,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "133",
+			build: "143",
 			company: "HaxeFlixel",
 			file: "Stylish Combat",
 			fps: 60,

@@ -109,6 +109,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
 		Font.registerFont (__ASSET__assets_fonts_nokiafc22_ttf);
 		Font.registerFont (__ASSET__assets_fonts_arial_ttf);
 		
@@ -116,6 +117,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -707,6 +709,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_arial_ttf);
 		
@@ -730,6 +733,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/default_auto.txt", AssetType.TEXT);
 		path.set ("assets/images/DemoRobot.png", "assets/images/DemoRobot.png");
 		type.set ("assets/images/DemoRobot.png", AssetType.IMAGE);
+		path.set ("assets/images/dialogPanel.png", "assets/images/dialogPanel.png");
+		type.set ("assets/images/dialogPanel.png", AssetType.IMAGE);
 		path.set ("assets/images/enemies/arm1.png", "assets/images/enemies/arm1.png");
 		type.set ("assets/images/enemies/arm1.png", AssetType.IMAGE);
 		path.set ("assets/images/enemies/arm2.png", "assets/images/enemies/arm2.png");
@@ -851,6 +856,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
 		id = "assets/images/DemoRobot.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/dialogPanel.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/enemies/arm1.png";
@@ -1013,6 +1021,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -1843,11 +1852,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_arial_ttf extends null { }
 
 
 #elseif html5
+
 
 
 

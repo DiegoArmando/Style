@@ -52,14 +52,14 @@ class DialogManager extends FlxSpriteGroup
 		graphicFade.y = 0;
 		
 		graphicBox = new FlxSprite();
-		graphicBox.makeGraphic(1024, 256, 0xffffffff);
+		graphicBox.loadGraphic("assets/images/dialogPanel.png", false, 1024, 256);
 		graphicBox.y = camera.height - 256;
 		
 		graphicText = new FlxText();
 		graphicText.alignment = "left";
 		graphicText.scrollFactor.x = 0;
 		graphicText.scrollFactor.y = 0;
-		graphicText.y = camera.height - (256 - 48);
+		graphicText.y = camera.height - (256 - 32);
 		graphicText.text = "Default Text";
 		graphicText.width = 1024 - 32;
 		graphicText.color = 0xff000000;
@@ -70,7 +70,7 @@ class DialogManager extends FlxSpriteGroup
 		graphicInput.alignment = "left";
 		graphicInput.scrollFactor.x = 0;
 		graphicInput.scrollFactor.y = 0;
-		graphicInput.y = camera.height - (256 - 16);
+		graphicInput.y = camera.height - (256-4);
 		graphicInput.text = "SPACE to Fight OR ENTER to Exit Dialog";
 		graphicInput.width = 1024 - 32;
 		graphicInput.color = 0xff992222;

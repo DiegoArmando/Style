@@ -107,6 +107,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_arial_ttf);
 		
@@ -130,6 +131,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/default_auto.txt", AssetType.TEXT);
 		className.set ("assets/images/DemoRobot.png", __ASSET__assets_images_demorobot_png);
 		type.set ("assets/images/DemoRobot.png", AssetType.IMAGE);
+		className.set ("assets/images/dialogPanel.png", __ASSET__assets_images_dialogpanel_png);
+		type.set ("assets/images/dialogPanel.png", AssetType.IMAGE);
 		className.set ("assets/images/enemies/arm1.png", __ASSET__assets_images_enemies_arm1_png);
 		type.set ("assets/images/enemies/arm1.png", AssetType.IMAGE);
 		className.set ("assets/images/enemies/arm2.png", __ASSET__assets_images_enemies_arm2_png);
@@ -262,6 +265,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		type.set (id, AssetType.TEXT);
 		id = "assets/images/DemoRobot.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/dialogPanel.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
@@ -502,6 +509,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("assets/images/DemoRobot.png", __ASSET__assets_images_demorobot_png);
 		type.set ("assets/images/DemoRobot.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/dialogPanel.png", __ASSET__assets_images_dialogpanel_png);
+		type.set ("assets/images/dialogPanel.png", AssetType.IMAGE);
 		
 		className.set ("assets/images/enemies/arm1.png", __ASSET__assets_images_enemies_arm1_png);
 		type.set ("assets/images/enemies/arm1.png", AssetType.IMAGE);
@@ -1375,6 +1385,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind #if display private #end class __ASSET__assets_images_bars_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_default_auto_txt extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_images_demorobot_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_dialogpanel_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_enemies_arm1_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_enemies_arm2_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_enemies_channel1_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
@@ -1483,6 +1494,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
 @:keep #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends lime.text.Font { public function new () { super (); name = "Nokia Cellphone FC Small"; } } 
 @:keep #if display private #end class __ASSET__assets_fonts_arial_ttf extends lime.text.Font { public function new () { super (); name = "Arial"; } } 
 
@@ -1502,6 +1514,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:image("assets/images/bars.png") #if display private #end class __ASSET__assets_images_bars_png extends lime.graphics.Image {}
 @:file("assets/images/default_auto.txt") #if display private #end class __ASSET__assets_images_default_auto_txt extends lime.utils.ByteArray {}
 @:image("assets/images/DemoRobot.png") #if display private #end class __ASSET__assets_images_demorobot_png extends lime.graphics.Image {}
+@:image("assets/images/dialogPanel.png") #if display private #end class __ASSET__assets_images_dialogpanel_png extends lime.graphics.Image {}
 @:image("assets/images/enemies/arm1.png") #if display private #end class __ASSET__assets_images_enemies_arm1_png extends lime.graphics.Image {}
 @:image("assets/images/enemies/arm2.png") #if display private #end class __ASSET__assets_images_enemies_arm2_png extends lime.graphics.Image {}
 @:image("assets/images/enemies/channel1.png") #if display private #end class __ASSET__assets_images_enemies_channel1_png extends lime.graphics.Image {}
