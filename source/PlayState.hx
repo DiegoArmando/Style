@@ -23,9 +23,12 @@ class PlayState extends FlxState
 	public var player : Player;
 	public var playerGroup : FlxGroup;
 	public var interactables : Array<Interactable>;
+	public var playerInDialog : Bool = false;
 	
 	public var interactableIndex : Int = -1;
 	public var selectedInteractable : Int = -1;
+	
+	public var dialogHandler : DialogManager;
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
@@ -45,8 +48,6 @@ class PlayState extends FlxState
 		//load tile map
 		//add tile map
 		
-		
-
 		//trace("We are getting into create");
 		levelTiles = new FlxTilemap();
 		
@@ -66,15 +67,15 @@ class PlayState extends FlxState
 		/// The list of things in the environment that can be interacted with.
 		interactables = [];
 		/// Add something to it.
-		var Disk : Interactable = new Interactable(FlxG.width/2+64, FlxG.height/2);
+		var Disk : Interactable = new Interactable(FlxG.width/2+64, FlxG.height/2, "assets/images/TestAsset.png");
 		add (Disk);
 		interactables.push(Disk);
 		
-		var testEnemy : NPC = new NPC(FlxG.width / 2 - 200, FlxG.height / 2 - 200, true,"android");
+		var testEnemy : NPC = new NPC(1500, FlxG.height / 2 - 200, true,"android",this);
 		add(testEnemy);
 		interactables.push(testEnemy);
 		
-		var otherEnemy : NPC = new NPC(FlxG.width / 2 - 100, FlxG.height / 2 - 200, true,"mummy");
+		var otherEnemy : NPC = new NPC(1400, FlxG.height / 2 - 200, true,"mummy",this);
 		add(otherEnemy);
 		interactables.push(otherEnemy);
 		
@@ -84,6 +85,11 @@ class PlayState extends FlxState
 		playerGroup.add(player);
 		add (playerGroup);
 		FlxG.camera.follow(player.referenceSprite, FlxCamera.STYLE_TOPDOWN, 1);
+		
+		
+		/// Keep this at the bottom of the create function
+		dialogHandler = new DialogManager(player, this);
+		add (dialogHandler);
 	}
 	
 	/**
@@ -130,6 +136,7 @@ class PlayState extends FlxState
 					if (interactableIndex == itemsInRange)
 					{
 						itemSelected = true;
+						selectedInteractable = itemIndex;
 						item.setSubimage(2);
 					}
 					else
@@ -151,13 +158,13 @@ class PlayState extends FlxState
 			selectedInteractable = -1;
 		}
 		
-		if (FlxG.keys.anyJustPressed(["space"]))
+		if (FlxG.keys.anyJustPressed(["space"]) && !playerInDialog)
 		{
 			if (selectedInteractable >= 0 && selectedInteractable <= interactables.length)
 			{
 				//menu.stateMem = this;
+				trace (selectedInteractable);
 				interactables[selectedInteractable].interact();
-				
 			}
 		}
 		

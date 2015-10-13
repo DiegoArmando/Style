@@ -29,15 +29,15 @@ class Player extends FlxSpriteGroup
 	
 	private var TorsoArray : Array<FlxSprite>;
 	public var TorsoSprite : FlxSprite;
-	private var TorsoYOffset : Float;
+	public var TorsoYOffset : Float;
 	
 	private var LegsArray : Array<FlxSprite>;
 	public var LegsSprite: FlxSprite;
-	private var LegsYOffset : Float;
+	public var LegsYOffset : Float;
 	
 	private var HeadArray : Array <FlxSprite>;
 	public var HeadSprite: FlxSprite;
-	private var HeadYOffset : Float;
+	public var HeadYOffset : Float;
 	
 	public function new( InX : Float, InY : Float, InParent : Dynamic) 
 	{

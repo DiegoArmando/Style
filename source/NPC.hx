@@ -11,6 +11,9 @@ class NPC extends Interactable
 	public var IsMultipart : Bool;
 	
 	public var name : String;
+	public var Parent : Dynamic;
+	
+	public var Dialog : Array<String>;
 	
 	public var HeadSprite : FlxSprite;
 	public var HeadYOffset : Float;
@@ -23,10 +26,11 @@ class NPC extends Interactable
 	
 	private var name2 : String;
 	
-	public override function new(InX:Float, InY:Float, InIsMultipart : Bool, Path :String) 
+	public override function new(InX:Float, InY:Float, InIsMultipart : Bool, Path : String, InParent : Dynamic) 
 	{
-		super(InX, InY);
+		super(InX, InY, "");
 		name = Path;
+		Parent = InParent;
 		
 		setName2();
 		
@@ -75,7 +79,20 @@ class NPC extends Interactable
 		}
 	}
 	
+	public override function update()
+	{
+		
+		super.update();
+	}
+	
 	public override function interact()
+	{
+		trace("active dialog from "+this);
+		Parent.playerInDialog = true;
+		Parent.dialogHandler.startDialog(this);
+	}
+	
+	public function goToBattle()
 	{
 		StateManager.ENEMIES = ["", name2, ""];
 		FlxG.switchState(new Battle());
@@ -98,7 +115,6 @@ class NPC extends Interactable
 		OTHERNAME.set("lue1", "Lu-E");
 		OTHERNAME.set("prod1", "Prodder");
 		*/
-		 
 		
 		switch(name)
 		{

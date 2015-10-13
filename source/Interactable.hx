@@ -14,18 +14,20 @@ class Interactable extends FlxGroup
 	public var x : Float;
 	public var y : Float;
 	
-	public function new(InX : Float, InY : Float) 
+	public function new(InX : Float, InY : Float, InPath : String) 
 	{
 		super( );
 		
 		x = InX;
 		y = InY;
-		
-		Sprite = new FlxSprite(InX, InY);
-		Sprite.loadGraphic("assets/images/TestAsset.png", true, 64, 64);
-		Sprite.animation.add("Normal", [0,1,2], 0, false);
-		Sprite.animation.play("Normal");
-		add (Sprite);
+		if (InPath != "")
+		{
+			Sprite = new FlxSprite(InX, InY);
+			Sprite.loadGraphic(InPath, true, 64, 64);
+			Sprite.animation.add("Normal", [0,1,2], 0, false);
+			Sprite.animation.play("Normal");
+			add (Sprite);
+		}
 	}
 	
 	public function interact( )
