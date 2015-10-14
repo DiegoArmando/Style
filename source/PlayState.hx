@@ -83,7 +83,7 @@ class PlayState extends FlxState
 		
 		//levelTiles.auto = FlxTilemap.OFF;
 		
-		levelTiles.loadMap(Assets.getText("assets/images/Background4.csv"), "assets/images/TileMap3.png", TILE_WIDTH, TILE_HEIGHT, FlxTilemap.OFF);
+		levelTiles.loadMap(Assets.getText("assets/images/NoWalls.csv"), "assets/images/TileMap3.png", TILE_WIDTH, TILE_HEIGHT, FlxTilemap.OFF);
 		add(levelTiles);
 		
 		_highlightBox = new FlxSprite(0, 0);
@@ -111,14 +111,20 @@ class PlayState extends FlxState
 		add (Disk3);
 		interactables.push(Disk3);
 		*/
-		var testDude = new NPC(3000, 3000, true, "android", "Android", this);
-		testDude.Dialog.push("I am android.");
-		testDude.Dialog.push("From Google (TM), I have blessed the world with my platform.");
-		testDude.Dialog.push("Now I will bless you with my wisdom.");
-		testDude.Dialog.push("Do not ask which language is the worst,");
-		testDude.Dialog.push("For that language is Java!");
+		var testDude = new NPC(3000, 2800, true, "android", "Android", this);
+		testDude.Dialog.push("I know I look convincingly human, but don't be fooled!");
+		testDude.Dialog.push("It's just my spectacular human fashion sense.");
+		testDude.Dialog.push("I only had to cut off two arms to fit into this shirt. That was probably worth it.");
+		testDude.Dialog.push("Right?");
+		testDude.Dialog.push("...Right?");
 		add(testDude);
 		interactables.push(testDude);
+		
+		var mummy = new NPC(3050, 3900, true, "mummy", "Mummy", this);
+		mummy.Dialog.push("I may have been playing with human medical supplies.");
+		mummy.Dialog.push("I may have gotten stuck in gauze.");
+		add(mummy);
+		interactables.push(mummy);
 		
 		var testBoss = new NPC(3200, 3000, false, "fobio", "Fobio", this);
 		testBoss.Dialog.push("HUH, so does it happen to be the case that if you have no dialog, you can't enter battle?");
@@ -127,6 +133,71 @@ class PlayState extends FlxState
 		testBoss.Dialog.push("Oh look, a battle! (hopefully)");
 		add(testBoss);
 		interactables.push(testBoss);
+		
+		var lue = new NPC(3804, 3029, false, "lue", "Lu-E", this);
+		//lue.Sprite.setSize(0.5, 0.5);
+		lue.Dialog.push("I used to be a purse. I was very fashionable at the time.");
+		lue.Dialog.push("Humans gave purses sentience and were <i>surpised<i> when robots took over.");
+		lue.Dialog.push("Anyway, if you want to fight me I'll thwomp ya.");
+		add(lue);
+		interactables.push(lue);
+		
+		var handm = new NPC(3898, 3732, false, "hm", "Hertz", this);
+		handm.Dialog.push("How did you get out of your cell?");
+		handm.Dialog.push("And how did you get such a cute shirt?");
+		handm.Dialog.push("And are you ready to get those cute shoes clobbered right off of you?");
+		add(handm);
+		interactables.push(handm);
+		
+		var arm = new NPC(2295, 3397, false, "arm", "Arm-Many", this);
+		arm.Dialog.push("I love what you're doing with your torso, darling.");
+		arm.Dialog.push("Being covered in cloth, very chic right now, very hot.");
+		arm.Dialog.push("...why are you looking at me like that?");
+		add(arm);
+		interactables.push(arm);
+		
+		var chan = new NPC(1782, 3752, false, "channel", "Channel", this);
+		chan.Dialog.push("Oh my. You shouldn't be out of your cell at all.");
+		chan.Dialog.push("Or, now that I think about it,");
+		chan.Dialog.push("still attached to your legs.");
+		add(chan);
+		interactables.push(chan);
+		
+		var coco = new NPC(1186, 4019, false, "cocoa", "Cocoa", this);
+		coco.Dialog.push("Robots don't drink hot cocoa, you know.");
+		coco.Dialog.push("...Please take some cocoa. I have 30 years of backup.");
+		//coco.Dialog.push("(I don't even like cocoa)");
+		add(coco);
+		interactables.push(coco);
+		
+		var prod = new NPC(554, 3817, false, "prod", "Prodder", this);
+		prod.Dialog.push("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+		prod.Dialog.push("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+		prod.Dialog.push("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\nAAAAAAAAAAAAAAAAAAAAAAAA");
+		add(prod);
+		interactables.push(prod);
+		
+		var curv = new NPC(1183, 2801, false, "fobio", "Fobio", this);
+		curv.Dialog.push("I don't know how you made it past Fobio and the others, \nbut you'll never make it past me.");
+		curv.Dialog.push("And even if you make it past me, there's no way you'll get past Kitsch.");
+		curv.Dialog.push("To be honest, Kitsch scares me. But you don't!");
+		add(curv);
+		interactables.push(curv);
+		
+		var fridge = new NPC(1165, 695, false, "kitsch", "Kitschy", this);
+		fridge.Dialog.push("Ugh. It's one of you things.");
+		fridge.Dialog.push("I thought we locked you all up.");
+		fridge.Dialog.push("You can't even stay jalied correctly. Let's see if you can die correctly.");
+		add(fridge);
+		interactables.push(fridge);
+		
+		var mond = new NPC(667, 3222, true, "mondrian", "Mondrian", this);
+		mond.Dialog.push("...");
+		mond.Dialog.push("......");
+		mond.Dialog.push("Ellipse");
+		mond.Dialog.push("I wish Fabio was here.");
+		add(mond);
+		interactables.push(mond);
 		
 		// player ini
 		player = new Player(3300, 3300, this);

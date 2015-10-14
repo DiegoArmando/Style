@@ -136,10 +136,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+<<<<<<< HEAD
 		
 		
 		
 		
+=======
+>>>>>>> 4a3ce44f9c915501add639f3edc3907e21d92d5f
 		Font.registerFont (__ASSET__assets_fonts_nokiafc22_ttf);
 		Font.registerFont (__ASSET__assets_fonts_arial_ttf);
 		
@@ -227,10 +230,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
+<<<<<<< HEAD
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
+=======
+>>>>>>> 4a3ce44f9c915501add639f3edc3907e21d92d5f
 		
 		className.set ("assets/fonts/nokiafc22.ttf", __ASSET__assets_fonts_nokiafc22_ttf);
 		type.set ("assets/fonts/nokiafc22.ttf", AssetType.FONT);
@@ -796,10 +802,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+<<<<<<< HEAD
 		
 		
 		
 		
+=======
+>>>>>>> 4a3ce44f9c915501add639f3edc3907e21d92d5f
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_arial_ttf);
 		
@@ -903,6 +912,11 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/halo.png", AssetType.IMAGE);
 		path.set ("assets/images/images-go-here.txt", "assets/images/images-go-here.txt");
 		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
+<<<<<<< HEAD
+=======
+		path.set ("assets/images/NoWalls.csv", "assets/images/NoWalls.csv");
+		type.set ("assets/images/NoWalls.csv", AssetType.TEXT);
+>>>>>>> 4a3ce44f9c915501add639f3edc3907e21d92d5f
 		path.set ("assets/images/plant1.png", "assets/images/plant1.png");
 		type.set ("assets/images/plant1.png", AssetType.IMAGE);
 		path.set ("assets/images/plant2.png", "assets/images/plant2.png");
@@ -943,6 +957,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/titlepage.png", AssetType.IMAGE);
 		path.set ("assets/images/wall.png", "assets/images/wall.png");
 		type.set ("assets/images/wall.png", AssetType.IMAGE);
+<<<<<<< HEAD
 		path.set ("assets/music/BattleMusic.wav", "assets/music/BattleMusic.wav");
 		type.set ("assets/music/BattleMusic.wav", AssetType.SOUND);
 		path.set ("assets/music/BossMusic.wav", "assets/music/BossMusic.wav");
@@ -953,22 +968,36 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/music/MainMenu.wav", AssetType.SOUND);
 		path.set ("assets/music/MapMusic.wav", "assets/music/MapMusic.wav");
 		type.set ("assets/music/MapMusic.wav", AssetType.SOUND);
+=======
+		path.set ("assets/music/awake10_megaWall.wav", "assets/music/awake10_megaWall.wav");
+		type.set ("assets/music/awake10_megaWall.wav", AssetType.SOUND);
+		path.set ("assets/music/A_Journey_Awaits.wav", "assets/music/A_Journey_Awaits.wav");
+		type.set ("assets/music/A_Journey_Awaits.wav", AssetType.SOUND);
+		path.set ("assets/music/Culex.wav", "assets/music/Culex.wav");
+		type.set ("assets/music/Culex.wav", AssetType.SOUND);
+>>>>>>> 4a3ce44f9c915501add639f3edc3907e21d92d5f
 		path.set ("assets/music/music-goes-here.txt", "assets/music/music-goes-here.txt");
 		type.set ("assets/music/music-goes-here.txt", AssetType.TEXT);
 		path.set ("assets/sounds/attack.wav", "assets/sounds/attack.wav");
 		type.set ("assets/sounds/attack.wav", AssetType.SOUND);
 		path.set ("assets/sounds/battle_start.wav", "assets/sounds/battle_start.wav");
 		type.set ("assets/sounds/battle_start.wav", AssetType.SOUND);
+<<<<<<< HEAD
 		path.set ("assets/sounds/hallelujah.wav", "assets/sounds/hallelujah.wav");
 		type.set ("assets/sounds/hallelujah.wav", AssetType.SOUND);
+=======
+>>>>>>> 4a3ce44f9c915501add639f3edc3907e21d92d5f
 		path.set ("assets/sounds/menu.wav", "assets/sounds/menu.wav");
 		type.set ("assets/sounds/menu.wav", AssetType.SOUND);
 		path.set ("assets/sounds/menu2.wav", "assets/sounds/menu2.wav");
 		type.set ("assets/sounds/menu2.wav", AssetType.SOUND);
+<<<<<<< HEAD
 		path.set ("assets/sounds/oh_yeah.wav", "assets/sounds/oh_yeah.wav");
 		type.set ("assets/sounds/oh_yeah.wav", AssetType.SOUND);
 		path.set ("assets/sounds/robot_attack.wav", "assets/sounds/robot_attack.wav");
 		type.set ("assets/sounds/robot_attack.wav", AssetType.SOUND);
+=======
+>>>>>>> 4a3ce44f9c915501add639f3edc3907e21d92d5f
 		path.set ("assets/sounds/sounds-go-here.txt", "assets/sounds/sounds-go-here.txt");
 		type.set ("assets/sounds/sounds-go-here.txt", AssetType.TEXT);
 		path.set ("assets/sounds/beep.ogg", "assets/sounds/beep.ogg");
@@ -1128,6 +1157,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/images/images-go-here.txt";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
+<<<<<<< HEAD
+=======
+		id = "assets/images/NoWalls.csv";
+		path.set (id, id);
+		type.set (id, AssetType.TEXT);
+>>>>>>> 4a3ce44f9c915501add639f3edc3907e21d92d5f
 		id = "assets/images/plant1.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
@@ -1188,21 +1223,31 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/images/wall.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+<<<<<<< HEAD
 		id = "assets/music/BattleMusic.wav";
 		path.set (id, id);
 		type.set (id, AssetType.SOUND);
 		id = "assets/music/BossMusic.wav";
+=======
+		id = "assets/music/awake10_megaWall.wav";
+		path.set (id, id);
+		type.set (id, AssetType.SOUND);
+		id = "assets/music/A_Journey_Awaits.wav";
+>>>>>>> 4a3ce44f9c915501add639f3edc3907e21d92d5f
 		path.set (id, id);
 		type.set (id, AssetType.SOUND);
 		id = "assets/music/Culex.wav";
 		path.set (id, id);
 		type.set (id, AssetType.SOUND);
+<<<<<<< HEAD
 		id = "assets/music/MainMenu.wav";
 		path.set (id, id);
 		type.set (id, AssetType.SOUND);
 		id = "assets/music/MapMusic.wav";
 		path.set (id, id);
 		type.set (id, AssetType.SOUND);
+=======
+>>>>>>> 4a3ce44f9c915501add639f3edc3907e21d92d5f
 		id = "assets/music/music-goes-here.txt";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
@@ -1212,21 +1257,27 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/sounds/battle_start.wav";
 		path.set (id, id);
 		type.set (id, AssetType.SOUND);
+<<<<<<< HEAD
 		id = "assets/sounds/hallelujah.wav";
 		path.set (id, id);
 		type.set (id, AssetType.SOUND);
+=======
+>>>>>>> 4a3ce44f9c915501add639f3edc3907e21d92d5f
 		id = "assets/sounds/menu.wav";
 		path.set (id, id);
 		type.set (id, AssetType.SOUND);
 		id = "assets/sounds/menu2.wav";
 		path.set (id, id);
 		type.set (id, AssetType.SOUND);
+<<<<<<< HEAD
 		id = "assets/sounds/oh_yeah.wav";
 		path.set (id, id);
 		type.set (id, AssetType.SOUND);
 		id = "assets/sounds/robot_attack.wav";
 		path.set (id, id);
 		type.set (id, AssetType.SOUND);
+=======
+>>>>>>> 4a3ce44f9c915501add639f3edc3907e21d92d5f
 		id = "assets/sounds/sounds-go-here.txt";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
@@ -1341,10 +1392,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
+<<<<<<< HEAD
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
+=======
+>>>>>>> 4a3ce44f9c915501add639f3edc3907e21d92d5f
 		
 		className.set ("assets/fonts/nokiafc22.ttf", __ASSET__assets_fonts_nokiafc22_ttf);
 		type.set ("assets/fonts/nokiafc22.ttf", AssetType.FONT);
@@ -2149,10 +2203,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> 4a3ce44f9c915501add639f3edc3907e21d92d5f
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_arial_ttf extends null { }
 
@@ -2239,10 +2296,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> 4a3ce44f9c915501add639f3edc3907e21d92d5f
 @:keep #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends lime.text.Font { public function new () { super (); name = "Nokia Cellphone FC Small"; } } 
 @:keep #if display private #end class __ASSET__assets_fonts_arial_ttf extends lime.text.Font { public function new () { super (); name = "Arial"; } } 
 
