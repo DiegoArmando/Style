@@ -138,12 +138,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
-<<<<<<< HEAD
-=======
 		
 		
 		
->>>>>>> f1d8551e217b28e5a6ac31737d234c2b83c853b5
 		Font.registerFont (__ASSET__assets_fonts_nokiafc22_ttf);
 		Font.registerFont (__ASSET__assets_fonts_arial_ttf);
 		
@@ -233,12 +230,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
-<<<<<<< HEAD
-=======
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
->>>>>>> f1d8551e217b28e5a6ac31737d234c2b83c853b5
 		
 		className.set ("assets/fonts/nokiafc22.ttf", __ASSET__assets_fonts_nokiafc22_ttf);
 		type.set ("assets/fonts/nokiafc22.ttf", AssetType.FONT);
@@ -806,12 +800,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
-<<<<<<< HEAD
-=======
 		
 		
 		
->>>>>>> f1d8551e217b28e5a6ac31737d234c2b83c853b5
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_arial_ttf);
 		
@@ -1360,12 +1351,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
-<<<<<<< HEAD
-=======
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
->>>>>>> f1d8551e217b28e5a6ac31737d234c2b83c853b5
 		
 		className.set ("assets/fonts/nokiafc22.ttf", __ASSET__assets_fonts_nokiafc22_ttf);
 		type.set ("assets/fonts/nokiafc22.ttf", AssetType.FONT);
@@ -2172,12 +2160,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
-<<<<<<< HEAD
-=======
 
 
 
->>>>>>> f1d8551e217b28e5a6ac31737d234c2b83c853b5
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_arial_ttf extends null { }
 
@@ -2266,12 +2251,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
-<<<<<<< HEAD
-=======
 
 
 
->>>>>>> f1d8551e217b28e5a6ac31737d234c2b83c853b5
 @:keep #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends lime.text.Font { public function new () { super (); name = "Nokia Cellphone FC Small"; } } 
 @:keep #if display private #end class __ASSET__assets_fonts_arial_ttf extends lime.text.Font { public function new () { super (); name = "Arial"; } } 
 

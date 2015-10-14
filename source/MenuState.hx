@@ -31,6 +31,16 @@ class MenuState extends FlxState
 	
 	var menu_music:FlxSound;
 	
+	var textS1 : FlxText;
+	var textT : FlxText;
+	var textY : FlxText;
+	var textL : FlxText;
+	var textI : FlxText;
+	var textS2 : FlxText;
+	var textH : FlxText;
+	
+	var enterText : FlxText;
+	
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
@@ -42,19 +52,25 @@ class MenuState extends FlxState
 		text1.scale.set(5.0, 5.0);
 		text2 = new FlxText(FlxG.width / 2, FlxG.width / 2 - 50, 200, "but she didn't think it would be so"); 
 		text2.scale.set(5.0, 5.0);
-		var textS1 = new FlxText(text2.x + 40, text2.y + 50, 200, "S");
+		
+		enterText = new FlxText(text2.x, text2.y + 250, "[press enter]");
+		enterText.scale.set(5.0, 5.0);
+		enterText.alpha = 0.0;
+		add(enterText);
+		
+		textS1 = new FlxText(text2.x + 40, text2.y + 50, 200, "S");
 		textS1.color = FlxColor.RED;
-		var textT = new FlxText(textS1.x + 30, textS1.y, 200, "t");
+		textT = new FlxText(textS1.x + 30, textS1.y, 200, "t");
 		textT.color = FlxColor.GOLDENROD;
-		var textY = new FlxText(textS1.x + 60, textS1.y, 200, "y");
+		textY = new FlxText(textS1.x + 60, textS1.y, 200, "y");
 		textY.color = FlxColor.YELLOW;
-		var textL = new FlxText(textS1.x + 100, textS1.y, 200, "l");
+		textL = new FlxText(textS1.x + 100, textS1.y, 200, "l");
 		textL.color = FlxColor.GREEN;
-		var textI = new FlxText(textS1.x + 130, textS1.y, 200, "i");
+		textI = new FlxText(textS1.x + 130, textS1.y, 200, "i");
 		textI.color = FlxColor.BLUE;
-		var textS2 = new FlxText(textS1.x + 150, textS1.y, 200, "s");
+		textS2 = new FlxText(textS1.x + 150, textS1.y, 200, "s");
 		textS2.color = FlxColor.INDIGO;
-		var textH = new FlxText(textS1.x + 180, textS1.y, 200, "h");
+		textH = new FlxText(textS1.x + 180, textS1.y, 200, "h");
 		textH.color = FlxColor.PURPLE;
 		
 		textS1.scale.set(5.0, 5.0);
@@ -65,16 +81,26 @@ class MenuState extends FlxState
 		textS2.scale.set(5.0, 5.0);
 		textH.scale.set(5.0, 5.0);
 		
-		word.add(text1);
-		word.add(text2);
-		word.add(textS1);
-		word.add(textT);
-		word.add(textY);
-		word.add(textL);
-		word.add(textI);
-		word.add(textS2);
-		word.add(textH);
-		add(word);
+		textS1.alpha = 0.0;
+		textT.alpha = 0.0;
+		textY.alpha = 0.0;
+		textL.alpha = 0.0;
+		textI.alpha = 0.0;
+		textS2.alpha = 0.0;
+		textH.alpha = 0.0;
+		
+		add(text1);
+		add(text2);
+		add(textS1);
+		add(textT);
+		add(textY);
+		add(textL);
+		add(textI);
+		add(textS2);
+		add(textH);
+		//add(word);
+		
+		
 		//pointer = new FlxSprite();
 		//pointer.makeGraphic(10, 10, FlxColor.WHITE);
 		//pointer.x = option1Text.x - pointer.width - 10;
@@ -83,6 +109,7 @@ class MenuState extends FlxState
 		menu_music = new FlxSound();
 		menu_music.loadStream("assets/music/MainMenu.wav", true, false);
 		menu_music.play();
+		
 	
 		super.create();
 	}
@@ -101,6 +128,18 @@ class MenuState extends FlxState
 	 */
 	override public function update():Void
 	{
+		
+		text1.alpha -= 0.001;
+		text2.alpha -= 0.001;
+		
+		textS1.alpha += 0.002;
+		textT.alpha += 0.002;
+		textY.alpha += 0.002;
+		textL.alpha += 0.002;
+		textI.alpha += 0.002;
+		textS2.alpha += 0.002;
+		textH.alpha += 0.002;
+		enterText.alpha += 0.001;
 		
 		if (FlxG.keys.anyJustPressed(["SPACE", "ENTER"])) {
 			menu_music.stop();
