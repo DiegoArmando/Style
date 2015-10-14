@@ -25,6 +25,10 @@ class PlayState extends FlxState
 	public var interactableIndex : Int = -1;
 	public var selectedInteractable : Int = -1;
 	public var dialogHandler : DialogManager;
+	
+	var boss1dead : Bool = false;
+	var boss2dead : Bool = false;
+	var boss3dead : Bool = false;
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
@@ -40,7 +44,7 @@ class PlayState extends FlxState
 		//load tile map
 		//add tile map
 		
-		trace("We are getting into create");
+		//trace("We are getting into create");
 		levelTiles = new FlxTilemap();
 		
 		//levelTiles.auto = FlxTilemap.OFF;
@@ -81,6 +85,13 @@ class PlayState extends FlxState
 		add(testDude);
 		interactables.push(testDude);
 		
+		var fobio = new NPC(2909, 3422, false, "fabio", "Fobio", this);
+		fobio.Dialog.push(" Oh my, have you assembled an outfit to fight me?");
+		fobio.Dialog.push(" I won't say I'm impressed, but I'm certainly amused.");
+		fobio.Dialog.push(" Come at me then. Let's see if those fists of yours are good for anything\n besides making <i>terrible</i> outfits.");
+		interactables.push(fobio);
+		add(fobio);
+		
 		// player ini
 		player = new Player(3300, 3300, this);
 		FlxG.camera.follow(player.referenceSprite, FlxCamera.STYLE_TOPDOWN, 1);
@@ -109,6 +120,8 @@ class PlayState extends FlxState
 		var itemIndex : Int = 0;
 		var itemSelected : Bool = false;
 		var itemsInRange : Int = 0;
+		
+		
 		
 		
 		if (FlxG.keys.anyJustPressed(["tab"]))
@@ -170,6 +183,27 @@ class PlayState extends FlxState
 			{
 				delayInteract = false;
 			}
+			
+			if (StateManager.BOSSBOOLS[0] == true && boss1dead == false)
+				{
+					trace("Fobio is confirmed for dead in PLaystate");
+					boss1dead = true;
+					levelTiles.setTile(44, 51, 1);
+					levelTiles.setTile(44, 52, 1);
+					levelTiles.setTile(44, 53, 1);
+					
+				}
+				else
+				{
+					//trace("Fobio is still alive");
+				}
+				if (StateManager.BOSSBOOLS[1] == true && boss2dead == false)
+				{
+					boss2dead = true;
+					levelTiles.setTile(17, 41, 1);
+					levelTiles.setTile(18, 41, 1);
+					levelTiles.setTile(19, 41, 1);
+				}
 		}
 		
 		super.update();

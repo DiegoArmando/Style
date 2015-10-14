@@ -50,6 +50,7 @@ class Battle extends FlxSubState
 	var player_health:FlxText;
 	var player_style:FlxText;
 	static public var second_message:Array<String>;
+	public static var boss1Bool : Bool = false;
 	var relaying_damage:Bool;
 	
 	var fight_state = "Intro";
@@ -300,6 +301,7 @@ class Battle extends FlxSubState
 	}
 	
 	public function checkForVictory():Bool {
+		
 		return (temp_enemy_text1.text == "" && temp_enemy_text2.text == "" && temp_enemy_text3.text == "" && player.hp > 0);
 	}
 	
@@ -468,7 +470,7 @@ class Battle extends FlxSubState
 					case 3: message_text.text = "Escaped successfully";
 							actionBoxDisappear();
 							fight_state = "Victory";
-							close();
+							//close();
 							//FlxG.switchState(StateManager.play);
 				}
 			}
@@ -656,7 +658,7 @@ class Battle extends FlxSubState
 					//var newState : PlayState = new PlayState();
 					//newState.setPlayer(playerObject);
 					//FlxG.switchState(newState);
-					close();
+					//close();
 					return;
 				}
 				whose_turn += 1;
@@ -681,6 +683,7 @@ class Battle extends FlxSubState
 					}
 					message_text.text = "You cheated. You should feel bad.";
 					attacking = true;
+					return;
 				}
 				if (attack_order[whose_turn].name == "") {
 					whose_turn += 1;
@@ -702,12 +705,14 @@ class Battle extends FlxSubState
 		}
 		else if (fight_state == "Game Over") {
 			if (FlxG.keys.justPressed.ESCAPE) {
+				trace("Game over?");
 				close();
 				FlxG.sound.pause();
 			}
 		}
 		else if (fight_state == "Victory") {
 			if (FlxG.keys.justPressed.ESCAPE) {
+				
 				close();
 				FlxG.sound.pause();
 			}

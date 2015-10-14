@@ -78,6 +78,8 @@ class Player extends FlxSpriteGroup
 	
 	override public function update()
 	{
+		
+		//trace("Position: " + x + ", " + y);
 		var IsRunning : Bool = false;
 		
 		var xOffset : Float = 0;

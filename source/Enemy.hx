@@ -540,6 +540,21 @@ class Enemy extends FlxSpriteGroup
 		if (hp <= 0 && name != "Player") {
 			Battle.second_message.push(name + " has been defeated!");
 			visible = false;
+			
+			trace("Before conditional");
+			if (name == "Fobio A" || name == "Fobio B" || name == "Fobio C")
+			{
+				StateManager.BOSSBOOLS[0] = true;
+				trace("Player beat Fobio");
+				trace("Statemanager bool: " + StateManager.BOSSBOOLS[0]);
+			}
+			else
+			{
+				trace("Names: " + name);
+			}
+			trace("After conditional");
+			
+			
 			name = "";
 			health_text.visible = false;
 		}

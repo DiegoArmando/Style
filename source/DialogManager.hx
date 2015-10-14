@@ -98,7 +98,7 @@ class DialogManager extends FlxSpriteGroup
 	
 	public function startDialog( InNpc : NPC, InCallbackFunction : Dynamic )
 	{
-		trace("start dialog");
+		//trace("start dialog");
 		npc = InNpc;
 		if ( player!=null && npc!=null)
 		{
@@ -158,7 +158,7 @@ class DialogManager extends FlxSpriteGroup
 		{
 			if (FlxG.keys.anyJustPressed(["space"]))
 			{
-				trace("dialog SPACE");
+				//trace("dialog SPACE");
 				dialogIndex++;
 				if (dialogIndex < npc.Dialog.length)
 				{
@@ -170,7 +170,7 @@ class DialogManager extends FlxSpriteGroup
 				}
 				else
 				{
-					trace ("dialog SPACE terminate");
+					//trace ("dialog SPACE terminate");
 					terminateDialog();
 					playState.delayInteract = true;
 				}
