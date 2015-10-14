@@ -105,6 +105,14 @@ class NPC extends Interactable
 			StateManager.ENEMIES = [name+" A", name+" B", ""];
 		}
 		
+		if (name == "Minion") {
+			StateManager.ENEMIES = ["Minion A", "Minion B", "Minion C"];
+		}
+		
+		if (name == "Hertz and Mech 2") {
+			StateManager.ENEMIES = ["Hertz A", "Hertz B", "Hertz C"];
+		}
+		
 		InCombat = true;
 		
 		var battleState = new Battle();
