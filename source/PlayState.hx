@@ -283,7 +283,7 @@ class PlayState extends FlxState
 		}
 		
 		
-		/************************************
+		//************************************
 		inventory[0][0] = "assets/images/sprite_sheets/android.png";
 		inventory[0][1] = "assets/images/sprite_sheets/baymax.png";
 		inventory[0][2] = "assets/images/sprite_sheets/minion_bot.png";

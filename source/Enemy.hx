@@ -601,9 +601,9 @@ class Enemy extends FlxSpriteGroup
 			{
 				StateManager.BOSSBOOLS[1] = true;
 			}
-			else
+			else if(name == "Kitschy A" || name == "Kitschy B" || name == "Kitschy C")
 			{
-				//trace("Names: " + name);
+				FlxG.switchState(new EndState());
 			}
 			//trace("After conditional");
 			
