@@ -87,8 +87,6 @@ class Player extends FlxSpriteGroup
 		////trace("Position: " + x + ", " + y);
 		var IsRunning : Bool = false;
 		
-		//trace("PPos: " + x + ", " + y);
-		
 		var xOffset : Float = 0;
 		var yOffset : Float = 0;
 		
@@ -121,6 +119,11 @@ class Player extends FlxSpriteGroup
 				IsRunning = true;
 			}
 		}
+		
+		//if (IsRunning)
+		//{
+		//	trace("PPos: " + x + ", " + y);
+		//}
 		
 		/// Scale xOffset and yOffset
 		{

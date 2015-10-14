@@ -68,7 +68,7 @@ class PlayState extends FlxState
 		
 		//levelTiles.auto = FlxTilemap.OFF;
 		
-		levelTiles.loadMap(Assets.getText("assets/images/NoWalls.csv"), "assets/images/TileMap3.png", TILE_WIDTH, TILE_HEIGHT, FlxTilemap.OFF);
+		levelTiles.loadMap(Assets.getText("assets/images/Background4.csv"), "assets/images/TileMap3.png", TILE_WIDTH, TILE_HEIGHT, FlxTilemap.OFF);
 		add(levelTiles);
 		
 		_highlightBox = new FlxSprite(0, 0);
@@ -111,11 +111,10 @@ class PlayState extends FlxState
 		add(mummy);
 		interactables.push(mummy);
 		
-		var testBoss = new NPC(3200, 3000, false, "fobio", "Fobio", this);
-		testBoss.Dialog.push("HUH, so does it happen to be the case that if you have no dialog, you can't enter battle?");
-		testBoss.Dialog.push("Be afraid, for this text is not even showing up.");
-		testBoss.Dialog.push("Is it?");
-		testBoss.Dialog.push("Oh look, a battle! (hopefully)");
+		var testBoss = new NPC(2917, 3370, false, "fobio", "Fobio", this);
+		testBoss.Dialog.push("Oh my, have you assembled an outfit to fight me?");
+		testBoss.Dialog.push("I won't say I'm impressed, but I'm certainly amused.");
+		testBoss.Dialog.push("Come at me then. Lets see if those fists of yours are good for anything\n besides making <i>terrible</i> outfits.");
 		add(testBoss);
 		interactables.push(testBoss);
 		
@@ -162,7 +161,7 @@ class PlayState extends FlxState
 		add(prod);
 		interactables.push(prod);
 		
-		var curv = new NPC(1183, 2801, false, "fobio", "Fobio", this);
+		var curv = new NPC(1183, 2801, false, "curvea", "Curve-A", this);
 		curv.Dialog.push("I don't know how you made it past Fobio and the others, \nbut you'll never make it past me.");
 		curv.Dialog.push("And even if you make it past me, there's no way you'll get past Kitsch.");
 		curv.Dialog.push("To be honest, Kitsch scares me. But you don't!");
@@ -269,7 +268,6 @@ class PlayState extends FlxState
 			levelTiles.setTile(44, 51, 1);
 			levelTiles.setTile(44, 52, 1);
 			levelTiles.setTile(44, 53, 1);
-			
 		}
 		else
 		{
@@ -350,7 +348,7 @@ class PlayState extends FlxState
 			selectedInteractable = -1;
 		}
 		
-		if (FlxG.keys.anyJustReleased(["space"]) && !playerInDialog)
+		if (FlxG.keys.anyJustPressed(["space"]) && !playerInDialog)
 		{
 			if (selectedInteractable >= 0 && selectedInteractable <= interactables.length && !delayInteract)
 			{
