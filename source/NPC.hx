@@ -106,6 +106,7 @@ class NPC extends Interactable
 		
 		//trace("Player members in battlestate before state switch: " + battleState.playerObject.members);
 		//parent.remove(parent.
+		Parent.map_music.stop();
 		Parent.openSubState(battleState);
 		//openSubState(battleState);
 
