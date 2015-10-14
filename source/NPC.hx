@@ -89,7 +89,7 @@ class NPC extends Interactable
 		super.update();
 	}
 	
-	public override function interact()
+	public override function interact(playerArg: Player)
 	{
 		//trace("active dialog from "+this);
 		Parent.playerInDialog = true;

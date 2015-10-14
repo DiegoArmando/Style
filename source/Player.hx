@@ -82,29 +82,8 @@ class Player extends FlxSpriteGroup
 		
 		var xOffset : Float = 0;
 		var yOffset : Float = 0;
-<<<<<<< HEAD
 		
 		if (AllowMovement)
-=======
-		//trace("player is updating");
-		if (FlxG.keys.anyPressed(["right","d"]))
-		{
-			
-			xOffset += 1;
-			IsRunning = true;
-		}
-		if (FlxG.keys.anyPressed(["left","a"]))
-		{
-			xOffset += -1;
-			IsRunning = true;
-		}
-		if (FlxG.keys.anyPressed(["up","w"]))
-		{
-			yOffset += -1;
-			IsRunning = true;
-		}
-		if (FlxG.keys.anyPressed(["down","s"]))
->>>>>>> Combat_Initiation
 		{
 			if (FlxG.keys.anyPressed(["right","d"]))
 			{

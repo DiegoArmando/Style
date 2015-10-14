@@ -7,36 +7,21 @@ import flixel.FlxState;
 import flixel.group.FlxGroup;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
-import flixel.FlxObject;
 import flixel.util.FlxMath;
 import flixel.tile.FlxTilemap;
 import openfl.Assets;
 import flixel.util.FlxColor;
 import flixel.util.FlxSpriteUtil;
 import flixel.FlxCamera;
-import flixel.util.FlxRandom;
-import flixel.FlxSubState;
-
-
 /**
  * A FlxState which can be used for the actual gameplay.
  */
 class PlayState extends FlxState
 {
-
 	public var player : Player;
-	public var playerGroup : FlxGroup;
-
 	public var interactables : Array<Interactable>;
-	public var playerInDialog : Bool = false;
-	public var delayInteract : Bool = false;
-	
-	public var IDNUM : Int;
-	
 	public var interactableIndex : Int = -1;
 	public var selectedInteractable : Int = -1;
-	
-	public var dialogHandler : DialogManager;
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
@@ -49,20 +34,15 @@ class PlayState extends FlxState
 	override public function create():Void
 	{
 		super.create();
-
-		IDNUM = FlxRandom.int();
-		//trace("PLayer Position after create: " + player.x + ", " + player.y);
-
+		//load tile map
+		//add tile map
 		
-		//trace("We are getting into create");
+		trace("We are getting into create");
 		levelTiles = new FlxTilemap();
 		
 		//levelTiles.auto = FlxTilemap.OFF;
 		
 		levelTiles.loadMap(Assets.getText("assets/images/Background3.csv"), "assets/images/TileMap3.png", TILE_WIDTH, TILE_HEIGHT, FlxTilemap.OFF);
-		levelTiles.setTileProperties(1, FlxObject.NONE);
-		levelTiles.setTileProperties(2, FlxObject.ANY);
-		levelTiles.setTileProperties(3, FlxObject.ANY);
 		add(levelTiles);
 		
 		_highlightBox = new FlxSprite(0, 0);
@@ -73,38 +53,32 @@ class PlayState extends FlxState
 		/// The list of things in the environment that can be interacted with.
 		interactables = [];
 		/// Add something to it.
-		var Disk : Interactable = new Interactable(FlxG.width/2+64, FlxG.height/2, "assets/images/TestAsset.png");
+		/*
+		var Disk : Interactable = new Interactable(FlxG.width/2+64, FlxG.height/2, "assets/);
 		add (Disk);
 		interactables.push(Disk);
 		
-
-		var testEnemy : NPC = new NPC(1500, FlxG.height / 2 - 200, true, "android", "Android", this);
-		testEnemy.Dialog.push("Do not argue about which language is the worst!");
-		testEnemy.Dialog.push("For that language is Java.");
-		testEnemy.Dialog.push("I would know.");
-		add(testEnemy);
-		interactables.push(testEnemy);
+		var Disk1 : Interactable = new Interactable(FlxG.width/2+64, FlxG.height/2+128);
+		add (Disk1);
+		interactables.push(Disk1);
 		
-		var otherEnemy : NPC = new NPC(1400, FlxG.height / 2 - 200,false,"arm", "Arm-Many",this);
-		otherEnemy.Dialog.push("Did you know King Tut was probably murdered!");
-		otherEnemy.Dialog.push("It was probably me.");
-		otherEnemy.Dialog.push("I would know.");
-
-		add(otherEnemy);
-		interactables.push(otherEnemy);
+		var Disk2 : Interactable = new Interactable(FlxG.width/2, FlxG.height/2+128);
+		add (Disk2);
+		interactables.push(Disk2);
 		
-
-		playerGroup = new FlxGroup();
+		var Disk3 : Interactable = new Interactable(FlxG.width/2, FlxG.height/2);
+		add (Disk3);
+		interactables.push(Disk3);
+		*/
+		var testDude = new NPC(300, 300, true, "android", "android", this);
+		add(testDude);
+		interactables.push(testDude);
+		
+		// player ini
 		player = new Player(FlxG.width/2, FlxG.height/2, this);
-		playerGroup.add(player);
-		add (playerGroup);
-
+		add( player);
+		
 		FlxG.camera.follow(player.referenceSprite, FlxCamera.STYLE_TOPDOWN, 1);
-		
-		
-		/// Keep this at the bottom of the create function
-		dialogHandler = new DialogManager(player, this);
-		add (dialogHandler);
 	}
 	
 	/**
@@ -115,17 +89,16 @@ class PlayState extends FlxState
 	{
 		super.destroy();
 	}
+
 	/**
 	 * Function that is called once every frame.
 	 */
 	override public function update():Void
 	{
-
-		super.update();
-
 		var itemIndex : Int = 0;
 		var itemSelected : Bool = false;
 		var itemsInRange : Int = 0;
+		
 		
 		if (FlxG.keys.anyJustPressed(["tab"]))
 		{
@@ -135,7 +108,6 @@ class PlayState extends FlxState
 		/// Check to see if there are any objects within range that can be activated
 		for (item in interactables)
 		{
-			//trace(itemIndex);
 			/// Check if this item is in range.
 			if ((item.x > player.x - 96) && (item.x < player.x + 96) &&
 			    (item.y > player.y - 128) && (item.y < player.y + 64))
@@ -153,7 +125,6 @@ class PlayState extends FlxState
 					if (interactableIndex == itemsInRange)
 					{
 						itemSelected = true;
-						selectedInteractable = itemIndex;
 						item.setSubimage(2);
 					}
 					else
@@ -175,22 +146,14 @@ class PlayState extends FlxState
 			selectedInteractable = -1;
 		}
 		
-		if (FlxG.keys.anyJustReleased(["space"]) && !playerInDialog)
+		if (FlxG.keys.anyJustPressed(["space"]))
 		{
-			if (selectedInteractable >= 0 && selectedInteractable <= interactables.length && !delayInteract)
+			if (selectedInteractable >= 0 && selectedInteractable <= interactables.length)
 			{
-
-				//menu.stateMem = this;
-				//trace (selectedInteractable);
-				interactables[selectedInteractable].interact();
-			}
-			else if (delayInteract)
-			{
-				delayInteract = false;
+				interactables[selectedInteractable].interact(player);
 			}
 		}
 		
-		
+		super.update();
 	}	
-
 }
