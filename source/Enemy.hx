@@ -156,7 +156,7 @@ class Enemy extends FlxSpriteGroup
 			{
 				setNPCSpritesToSheet(20, 1, Position, Total_Number, "baymax");
 			}
-			else if (Name.split(" ")[0] == "Kirimsame Marisa")
+			else if (Name.split(" ")[0] == "Kirimsame")
 			{
 				setNPCSpritesToSheet(20, 1, Position, Total_Number, "kirimsame_marisa");
 			}
@@ -442,6 +442,17 @@ class Enemy extends FlxSpriteGroup
 			else {
 				PlayerObject.damage(2, ["Enrage"], this);
 				return name + " throws a lot of insults, and a rock!";
+			}
+		}
+		else {
+			random_number = Math.random() * 100;
+			if (random_number < 50) {
+				PlayerObject.damage(1, [], this);
+				return name + " shocks you with their fashion!";
+			}
+			else {
+				PlayerObject.damage(2, [], this);
+				return name + " bashes you relentlessly!";
 			}
 		}
 		return "Error...";
