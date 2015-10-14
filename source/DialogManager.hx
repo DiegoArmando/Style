@@ -169,12 +169,8 @@ class DialogManager extends FlxSpriteGroup
 		{
 			if (FlxG.keys.anyJustPressed(["space"]))
 			{
-<<<<<<< HEAD
 				menu_sound.play(true);
 				trace("dialog SPACE");
-=======
-				////trace("dialog SPACE");
->>>>>>> 25510e3684e9565c4c4f3703ae1854ee270f2e30
 				dialogIndex++;
 				if (dialogIndex < npc.Dialog.length)
 				{
