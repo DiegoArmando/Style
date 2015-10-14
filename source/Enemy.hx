@@ -46,6 +46,8 @@ class Enemy extends FlxSpriteGroup
 	public var HeadSprite : FlxSprite;
 	
 	var attack_sound:FlxSound;
+	var robot_sound:FlxSound;
+	var hallelujah:FlxSound;
 	
 	public function new(Position:Int, Total_Number:Int, Name:String, Parent:Battle) 
 	{
@@ -55,6 +57,12 @@ class Enemy extends FlxSpriteGroup
 		attack_sound = new FlxSound();
 		attack_sound.loadStream("assets/sounds/attack.wav", false, false);
 		
+		robot_sound = new FlxSound();
+		robot_sound.loadStream("assets/sounds/robot_attack.wav", false, false);
+		
+		hallelujah = new FlxSound();
+		hallelujah.loadStream("assets/sounds/hallelujah.wav", false, false);
+
 		var EnemyIsComplex : Bool = false;
 		
 		sprite = new FlxSprite();
@@ -317,15 +325,16 @@ class Enemy extends FlxSpriteGroup
 				mp -= 3;
 				magic_text.text = mp + "";
 				heal();
-				return "Player takes the turn to heal herself!";
+				return "You touch your make-up up carefully.";
 			}
 			else if (AttackName == "Poison") {
 				mp -= 2;
 				magic_text.text = mp + "";
 				Target.damage(0, ["Poison"], this);
-				return "Player envelops " + Target.name + " in a poisonous gas!";
+				return "You throw make-up remover at " + Target.name + "!";
 			}
 			else if (AttackName == "God") {
+				hallelujah.play(true);
 				Target.damage(9001, [], this);
 				return "You introduce a seg fault into their code!";
 			}
@@ -516,6 +525,9 @@ class Enemy extends FlxSpriteGroup
 		}
 		else if (Damage != 0){
 			Battle.second_message.push(name + " took " + Damage + " damage from " + Attacker.name + "!");
+			if (name == "Player") {
+				robot_sound.play(true);
+			}
 		}
 		hit = true;
 		health_text.text = hp + "";

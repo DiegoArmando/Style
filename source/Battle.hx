@@ -103,6 +103,7 @@ class Battle extends FlxSubState
 		
 		if (enemy1.name.split(" ")[0] == "Fobio" || enemy2.name.split(" ")[0] == "Fobio" || enemy3.name.split(" ")[0] == "Fobio") {
 			battle_music.loadStream("assets/music/BossMusic.wav", true, false);
+			battle_sound.loadStream("assets/sounds/oh_yeah.wav", false, false);
 		}
 		
 		else if (enemy1.name.split(" ")[0] == "Kitschy" || enemy2.name.split(" ")[0] == "Kitschy" || enemy3.name.split(" ")[0] == "Kitschy") {
@@ -116,6 +117,8 @@ class Battle extends FlxSubState
 		else {
 			battle_music.loadStream("assets/music/BattleMusic.wav", true, false);
 		}
+		
+		battle_sound.play(true);
 		
 		battle_music.play(true);
 		
@@ -289,8 +292,6 @@ class Battle extends FlxSubState
 		pointer.scrollFactor.set(0, 0);
 		
 		second_message = new Array<String>();
-		
-		battle_sound.play(true);
 		
 		super.create();
 	}
