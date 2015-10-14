@@ -89,7 +89,7 @@ class DialogManager extends FlxSpriteGroup
 		graphicInput.scrollFactor.x = 0;
 		graphicInput.scrollFactor.y = 0;
 		graphicInput.y = camera.height - (256-4);
-		graphicInput.text = "SPACE to Fight OR ENTER to Exit Dialog";
+		graphicInput.text = "ENTER to Fight OR SPACE to Exit Dialog";
 		graphicInput.width = 1024 - 32;
 		graphicInput.color = 0xff992222;
 		graphicInput.size = 16;

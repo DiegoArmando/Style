@@ -56,10 +56,33 @@ class Enemy extends FlxSpriteGroup
 		if (Name == "") {
 			return;
 		}
-		else if (Name == "Player"){
-			sprite.makeGraphic(64, 128, FlxColor.WHITE);
+		else if (Name == "Player") {
+			
+			var LegsYOffset  = -64;
+			var TorsoYOffset = -64*2;
+			var HeadYOffset  = -64 * 3 + 64*.25;
+			
+			EnemyIsComplex = true;
+			sprite.kill();
+			
 			this.x = FlxG.width / 3;
 			this.y = FlxG.height / 2;
+			
+			LegsSprite = Parent.playerObject.LegsSprite.clone();
+			LegsSprite.x = 0;
+			LegsSprite.y = LegsYOffset;
+			add(LegsSprite );
+			
+			TorsoSprite = Parent.playerObject.TorsoSprite.clone();
+			TorsoSprite.x = 0;
+			TorsoSprite.y = TorsoYOffset;
+			add(TorsoSprite );
+			
+			HeadSprite = Parent.playerObject.HeadSprite.clone();
+			HeadSprite.x = 0;
+			HeadSprite.y = HeadYOffset;
+			add(HeadSprite);
+			
 			hp = hpmax = 20;
 			speed = 2;
 			mp = 10;

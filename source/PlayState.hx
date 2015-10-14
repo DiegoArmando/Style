@@ -74,12 +74,21 @@ class PlayState extends FlxState
 		interactables.push(Disk3);
 		*/
 		var testDude = new NPC(3000, 3000, true, "android", "Android", this);
-		testDude.Dialog.push("HUH, so does it happen to be the case that if you have no dialog, you can't enter battle?");
-		testDude.Dialog.push("Be afraid, for this text is not even showing up.");
-		testDude.Dialog.push("Is it?");
-		testDude.Dialog.push("Oh look, a battle! (hopefully)");
+		testDude.Dialog.push("I am android.");
+		testDude.Dialog.push("From Google (TM), I have blessed the world with my platform.");
+		testDude.Dialog.push("Now I will bless you with my wisdom.");
+		testDude.Dialog.push("Do not ask which language is the worst,");
+		testDude.Dialog.push("For that language is Java!");
 		add(testDude);
 		interactables.push(testDude);
+		
+		var testBoss = new NPC(3200, 3000, false, "fobio", "Fobio", this);
+		testBoss.Dialog.push("HUH, so does it happen to be the case that if you have no dialog, you can't enter battle?");
+		testBoss.Dialog.push("Be afraid, for this text is not even showing up.");
+		testBoss.Dialog.push("Is it?");
+		testBoss.Dialog.push("Oh look, a battle! (hopefully)");
+		add(testBoss);
+		interactables.push(testBoss);
 		
 		// player ini
 		player = new Player(3300, 3300, this);
