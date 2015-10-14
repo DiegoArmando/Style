@@ -101,6 +101,7 @@ class NPC extends Interactable
 		StateManager.ENEMIES = ["", name+" A", ""];
 		
 		var battleState = new Battle();
+		battleState.playerObject = Parent.player;
 		//battleState.setPlayer(playerArg);
 		
 		//trace("Player members in battlestate before state switch: " + battleState.playerObject.members);
