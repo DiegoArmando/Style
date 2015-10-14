@@ -20,6 +20,7 @@ class DialogManager extends FlxSpriteGroup
 	public var npc : NPC;
 	public var displayingDialog : Bool = false;
 	public var dialogIndex : UInt = 0;
+	public var delayStart : Bool = false;
 	
 	public var graphicFade : FlxSprite;
 	public var graphicBox : FlxSprite;
@@ -108,6 +109,8 @@ class DialogManager extends FlxSpriteGroup
 		_hud.visible = false;
 		menu_sound.play(true);
 		trace("start dialog");
+		dialogIndex = 0;
+		delayStart = true;
 
 		npc = InNpc;
 		if ( player!=null && npc!=null)

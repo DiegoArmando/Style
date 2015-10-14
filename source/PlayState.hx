@@ -352,17 +352,16 @@ class PlayState extends FlxState
 		{
 			if (selectedInteractable >= 0 && selectedInteractable <= interactables.length && !delayInteract)
 			{
-				//menu.stateMem = this;
-				//////trace (selectedInteractable);
+				//menu.stateMem = this
+				trace ("interact");
 				interactables[selectedInteractable].interact(player);
 			}
 			else if (delayInteract)
 			{
 				delayInteract = false;
 			}
-			
-			
 		}
+		
 		left_click_HUD();
 		right_click_HUD();
 		_hud.updateHUD(inventory, inventory_items, headI, headJ, bodyI, bodyJ, legsI, legsJ);
