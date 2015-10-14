@@ -80,6 +80,8 @@ class Player extends FlxSpriteGroup
 	{
 		var IsRunning : Bool = false;
 		
+		trace("PPos: " + x + ", " + y);
+		
 		var xOffset : Float = 0;
 		var yOffset : Float = 0;
 		
