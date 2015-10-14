@@ -26,6 +26,8 @@ class AssetData {
 			type.set ("assets/images/Background2.csv", Reflect.field (AssetType, "text".toUpperCase ()));
 			path.set ("assets/images/Background3.csv", "assets/images/Background3.csv");
 			type.set ("assets/images/Background3.csv", Reflect.field (AssetType, "text".toUpperCase ()));
+			path.set ("assets/images/Background4.csv", "assets/images/Background4.csv");
+			type.set ("assets/images/Background4.csv", Reflect.field (AssetType, "text".toUpperCase ()));
 			path.set ("assets/images/bars.png", "assets/images/bars.png");
 			type.set ("assets/images/bars.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/battlebackground.png", "assets/images/battlebackground.png");

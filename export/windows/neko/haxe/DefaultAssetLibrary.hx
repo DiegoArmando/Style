@@ -127,6 +127,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+<<<<<<< HEAD
+=======
+		
+>>>>>>> 96ad13618c50495f69e64dd6c81101d70137ed2f
 		Font.registerFont (__ASSET__assets_fonts_nokiafc22_ttf);
 		Font.registerFont (__ASSET__assets_fonts_arial_ttf);
 		
@@ -205,6 +209,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
+<<<<<<< HEAD
+=======
+		useManifest = true;
+>>>>>>> 96ad13618c50495f69e64dd6c81101d70137ed2f
 		
 		className.set ("assets/fonts/nokiafc22.ttf", __ASSET__assets_fonts_nokiafc22_ttf);
 		type.set ("assets/fonts/nokiafc22.ttf", AssetType.FONT);
@@ -761,6 +769,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+<<<<<<< HEAD
+=======
+		
+>>>>>>> 96ad13618c50495f69e64dd6c81101d70137ed2f
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_arial_ttf);
 		
@@ -778,6 +790,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/Background2.csv", AssetType.TEXT);
 		path.set ("assets/images/Background3.csv", "assets/images/Background3.csv");
 		type.set ("assets/images/Background3.csv", AssetType.TEXT);
+		path.set ("assets/images/Background4.csv", "assets/images/Background4.csv");
+		type.set ("assets/images/Background4.csv", AssetType.TEXT);
 		path.set ("assets/images/bars.png", "assets/images/bars.png");
 		type.set ("assets/images/bars.png", AssetType.IMAGE);
 		path.set ("assets/images/battlebackground.png", "assets/images/battlebackground.png");
@@ -932,6 +946,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
 		id = "assets/images/Background3.csv";
+		path.set (id, id);
+		type.set (id, AssetType.TEXT);
+		id = "assets/images/Background4.csv";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
 		id = "assets/images/bars.png";
@@ -1228,6 +1245,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
+<<<<<<< HEAD
+=======
+		useManifest = true;
+>>>>>>> 96ad13618c50495f69e64dd6c81101d70137ed2f
 		
 		className.set ("assets/fonts/nokiafc22.ttf", __ASSET__assets_fonts_nokiafc22_ttf);
 		type.set ("assets/fonts/nokiafc22.ttf", AssetType.FONT);
@@ -2023,6 +2044,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 96ad13618c50495f69e64dd6c81101d70137ed2f
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_arial_ttf extends null { }
 
@@ -2100,6 +2125,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 96ad13618c50495f69e64dd6c81101d70137ed2f
 @:keep #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends lime.text.Font { public function new () { super (); name = "Nokia Cellphone FC Small"; } } 
 @:keep #if display private #end class __ASSET__assets_fonts_arial_ttf extends lime.text.Font { public function new () { super (); name = "Arial"; } } 
 

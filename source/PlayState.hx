@@ -45,7 +45,7 @@ class PlayState extends FlxState
 		
 		//levelTiles.auto = FlxTilemap.OFF;
 		
-		levelTiles.loadMap(Assets.getText("assets/images/Background3.csv"), "assets/images/TileMap3.png", TILE_WIDTH, TILE_HEIGHT, FlxTilemap.OFF);
+		levelTiles.loadMap(Assets.getText("assets/images/Background4.csv"), "assets/images/TileMap3.png", TILE_WIDTH, TILE_HEIGHT, FlxTilemap.OFF);
 		add(levelTiles);
 		
 		_highlightBox = new FlxSprite(0, 0);
@@ -73,7 +73,7 @@ class PlayState extends FlxState
 		add (Disk3);
 		interactables.push(Disk3);
 		*/
-		var testDude = new NPC(300, 300, true, "android", "Android", this);
+		var testDude = new NPC(3000, 3000, true, "android", "Android", this);
 		testDude.Dialog.push("HUH, so does it happen to be the case that if you have no dialog, you can't enter battle?");
 		testDude.Dialog.push("Be afraid, for this text is not even showing up.");
 		testDude.Dialog.push("Is it?");
@@ -82,7 +82,7 @@ class PlayState extends FlxState
 		interactables.push(testDude);
 		
 		// player ini
-		player = new Player(FlxG.width/2, FlxG.height/2, this);
+		player = new Player(3300, 3300, this);
 		FlxG.camera.follow(player.referenceSprite, FlxCamera.STYLE_TOPDOWN, 1);
 
 		add( player);
