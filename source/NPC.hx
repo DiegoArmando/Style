@@ -89,7 +89,7 @@ class NPC extends Interactable
 		super.update();
 	}
 	
-	public override function interact(playerArg: Player)
+	public override function interact(playerArg : Player)
 	{
 		//trace("active dialog from "+this);
 		Parent.playerInDialog = true;
@@ -105,8 +105,7 @@ class NPC extends Interactable
 		
 		//trace("Player members in battlestate before state switch: " + battleState.playerObject.members);
 		//parent.remove(parent.
-		
-		parent.openSubState(battleState);
+		Parent.openSubState(battleState);
 		//openSubState(battleState);
 
 	}
