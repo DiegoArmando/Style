@@ -104,12 +104,9 @@ class DialogManager extends FlxSpriteGroup
 	
 	public function startDialog( InNpc : NPC, InCallbackFunction : Dynamic )
 	{
-<<<<<<< HEAD
 		menu_sound.play(true);
 		trace("start dialog");
-=======
-		////trace("start dialog");
->>>>>>> 25510e3684e9565c4c4f3703ae1854ee270f2e30
+
 		npc = InNpc;
 		if ( player!=null && npc!=null)
 		{
