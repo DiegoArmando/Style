@@ -7,14 +7,16 @@ import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
 import flixel.util.FlxColor;
+import flixel.FlxSubState;
 
 /**
  * A FlxState which can be used for the actual gameplay.
  */
-class Battle extends FlxState
+class Battle extends FlxSubState
 {
 	
 	var player:Enemy;
+	public var playerObject : Player;
 	var enemy1:Enemy;
 	var enemy2:Enemy;
 	var enemy3:Enemy;
@@ -58,10 +60,16 @@ class Battle extends FlxState
 	 */
 	override public function create():Void
 	{
+		//trace("Player members in battle scene: " + playerObject.members);
+		
 		
 		enemy1 = new Enemy(1, StateManager.ENEMIES.length, StateManager.ENEMIES[0], this);
 		enemy2 = new Enemy(2, StateManager.ENEMIES.length, StateManager.ENEMIES[1], this);
 		enemy3 = new Enemy(3, StateManager.ENEMIES.length, StateManager.ENEMIES[2], this);
+		
+		enemy1.scrollFactor.set(0, 0);
+		enemy2.scrollFactor.set(0, 0);
+		enemy3.scrollFactor.set(0, 0);
 		
 		add(enemy1);
 		add(enemy2);
@@ -75,11 +83,15 @@ class Battle extends FlxState
 		add(player_health = player.health_text);
 		add(player_style = player.magic_text);
 		
+		player.scrollFactor.set(0, 0);
+		
 		message_box = new FlxSprite(0, 0);
 		message_box.makeGraphic(FlxG.width, Math.round(FlxG.height / 6), FlxColor.WHITE);
-		message_box.x = 0;
-		message_box.y = FlxG.height / 10 * 8;
+		message_box.x = 0 + FlxG.camera.x;
+		message_box.y = FlxG.height / 10 * 8 + FlxG.camera.y;
 		add(message_box);
+		
+		message_box.scrollFactor.set(0, 0);
 		
 		message_text = new FlxText(0, 0, FlxG.width);
 		message_text.text = "An enemy has appeared!";
@@ -89,12 +101,16 @@ class Battle extends FlxState
 		message_text.color = FlxColor.BLACK;
 		add(message_text);
 		
+		message_text.scrollFactor.set(0, 0);
+		
 		action_box = new FlxSprite(0, 0);
 		action_box.makeGraphic(Math.round(FlxG.width / 2), Math.round(FlxG.height / 6), FlxColor.GRAY);
 		action_box.x = FlxG.width / 2;
 		action_box.y = message_box.y;
 		add(action_box);
 		action_box.visible = false;
+		
+		action_box.scrollFactor.set(0, 0);
 		
 		attack_text = new FlxText(0, 0, FlxG.width / 2);
 		attack_text.text = "Attack";
@@ -105,6 +121,8 @@ class Battle extends FlxState
 		add(attack_text);
 		attack_text.visible = false;
 		
+		attack_text.scrollFactor.set(0, 0);
+		
 		special_attack_text = new FlxText(0, 0, FlxG.width / 2);
 		special_attack_text.text = "Ability";
 		special_attack_text.size = 24;
@@ -113,6 +131,8 @@ class Battle extends FlxState
 		special_attack_text.color = FlxColor.BLACK;
 		add(special_attack_text);
 		special_attack_text.visible = false;
+		
+		special_attack_text.scrollFactor.set(0, 0);
 		
 		flee_text = new FlxText(0, 0, FlxG.width / 2);
 		flee_text.text = "Flee";
@@ -123,6 +143,8 @@ class Battle extends FlxState
 		add(flee_text);
 		flee_text.visible = false;
 		
+		flee_text.scrollFactor.set(0, 0);
+		
 		target_box = new FlxSprite(0, 0);
 		target_box.makeGraphic(Math.round(FlxG.width / 4), Math.round(FlxG.height / 6), FlxColor.SILVER);
 		target_box.x = FlxG.width / 4 * 3;
@@ -130,6 +152,7 @@ class Battle extends FlxState
 		add(target_box);
 		target_box.visible = false;
 		
+		target_box.scrollFactor.set(0, 0);
 		
 		temp_enemy_text1 = new FlxText(0, 0, FlxG.width / 4);
 		temp_enemy_text1.text = StateManager.ENEMIES[0];
@@ -139,6 +162,8 @@ class Battle extends FlxState
 		temp_enemy_text1.color = FlxColor.BLACK;
 		temp_enemy_text1.visible = false;
 		
+		temp_enemy_text1.scrollFactor.set(0, 0);
+		
 		if (StateManager.ENEMIES.length > 1) {
 			temp_enemy_text2 = new FlxText(0, 0, FlxG.width / 4);
 			temp_enemy_text2.text = StateManager.ENEMIES[1];
@@ -147,6 +172,7 @@ class Battle extends FlxState
 			temp_enemy_text2.y = message_box.y + (message_box.height / 4 * 2) - (temp_enemy_text2.size / 2);
 			temp_enemy_text2.color = FlxColor.BLACK;
 			temp_enemy_text2.visible = false;
+			temp_enemy_text2.scrollFactor.set(0, 0);
 		}
 		else {
 			temp_enemy_text2 = new FlxText(0, 0, 0);
@@ -162,6 +188,7 @@ class Battle extends FlxState
 			temp_enemy_text3.color = FlxColor.BLACK;
 			temp_enemy_text3.visible = false;
 			add(temp_enemy_text3);
+			temp_enemy_text3.scrollFactor.set(0, 0);
 		}
 		else {
 			temp_enemy_text3 = new FlxText(0, 0, 0);
@@ -178,6 +205,7 @@ class Battle extends FlxState
 		ability_box.y = message_box.y;
 		add(ability_box);
 		ability_box.visible = false;
+		ability_box.scrollFactor.set(0, 0);
 		
 		ability_text1 = new FlxText(0, 0, FlxG.width / 4);
 		ability_text1.text = "2  Double-Slap";
@@ -186,6 +214,7 @@ class Battle extends FlxState
 		ability_text1.y = message_box.y + (message_box.height / 5) - (ability_text1.size / 2);
 		ability_text1.color = FlxColor.BLACK;
 		ability_text1.visible = false;
+		ability_box.scrollFactor.set(0, 0);
 		
 		ability_text2 = new FlxText(0, 0, FlxG.width / 4);
 		ability_text2.text = "3  Heal";
@@ -194,6 +223,7 @@ class Battle extends FlxState
 		ability_text2.y = message_box.y + (message_box.height / 5 * 2) - (ability_text2.size / 2);
 		ability_text2.color = FlxColor.BLACK;
 		ability_text2.visible = false;
+		ability_text2.scrollFactor.set(0, 0);
 		
 		ability_text3 = new FlxText(0, 0, FlxG.width / 4);
 		ability_text3.text = "2  Poison";
@@ -202,6 +232,7 @@ class Battle extends FlxState
 		ability_text3.y = message_box.y + (message_box.height / 5 * 3) - (ability_text3.size / 2);
 		ability_text3.color = FlxColor.BLACK;
 		ability_text3.visible = false;
+		ability_text3.scrollFactor.set(0, 0);
 		
 		add(ability_text1);
 		add(ability_text2);
@@ -214,6 +245,7 @@ class Battle extends FlxState
 		add(pointer);
 		pointer.visible = false;
 		updatePointer();
+		pointer.scrollFactor.set(0, 0);
 		
 		second_message = new Array<String>();
 		
@@ -430,7 +462,8 @@ class Battle extends FlxState
 					case 3: message_text.text = "Escaped successfully";
 							actionBoxDisappear();
 							fight_state = "Victory";
-							FlxG.switchState(StateManager.play);
+							close();
+							//FlxG.switchState(StateManager.play);
 				}
 			}
 		}
@@ -614,7 +647,10 @@ class Battle extends FlxState
 					fight_state = "Victory";
 					message_text.text = "Player has won!";
 					//FlxG.switchState(StateManager.play);
-					FlxG.switchState(new PlayState());
+					//var newState : PlayState = new PlayState();
+					//newState.setPlayer(playerObject);
+					//FlxG.switchState(newState);
+					close();
 					return;
 				}
 				whose_turn += 1;
@@ -647,17 +683,22 @@ class Battle extends FlxState
 		}
 		else if (fight_state == "Game Over") {
 			if (FlxG.keys.justPressed.ESCAPE) {
-				FlxG.switchState(new MenuState());
+				close();
 				FlxG.sound.pause();
 			}
 		}
 		else if (fight_state == "Victory") {
 			if (FlxG.keys.justPressed.ESCAPE) {
-				FlxG.switchState(new MenuState());
+				close();
 				FlxG.sound.pause();
 			}
 		}
 		
 		super.update();
+	}
+	
+	public function setPlayer(playerArg : Player)
+	{
+		playerObject = playerArg;
 	}
 }
