@@ -190,13 +190,14 @@ class PlayState extends FlxState
 
 		add( player);
 		
-		/// Keep this at the bottom of the create function
-		dialogHandler = new DialogManager(player, this);
-		add (dialogHandler);
-		FlxG.camera.follow(player.referenceSprite, FlxCamera.STYLE_TOPDOWN, 1);
-		
 		_hud = new HUD();
 		add(_hud);
+		
+		/// Keep this at the bottom of the create function
+		dialogHandler = new DialogManager(player, this);
+		dialogHandler._hud = _hud;
+		add (dialogHandler);
+		FlxG.camera.follow(player.referenceSprite, FlxCamera.STYLE_TOPDOWN, 1);
 		
 		inventory = new Array<Array<String>>();
 		for (i in 0...3)
