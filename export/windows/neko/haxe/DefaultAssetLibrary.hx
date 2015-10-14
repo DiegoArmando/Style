@@ -129,12 +129,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
-<<<<<<< HEAD
 		
 		
 		
-=======
->>>>>>> 42ec598839e0d4e4d96680979dd013cc556037c4
+		
+		
+		
+		
 		Font.registerFont (__ASSET__assets_fonts_nokiafc22_ttf);
 		Font.registerFont (__ASSET__assets_fonts_arial_ttf);
 		
@@ -215,12 +216,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
-<<<<<<< HEAD
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
-=======
->>>>>>> 42ec598839e0d4e4d96680979dd013cc556037c4
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
 		
 		className.set ("assets/fonts/nokiafc22.ttf", __ASSET__assets_fonts_nokiafc22_ttf);
 		type.set ("assets/fonts/nokiafc22.ttf", AssetType.FONT);
@@ -779,12 +781,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
-<<<<<<< HEAD
 		
 		
 		
-=======
->>>>>>> 42ec598839e0d4e4d96680979dd013cc556037c4
+		
+		
+		
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_arial_ttf);
 		
@@ -888,6 +891,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/halo.png", AssetType.IMAGE);
 		path.set ("assets/images/images-go-here.txt", "assets/images/images-go-here.txt");
 		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
+		path.set ("assets/images/NoWalls.csv", "assets/images/NoWalls.csv");
+		type.set ("assets/images/NoWalls.csv", AssetType.TEXT);
 		path.set ("assets/images/plant1.png", "assets/images/plant1.png");
 		type.set ("assets/images/plant1.png", AssetType.IMAGE);
 		path.set ("assets/images/plant2.png", "assets/images/plant2.png");
@@ -928,6 +933,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/titlepage.png", AssetType.IMAGE);
 		path.set ("assets/images/wall.png", "assets/images/wall.png");
 		type.set ("assets/images/wall.png", AssetType.IMAGE);
+		path.set ("assets/music/awake10_megaWall.wav", "assets/music/awake10_megaWall.wav");
+		type.set ("assets/music/awake10_megaWall.wav", AssetType.SOUND);
+		path.set ("assets/music/A_Journey_Awaits.wav", "assets/music/A_Journey_Awaits.wav");
+		type.set ("assets/music/A_Journey_Awaits.wav", AssetType.SOUND);
 		path.set ("assets/music/Culex.wav", "assets/music/Culex.wav");
 		type.set ("assets/music/Culex.wav", AssetType.SOUND);
 		path.set ("assets/music/music-goes-here.txt", "assets/music/music-goes-here.txt");
@@ -1099,6 +1108,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/images/images-go-here.txt";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
+		id = "assets/images/NoWalls.csv";
+		path.set (id, id);
+		type.set (id, AssetType.TEXT);
 		id = "assets/images/plant1.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
@@ -1159,6 +1171,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/images/wall.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+		id = "assets/music/awake10_megaWall.wav";
+		path.set (id, id);
+		type.set (id, AssetType.SOUND);
+		id = "assets/music/A_Journey_Awaits.wav";
+		path.set (id, id);
+		type.set (id, AssetType.SOUND);
 		id = "assets/music/Culex.wav";
 		path.set (id, id);
 		type.set (id, AssetType.SOUND);
@@ -1284,12 +1302,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
-<<<<<<< HEAD
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
-=======
->>>>>>> 42ec598839e0d4e4d96680979dd013cc556037c4
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
 		
 		className.set ("assets/fonts/nokiafc22.ttf", __ASSET__assets_fonts_nokiafc22_ttf);
 		type.set ("assets/fonts/nokiafc22.ttf", AssetType.FONT);
@@ -2087,12 +2106,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> 42ec598839e0d4e4d96680979dd013cc556037c4
+
+
+
+
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_arial_ttf extends null { }
 
@@ -2172,12 +2192,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> 42ec598839e0d4e4d96680979dd013cc556037c4
+
+
+
+
 @:keep #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends lime.text.Font { public function new () { super (); name = "Nokia Cellphone FC Small"; } } 
 @:keep #if display private #end class __ASSET__assets_fonts_arial_ttf extends lime.text.Font { public function new () { super (); name = "Arial"; } } 
 
