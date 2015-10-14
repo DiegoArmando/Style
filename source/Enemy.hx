@@ -22,6 +22,9 @@ class Enemy extends FlxSpriteGroup
 	public var mp:Int;
 	var hpmax:Int;
 	public var name:String;
+	var hit:Bool = false;
+	var hit2:Bool = false;
+	var flashcount:Int = 0;
 	public var poisoned = false;
 	var poison_duration:Int = 0;
 	public var burned:Bool = false;
@@ -227,6 +230,32 @@ class Enemy extends FlxSpriteGroup
 		add( HeadSprite);
 	}
 	
+	override public function update() {
+		if (hit && hp > 0) {
+			if (hit2) {
+				set_alpha(alpha + 0.2);
+				if (alpha >= 1) {
+					alpha = 1;
+					hit2 = false;
+					flashcount += 1;
+					if (flashcount >= 3) {
+						hit = false;
+						flashcount = 0;
+					}
+				}
+			}
+			else {
+				set_alpha(alpha -= 0.2);
+				if (alpha <= 0.2) {
+					alpha = 0.2;
+					hit2 = true;
+				}
+			}
+		}
+		super.update();
+	}
+	
+	
 	public function attack(AttackName:String, Target:Enemy, PlayerObject:Enemy):String {
 		var returner:String;
 		if (name == "Player") {
@@ -428,6 +457,7 @@ class Enemy extends FlxSpriteGroup
 		else if (Damage != 0){
 			Battle.second_message.push(name + " took " + Damage + " damage from " + Attacker.name + "!");
 		}
+		hit = true;
 		health_text.text = hp + "";
 		for (effect in Status) {
 			if (effect == "Poison") {
