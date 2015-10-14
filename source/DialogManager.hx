@@ -3,6 +3,7 @@ package;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup;
+import flixel.system.FlxSound;
 import flixel.util.FlxRect;
 import flixel.group.FlxSpriteGroup;
 import flixel.text.FlxText;
@@ -37,9 +38,14 @@ class DialogManager extends FlxSpriteGroup
 	
 	public var callbackFunction : Dynamic;	
 	
+	var menu_sound:FlxSound;
+	
 	public function new(InPlayer : Player, InState : PlayState) 
 	{
 		super (0, 0); 
+		
+		menu_sound = new FlxSound();
+		menu_sound.loadStream("assets/sounds/menu2.wav", false, false);
 		
 		x = 0;
 		y = 0;
@@ -98,6 +104,7 @@ class DialogManager extends FlxSpriteGroup
 	
 	public function startDialog( InNpc : NPC, InCallbackFunction : Dynamic )
 	{
+		menu_sound.play(true);
 		trace("start dialog");
 		npc = InNpc;
 		if ( player!=null && npc!=null)
@@ -158,6 +165,7 @@ class DialogManager extends FlxSpriteGroup
 		{
 			if (FlxG.keys.anyJustPressed(["space"]))
 			{
+				menu_sound.play(true);
 				trace("dialog SPACE");
 				dialogIndex++;
 				if (dialogIndex < npc.Dialog.length)

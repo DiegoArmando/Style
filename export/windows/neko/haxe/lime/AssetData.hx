@@ -112,11 +112,8 @@ class AssetData {
 			type.set ("assets/images/halo.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/images-go-here.txt", "assets/images/images-go-here.txt");
 			type.set ("assets/images/images-go-here.txt", Reflect.field (AssetType, "text".toUpperCase ()));
-<<<<<<< HEAD
-=======
 			path.set ("assets/images/NoWalls.csv", "assets/images/NoWalls.csv");
 			type.set ("assets/images/NoWalls.csv", Reflect.field (AssetType, "text".toUpperCase ()));
->>>>>>> 4a3ce44f9c915501add639f3edc3907e21d92d5f
 			path.set ("assets/images/plant1.png", "assets/images/plant1.png");
 			type.set ("assets/images/plant1.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/plant2.png", "assets/images/plant2.png");
@@ -157,7 +154,6 @@ class AssetData {
 			type.set ("assets/images/titlepage.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/wall.png", "assets/images/wall.png");
 			type.set ("assets/images/wall.png", Reflect.field (AssetType, "image".toUpperCase ()));
-<<<<<<< HEAD
 			path.set ("assets/music/BattleMusic.wav", "assets/music/BattleMusic.wav");
 			type.set ("assets/music/BattleMusic.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
 			path.set ("assets/music/BossMusic.wav", "assets/music/BossMusic.wav");
@@ -168,36 +164,22 @@ class AssetData {
 			type.set ("assets/music/MainMenu.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
 			path.set ("assets/music/MapMusic.wav", "assets/music/MapMusic.wav");
 			type.set ("assets/music/MapMusic.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
-=======
-			path.set ("assets/music/awake10_megaWall.wav", "assets/music/awake10_megaWall.wav");
-			type.set ("assets/music/awake10_megaWall.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
-			path.set ("assets/music/A_Journey_Awaits.wav", "assets/music/A_Journey_Awaits.wav");
-			type.set ("assets/music/A_Journey_Awaits.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
-			path.set ("assets/music/Culex.wav", "assets/music/Culex.wav");
-			type.set ("assets/music/Culex.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
->>>>>>> 4a3ce44f9c915501add639f3edc3907e21d92d5f
 			path.set ("assets/music/music-goes-here.txt", "assets/music/music-goes-here.txt");
 			type.set ("assets/music/music-goes-here.txt", Reflect.field (AssetType, "text".toUpperCase ()));
 			path.set ("assets/sounds/attack.wav", "assets/sounds/attack.wav");
 			type.set ("assets/sounds/attack.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
 			path.set ("assets/sounds/battle_start.wav", "assets/sounds/battle_start.wav");
 			type.set ("assets/sounds/battle_start.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
-<<<<<<< HEAD
 			path.set ("assets/sounds/hallelujah.wav", "assets/sounds/hallelujah.wav");
 			type.set ("assets/sounds/hallelujah.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
-=======
->>>>>>> 4a3ce44f9c915501add639f3edc3907e21d92d5f
 			path.set ("assets/sounds/menu.wav", "assets/sounds/menu.wav");
 			type.set ("assets/sounds/menu.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
 			path.set ("assets/sounds/menu2.wav", "assets/sounds/menu2.wav");
 			type.set ("assets/sounds/menu2.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
-<<<<<<< HEAD
 			path.set ("assets/sounds/oh_yeah.wav", "assets/sounds/oh_yeah.wav");
 			type.set ("assets/sounds/oh_yeah.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
 			path.set ("assets/sounds/robot_attack.wav", "assets/sounds/robot_attack.wav");
 			type.set ("assets/sounds/robot_attack.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
-=======
->>>>>>> 4a3ce44f9c915501add639f3edc3907e21d92d5f
 			path.set ("assets/sounds/sounds-go-here.txt", "assets/sounds/sounds-go-here.txt");
 			type.set ("assets/sounds/sounds-go-here.txt", Reflect.field (AssetType, "text".toUpperCase ()));
 			path.set ("assets/sounds/beep.ogg", "assets/sounds/beep.ogg");
