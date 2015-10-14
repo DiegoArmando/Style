@@ -121,7 +121,26 @@ class PlayState extends FlxState
 		var itemSelected : Bool = false;
 		var itemsInRange : Int = 0;
 		
-		
+		if (StateManager.BOSSBOOLS[0] == true && boss1dead == false)
+				{
+					trace("Fobio is confirmed for dead in PLaystate");
+					boss1dead = true;
+					levelTiles.setTile(44, 51, 1);
+					levelTiles.setTile(44, 52, 1);
+					levelTiles.setTile(44, 53, 1);
+					
+				}
+				else
+				{
+					//trace("Fobio is still alive");
+				}
+				if (StateManager.BOSSBOOLS[1] == true && boss2dead == false)
+				{
+					boss2dead = true;
+					levelTiles.setTile(17, 41, 1);
+					levelTiles.setTile(18, 41, 1);
+					levelTiles.setTile(19, 41, 1);
+				}
 		
 		
 		if (FlxG.keys.anyJustPressed(["tab"]))
@@ -184,26 +203,7 @@ class PlayState extends FlxState
 				delayInteract = false;
 			}
 			
-			if (StateManager.BOSSBOOLS[0] == true && boss1dead == false)
-				{
-					trace("Fobio is confirmed for dead in PLaystate");
-					boss1dead = true;
-					levelTiles.setTile(44, 51, 1);
-					levelTiles.setTile(44, 52, 1);
-					levelTiles.setTile(44, 53, 1);
-					
-				}
-				else
-				{
-					//trace("Fobio is still alive");
-				}
-				if (StateManager.BOSSBOOLS[1] == true && boss2dead == false)
-				{
-					boss2dead = true;
-					levelTiles.setTile(17, 41, 1);
-					levelTiles.setTile(18, 41, 1);
-					levelTiles.setTile(19, 41, 1);
-				}
+			
 		}
 		
 		super.update();
