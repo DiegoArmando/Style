@@ -14,6 +14,7 @@ import flixel.text.FlxText;
  */
 class DialogManager extends FlxSpriteGroup
 {
+	public var _hud:HUD;
 	public var playState : PlayState;
 	public var player : Player;
 	public var npc : NPC;
@@ -104,6 +105,7 @@ class DialogManager extends FlxSpriteGroup
 	
 	public function startDialog( InNpc : NPC, InCallbackFunction : Dynamic )
 	{
+		_hud.visible = false;
 		menu_sound.play(true);
 		trace("start dialog");
 
@@ -145,6 +147,8 @@ class DialogManager extends FlxSpriteGroup
 			graphicLabel.text = npc.name;
 			graphicText.text = npc.Dialog[dialogIndex];
 		}
+		
+		_hud.visible = true;
 	}
 	
 	public function displayPart( sourceSprite : FlxSprite, closeScale : Int, PartOffset : Float, xLocation : Float ) : FlxSprite
