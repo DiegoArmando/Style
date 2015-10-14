@@ -229,6 +229,9 @@ class PlayState extends FlxState
 		add(octo);
 		interactables.push(octo);
 		
+		var bookshelf = new FlxSprite(3932, 2468, "assets/images/bookshelf_l.png");
+		add(bookshelf);
+		
 		// player ini
 		player = new Player(3300, 3300, this);
 		FlxG.camera.follow(player.referenceSprite, FlxCamera.STYLE_TOPDOWN, 1);
