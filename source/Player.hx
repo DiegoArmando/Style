@@ -18,6 +18,7 @@ class Player extends FlxSpriteGroup
 	public static inline var RUN_SPEED_SEC:Int = 64 * 3;
 	
 	public var referenceSprite: FlxObject;
+	static public var thing : Int = 0;
 	
 	public var Parent : Dynamic;
 	

@@ -11,6 +11,7 @@ import flixel.FlxSubState;
 class NPC extends Interactable
 {
 	public var IsMultipart : Bool;
+	public var InCombat : Bool = false;
 	
 	public var name : String = "def name";
 	public var Parent : Dynamic;
@@ -100,11 +101,14 @@ class NPC extends Interactable
 	{
 		StateManager.ENEMIES = ["", name+" A", ""];
 		
+		InCombat = true;
+		
 		var battleState = new Battle();
 		//battleState.setPlayer(playerArg);
 		
 		//trace("Player members in battlestate before state switch: " + battleState.playerObject.members);
 		//parent.remove(parent.
+		StateManager.npcToKill = this;
 		Parent.openSubState(battleState);
 		//openSubState(battleState);
 

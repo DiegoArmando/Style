@@ -705,14 +705,14 @@ class Battle extends FlxSubState
 		}
 		else if (fight_state == "Game Over") {
 			if (FlxG.keys.justPressed.ESCAPE) {
-				trace("Game over?");
+				StateManager.killNPC = false;
 				close();
 				FlxG.sound.pause();
 			}
 		}
 		else if (fight_state == "Victory") {
 			if (FlxG.keys.justPressed.ESCAPE) {
-				
+				StateManager.killNPC = true;
 				close();
 				FlxG.sound.pause();
 			}

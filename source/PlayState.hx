@@ -18,6 +18,7 @@ import flixel.FlxCamera;
  */
 class PlayState extends FlxState
 {
+	static public var thing : Int = 0;
 	public var player : Player;
 	public var interactables : Array<Interactable>;
 	public var playerInDialog : Bool = false;
@@ -25,6 +26,7 @@ class PlayState extends FlxState
 	public var interactableIndex : Int = -1;
 	public var selectedInteractable : Int = -1;
 	public var dialogHandler : DialogManager;
+	public var npcInCombat : NPC;
 	
 	var boss1dead : Bool = false;
 	var boss2dead : Bool = false;
@@ -121,26 +123,39 @@ class PlayState extends FlxState
 		var itemSelected : Bool = false;
 		var itemsInRange : Int = 0;
 		
+		if (StateManager.killNPC)
+		{
+			trace ("kill npc");
+			StateManager.killNPC = false;
+			if (StateManager.npcToKill != null)
+			{
+				remove (StateManager.npcToKill);
+				var isAlive = function (item : Interactable) return item != StateManager.npcToKill;
+				interactables.filter(isAlive);
+			}
+		}
+		
 		if (StateManager.BOSSBOOLS[0] == true && boss1dead == false)
-				{
-					trace("Fobio is confirmed for dead in PLaystate");
-					boss1dead = true;
-					levelTiles.setTile(44, 51, 1);
-					levelTiles.setTile(44, 52, 1);
-					levelTiles.setTile(44, 53, 1);
-					
-				}
-				else
-				{
-					//trace("Fobio is still alive");
-				}
-				if (StateManager.BOSSBOOLS[1] == true && boss2dead == false)
-				{
-					boss2dead = true;
-					levelTiles.setTile(17, 41, 1);
-					levelTiles.setTile(18, 41, 1);
-					levelTiles.setTile(19, 41, 1);
-				}
+		{
+			trace("Fobio is confirmed for dead in PLaystate");
+			boss1dead = true;
+			levelTiles.setTile(44, 51, 1);
+			levelTiles.setTile(44, 52, 1);
+			levelTiles.setTile(44, 53, 1);
+			
+		}
+		else
+		{
+			//trace("Fobio is still alive");
+		}
+		
+		if (StateManager.BOSSBOOLS[1] == true && boss2dead == false)
+		{
+			boss2dead = true;
+			levelTiles.setTile(17, 41, 1);
+			levelTiles.setTile(18, 41, 1);
+			levelTiles.setTile(19, 41, 1);
+		}
 		
 		
 		if (FlxG.keys.anyJustPressed(["tab"]))
