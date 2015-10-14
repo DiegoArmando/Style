@@ -5,6 +5,7 @@ import flixel.FlxBasic;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.group.FlxGroup;
+import flixel.system.FlxSound;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
@@ -64,6 +65,8 @@ class PlayState extends FlxState
 	var levelTiles:FlxTilemap;
 	private var _highlightBox:FlxSprite;
 	
+	public var map_music:FlxSound;
+	
 	override public function create():Void
 	{
 		super.create();
@@ -72,8 +75,11 @@ class PlayState extends FlxState
 		//load tile map
 		//add tile map
 		
-		trace("We are getting into create");
 		levelTiles = new FlxTilemap();
+		
+		map_music = new FlxSound();
+		map_music.loadStream("assets/music/MapMusic.wav", true, false);
+		map_music.play(true);
 		
 		//levelTiles.auto = FlxTilemap.OFF;
 		
@@ -187,6 +193,11 @@ class PlayState extends FlxState
 	 */
 	override public function update():Void
 	{
+		
+		if (!map_music.active) {
+			map_music.play(true);
+		}
+		
 		var itemIndex : Int = 0;
 		var itemSelected : Bool = false;
 		var itemsInRange : Int = 0;

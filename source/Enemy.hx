@@ -284,6 +284,12 @@ class Enemy extends FlxSpriteGroup
 				}
 			}
 		}
+		else if (hp <= 0 && alpha > 0.1 && visible) {
+			set_alpha(alpha -= 0.01);
+			if (alpha <= 0.1) {
+				visible = false;
+			}
+		}
 		super.update();
 	}
 	
@@ -569,7 +575,7 @@ class Enemy extends FlxSpriteGroup
 		}
 		if (hp <= 0 && name != "Player") {
 			Battle.second_message.push(name + " has been defeated!");
-			visible = false;
+			color = 0xFFFF0000;
 			name = "";
 			health_text.visible = false;
 		}

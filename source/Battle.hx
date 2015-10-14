@@ -60,6 +60,8 @@ class Battle extends FlxSubState
 	var menu2:FlxSound;
 	var battle_sound:FlxSound;
 	
+	var battle_music:FlxSound;
+	
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
@@ -80,7 +82,7 @@ class Battle extends FlxSubState
 		
 		battle_sound = new FlxSound();
 		battle_sound.loadStream("assets/sounds/battle_start.wav", false, false);
-		
+				
 		enemy1 = new Enemy(1, StateManager.ENEMIES.length, StateManager.ENEMIES[0], this);
 		enemy2 = new Enemy(2, StateManager.ENEMIES.length, StateManager.ENEMIES[1], this);
 		enemy3 = new Enemy(3, StateManager.ENEMIES.length, StateManager.ENEMIES[2], this);
@@ -95,6 +97,26 @@ class Battle extends FlxSubState
 		add(enemy1_health = enemy1.health_text);
 		add(enemy2_health = enemy2.health_text);
 		add(enemy3_health = enemy3.health_text);
+		
+		battle_music = new FlxSound();
+		
+		if (enemy1.name.split(" ")[0] == "Fobio" || enemy2.name.split(" ")[0] == "Fobio" || enemy3.name.split(" ")[0] == "Fobio") {
+			battle_music.loadStream("assets/music/BossMusic.wav", true, false);
+		}
+		
+		else if (enemy1.name.split(" ")[0] == "Kitschy" || enemy2.name.split(" ")[0] == "Kitschy" || enemy3.name.split(" ")[0] == "Kitschy") {
+			battle_music.loadStream("assets/music/BossMusic.wav", true, false);
+		}
+		
+		else if (enemy1.name.split(" ")[0] == "Curve-A" || enemy2.name.split(" ")[0] == "Curve-A" || enemy3.name.split(" ")[0] == "Curve-A") {
+			battle_music.loadStream("assets/music/BossMusic.wav", true, false);
+		}
+		
+		else {
+			battle_music.loadStream("assets/music/BattleMusic.wav", true, false);
+		}
+		
+		battle_music.play(true);
 		
 		player = new Enemy(0, 0, "Player", this);
 		add(player);
@@ -743,6 +765,7 @@ class Battle extends FlxSubState
 		else if (fight_state == "Victory") {
 			if (FlxG.keys.anyJustPressed(["ENTER", "SPACE"])) {
 				FlxG.sound.play("assets/sounds/menu.wav", 1, false, true);
+				battle_music.stop();
 				close();
 				FlxG.sound.pause();
 			}
