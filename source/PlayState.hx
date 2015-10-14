@@ -14,17 +14,24 @@ import openfl.Assets;
 import flixel.util.FlxColor;
 import flixel.util.FlxSpriteUtil;
 import flixel.FlxCamera;
+import flixel.util.FlxRandom;
+import flixel.FlxSubState;
+
 
 /**
  * A FlxState which can be used for the actual gameplay.
  */
 class PlayState extends FlxState
 {
+
 	public var player : Player;
 	public var playerGroup : FlxGroup;
+
 	public var interactables : Array<Interactable>;
 	public var playerInDialog : Bool = false;
 	public var delayInteract : Bool = false;
+	
+	public var IDNUM : Int;
 	
 	public var interactableIndex : Int = -1;
 	public var selectedInteractable : Int = -1;
@@ -39,15 +46,13 @@ class PlayState extends FlxState
 	var levelTiles:FlxTilemap;
 	private var _highlightBox:FlxSprite;
 	
-	private var hasLoaded = false;
-	
 	override public function create():Void
 	{
 		super.create();
-		//menu = new MenuState();
-		//menu.stateMem = this;
-		//load tile map
-		//add tile map
+
+		IDNUM = FlxRandom.int();
+		//trace("PLayer Position after create: " + player.x + ", " + player.y);
+
 		
 		//trace("We are getting into create");
 		levelTiles = new FlxTilemap();
@@ -72,6 +77,7 @@ class PlayState extends FlxState
 		add (Disk);
 		interactables.push(Disk);
 		
+
 		var testEnemy : NPC = new NPC(1500, FlxG.height / 2 - 200, true, "android", "Android", this);
 		testEnemy.Dialog.push("Do not argue about which language is the worst!");
 		testEnemy.Dialog.push("For that language is Java.");
@@ -83,14 +89,16 @@ class PlayState extends FlxState
 		otherEnemy.Dialog.push("Did you know King Tut was probably murdered!");
 		otherEnemy.Dialog.push("It was probably me.");
 		otherEnemy.Dialog.push("I would know.");
+
 		add(otherEnemy);
 		interactables.push(otherEnemy);
 		
-		// player ini
+
 		playerGroup = new FlxGroup();
 		player = new Player(FlxG.width/2, FlxG.height/2, this);
 		playerGroup.add(player);
 		add (playerGroup);
+
 		FlxG.camera.follow(player.referenceSprite, FlxCamera.STYLE_TOPDOWN, 1);
 		
 		
@@ -112,7 +120,9 @@ class PlayState extends FlxState
 	 */
 	override public function update():Void
 	{
+
 		super.update();
+
 		var itemIndex : Int = 0;
 		var itemSelected : Bool = false;
 		var itemsInRange : Int = 0;
@@ -169,6 +179,7 @@ class PlayState extends FlxState
 		{
 			if (selectedInteractable >= 0 && selectedInteractable <= interactables.length && !delayInteract)
 			{
+
 				//menu.stateMem = this;
 				//trace (selectedInteractable);
 				interactables[selectedInteractable].interact();
@@ -181,4 +192,5 @@ class PlayState extends FlxState
 		
 		
 	}	
+
 }

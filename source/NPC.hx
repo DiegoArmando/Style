@@ -1,6 +1,8 @@
 package;
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.FlxState;
+import flixel.FlxSubState;
 
 /**
  * ...
@@ -15,6 +17,7 @@ class NPC extends Interactable
 	
 	public var Dialog : Array<String>;
 	
+	//private var parent : FlxState;
 	public var HeadSprite : FlxSprite;
 	public var HeadYOffset : Float;
 	public var TorsoSprite : FlxSprite;
@@ -26,12 +29,13 @@ class NPC extends Interactable
 	
 	private var name2 : String;
 	
+
 	public override function new(InX:Float, InY:Float, InIsMultipart : Bool, fileName : String, Name : String, InParent : Dynamic) 
 	{
 		super(InX, InY, "");
 		name = Name;
 		Parent = InParent;
-		
+
 		setName2();
 		
 		IsMultipart = InIsMultipart;
@@ -95,7 +99,16 @@ class NPC extends Interactable
 	public function goToBattle()
 	{
 		StateManager.ENEMIES = ["", name+" A", ""];
-		FlxG.switchState(new Battle());
+		
+		var battleState = new Battle();
+		//battleState.setPlayer(playerArg);
+		
+		//trace("Player members in battlestate before state switch: " + battleState.playerObject.members);
+		//parent.remove(parent.
+		
+		parent.openSubState(battleState);
+		//openSubState(battleState);
+
 	}
 	
 	public override function setSubimage( subImage : Int)
