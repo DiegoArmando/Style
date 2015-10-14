@@ -172,7 +172,7 @@ class Enemy extends FlxSpriteGroup
 			speed = 0;
 		}
 		else if (Name.split(" ")[0] == "Curve-A") {
-			sprite.makeGraphic(64, 128, FlxColor.PINK);
+			sprite.loadGraphic("assets/images/enemies/curveaSheet.png", true, 192, 192);
 			this.x = FlxG.width / 3 * 2;
 			this.y = FlxG.height / (Total_Number + 2) * Position;
 			hp = hpmax = 20;
@@ -596,6 +596,10 @@ class Enemy extends FlxSpriteGroup
 				StateManager.BOSSBOOLS[0] = true;
 				//trace("Player beat Fobio");
 				//trace("Statemanager bool: " + StateManager.BOSSBOOLS[0]);
+			}
+			else if (name == "Curve-A A" || name == "Curve-A B" || name == "Curve-A C")
+			{
+				StateManager.BOSSBOOLS[1] = true;
 			}
 			else
 			{

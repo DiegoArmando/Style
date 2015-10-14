@@ -54,6 +54,7 @@ class Battle extends FlxSubState
 	public static var boss1Bool : Bool = false;
 	var relaying_damage:Bool;
 	
+	var FLEEING : Bool = false;
 	var fight_state = "Intro";
 	var previous_fight_state:String;
 	
@@ -515,6 +516,7 @@ class Battle extends FlxSubState
 							updatePointer2();
 					case 3: message_text.text = "Escaped successfully";
 							actionBoxDisappear();
+							FLEEING = true;
 							fight_state = "Victory";
 							//close();
 							//FlxG.switchState(StateManager.play);
@@ -761,6 +763,7 @@ class Battle extends FlxSubState
 		else if (fight_state == "Game Over") {
 			if (FlxG.keys.anyJustPressed(["ENTER", "SPACE"])) {
 				FlxG.sound.play("assets/sounds/menu.wav", 1, false, true);
+				trace ("game over");
 				StateManager.killNPC = false;
 				close();
 				FlxG.sound.pause();
@@ -770,7 +773,11 @@ class Battle extends FlxSubState
 			if (FlxG.keys.anyJustPressed(["ENTER", "SPACE"])) {
 				FlxG.sound.play("assets/sounds/menu.wav", 1, false, true);
 				battle_music.stop();
-				StateManager.killNPC = true;
+				trace ("victory");
+				if (! FLEEING) 
+				{
+					StateManager.killNPC = true;
+				}
 				close();
 				FlxG.sound.pause();
 			}
