@@ -121,10 +121,18 @@ class PlayState extends FlxState
 		var lue = new NPC(3804, 3029, false, "lue", "Lu-E", this);
 		//lue.Sprite.setSize(0.5, 0.5);
 		lue.Dialog.push("I used to be a purse. I was very fashionable at the time.");
-		lue.Dialog.push("Humans gave purses sentience and were <i>surpised<i> when robots took over.");
+		lue.Dialog.push("Humans gave purses sentience and were <i>surpised</i> when robots took over.");
 		lue.Dialog.push("Anyway, if you want to fight me I'll thwomp ya.");
 		add(lue);
 		interactables.push(lue);
+		
+		var minion = new NPC(3349, 2960, true, "minion_bot", "Minion", this);
+		minion.Dialog.push("I've always wondered what bananas tasted like.");
+		minion.Dialog.push("That's why I modeled my outfit after one!");
+		minion.Dialog.push("You humans lucked out with your taste buds and such...");
+		minion.Dialog.push("Mind if I borrow yours?");
+		add(minion);
+		interactables.push(minion);
 		
 		var handm = new NPC(3898, 3732, false, "hm", "Hertz", this);
 		handm.Dialog.push("How did you get out of your cell?");
@@ -240,6 +248,10 @@ class PlayState extends FlxState
 	 */
 	override public function update():Void
 	{
+		
+		if (FlxG.keys.justPressed.L) {
+			trace(player.x + " " + player.y);
+		}
 		
 		if (!map_music.active) {
 			map_music.play(true);

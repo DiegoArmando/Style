@@ -228,6 +228,12 @@ class Enemy extends FlxSpriteGroup
 		health_text.y = this.y + this.height / 2;
 		health_text.scrollFactor.set(0, 0);
 		
+		if (EnemyIsComplex && name != "Player") {
+			health_text.x = FlxG.width / 3 * 2 + 60;
+			health_text.y = FlxG.height / (Total_Number + 1) * Position;
+		}
+	
+		
 		magic_text = new FlxText(0, 0, 64);
 		magic_text.size = 20;
 		magic_text.color = FlxColor.NAVY_BLUE;
@@ -247,9 +253,9 @@ class Enemy extends FlxSpriteGroup
 		var LegsYOffset  = -64;
 		var TorsoYOffset = -64*2;
 		var HeadYOffset  = -64 * 3 + 64 * .25;
-		
+				
 		var graphicX = FlxG.width / 3 * 2;
-		var graphicY = FlxG.height / (Total_Number + 2) * Position;
+		var graphicY = FlxG.height / (Total_Number + 1) * Position + 50;
 		
 		TorsoSprite = new FlxSprite( graphicX, graphicY + TorsoYOffset);
 		TorsoSprite.loadGraphic("assets/images/sprite_sheets/" + fileName + ".png", true, 64, 64);
