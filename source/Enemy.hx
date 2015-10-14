@@ -588,7 +588,7 @@ class Enemy extends FlxSpriteGroup
 		if (hp <= 0 && name != "Player") {
 			Battle.second_message.push(name + " has been defeated!");
 			color = 0xFFFF0000;
-			visible = false;
+			//visible = false;
 			
 			//trace("Before conditional");
 			if (name == "Fobio A" || name == "Fobio B" || name == "Fobio C")

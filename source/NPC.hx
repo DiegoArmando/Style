@@ -101,6 +101,10 @@ class NPC extends Interactable
 	{
 		StateManager.ENEMIES = ["", name+" A", ""];
 		
+		if (name == "Lu-E") {
+			StateManager.ENEMIES = [name+" A", name+" B", ""];
+		}
+		
 		InCombat = true;
 		
 		var battleState = new Battle();
