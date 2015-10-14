@@ -24,9 +24,9 @@ class Player extends FlxSpriteGroup
 	
 	public var AllowMovement : Bool = true;
 	
-	private var LegsIndex : Int = 0;
-	private var TorsoIndex : Int = 0;
-	private var HeadsIndex : Int = 0;
+	public var LegsIndex : Int = 0;
+	public var TorsoIndex : Int = 0;
+	public var HeadsIndex : Int = 0;
 	
 	private var TorsoArray : Array<FlxSprite>;
 	public var TorsoSprite : FlxSprite;
@@ -43,6 +43,10 @@ class Player extends FlxSpriteGroup
 	public function new( InX : Float, InY : Float, InParent : Dynamic) 
 	{
 		super( );
+		
+		//LegsIndex = 0;
+		//TorsoIndex = 0;
+		//HeadsIndex = 0;
 		
 		Parent = InParent;
 		
@@ -262,6 +266,7 @@ class Player extends FlxSpriteGroup
 			LegsArray[NewPartIndex].revive();
 			LegsSprite = LegsArray[NewPartIndex];
 			LegsSprite.x = x; LegsSprite.y = y + LegsYOffset;
+			LegsIndex = NewPartIndex;
 		}
 		else if (PartType == 1)
 		{
@@ -271,17 +276,19 @@ class Player extends FlxSpriteGroup
 			TorsoArray[NewPartIndex].revive();
 			TorsoSprite = TorsoArray[NewPartIndex];
 			TorsoSprite.x = x; TorsoSprite.y = y + TorsoYOffset;
+			TorsoIndex= NewPartIndex;
 		}
 		else if (PartType == 2)
 		{
 			if (NewPartIndex == HeadsIndex)
 			{ return ALREADY_WEARING; }
+			//trace ("PartIndex: " + NewPartIndex);
 			HeadSprite.kill();
 			HeadArray[NewPartIndex].revive();
 			HeadSprite = HeadArray[NewPartIndex];
 			HeadSprite.x = x; HeadSprite.y = y + HeadYOffset;
+			HeadsIndex = NewPartIndex;
 		}
-		
 		return SUCCESSFUL_SWITCH;
 	}
 	
