@@ -18,6 +18,7 @@ class Player extends FlxSpriteGroup
 	public static inline var RUN_SPEED_SEC:Int = 64 * 6;
 	
 	public var referenceSprite: FlxObject;
+	static public var thing : Int = 0;
 	
 	public var Parent : Dynamic;
 	
@@ -78,9 +79,11 @@ class Player extends FlxSpriteGroup
 	
 	override public function update()
 	{
+		
+		////trace("Position: " + x + ", " + y);
 		var IsRunning : Bool = false;
 		
-		trace("PPos: " + x + ", " + y);
+		//trace("PPos: " + x + ", " + y);
 		
 		var xOffset : Float = 0;
 		var yOffset : Float = 0;
@@ -254,7 +257,7 @@ class Player extends FlxSpriteGroup
 		{
 			if (NewPartIndex == LegsIndex)
 			{ return ALREADY_WEARING; }
-			trace ("PartIndex: "+NewPartIndex);
+			//trace ("PartIndex: "+NewPartIndex);
 			LegsSprite.kill();
 			LegsArray[NewPartIndex].revive();
 			LegsSprite = LegsArray[NewPartIndex];

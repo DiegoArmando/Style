@@ -83,17 +83,17 @@ class Enemy extends FlxSpriteGroup
 			this.y = FlxG.height / 2;
 			
 			LegsSprite = Parent.playerObject.LegsSprite.clone();
-			LegsSprite.x = 0;
+			LegsSprite.x = 0; LegsSprite.scale.x = -1;
 			LegsSprite.y = LegsYOffset;
 			add(LegsSprite );
 			
 			TorsoSprite = Parent.playerObject.TorsoSprite.clone();
-			TorsoSprite.x = 0;
+			TorsoSprite.x = 0; TorsoSprite.scale.x = -1;
 			TorsoSprite.y = TorsoYOffset;
 			add(TorsoSprite );
 			
 			HeadSprite = Parent.playerObject.HeadSprite.clone();
-			HeadSprite.x = 0;
+			HeadSprite.x = 0; HeadSprite.scale.x = -1;
 			HeadSprite.y = HeadYOffset;
 			add(HeadSprite);
 			
@@ -588,6 +588,22 @@ class Enemy extends FlxSpriteGroup
 		if (hp <= 0 && name != "Player") {
 			Battle.second_message.push(name + " has been defeated!");
 			color = 0xFFFF0000;
+			visible = false;
+			
+			//trace("Before conditional");
+			if (name == "Fobio A" || name == "Fobio B" || name == "Fobio C")
+			{
+				StateManager.BOSSBOOLS[0] = true;
+				//trace("Player beat Fobio");
+				//trace("Statemanager bool: " + StateManager.BOSSBOOLS[0]);
+			}
+			else
+			{
+				//trace("Names: " + name);
+			}
+			//trace("After conditional");
+			
+			
 			name = "";
 			health_text.visible = false;
 		}

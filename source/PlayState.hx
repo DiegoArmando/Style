@@ -19,7 +19,7 @@ import flixel.FlxCamera;
  * A FlxState which can be used for the actual gameplay.
  */
 class PlayState extends FlxState
-{	
+{
 	public var player : Player;
 	public var interactables : Array<Interactable>;
 	public var playerInDialog : Bool = false;
@@ -55,7 +55,12 @@ class PlayState extends FlxState
 	
 	private var tmp_item_array:Array<Item>;
 	private var counter:Int;*/
-
+	
+	public var npcInCombat : NPC;
+	
+	var boss1dead : Bool = false;
+	var boss2dead : Bool = false;
+	var boss3dead : Bool = false;
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
@@ -74,7 +79,6 @@ class PlayState extends FlxState
 		//item_selected = false;
 		//load tile map
 		//add tile map
-		
 		levelTiles = new FlxTilemap();
 		
 		map_music = new FlxSound();
@@ -273,6 +277,40 @@ class PlayState extends FlxState
 		var itemSelected : Bool = false;
 		var itemsInRange : Int = 0;
 		
+		if (StateManager.killNPC)
+		{
+			////trace ("kill npc");
+			StateManager.killNPC = false;
+			if (StateManager.npcToKill != null)
+			{
+				remove (StateManager.npcToKill);
+				var isAlive = function (item : Interactable) return item != StateManager.npcToKill;
+				interactables.filter(isAlive);
+			}
+		}
+		
+		if (StateManager.BOSSBOOLS[0] == true && boss1dead == false)
+		{
+			////trace("Fobio is confirmed for dead in PLaystate");
+			boss1dead = true;
+			levelTiles.setTile(44, 51, 1);
+			levelTiles.setTile(44, 52, 1);
+			levelTiles.setTile(44, 53, 1);
+			
+		}
+		else
+		{
+			//////trace("Fobio is still alive");
+		}
+		
+		if (StateManager.BOSSBOOLS[1] == true && boss2dead == false)
+		{
+			boss2dead = true;
+			levelTiles.setTile(17, 41, 1);
+			levelTiles.setTile(18, 41, 1);
+			levelTiles.setTile(19, 41, 1);
+		}
+		
 		
 		//************************************
 		inventory[0][0] = "assets/images/sprite_sheets/android.png";
@@ -344,13 +382,15 @@ class PlayState extends FlxState
 			if (selectedInteractable >= 0 && selectedInteractable <= interactables.length && !delayInteract)
 			{
 				//menu.stateMem = this;
-				//trace (selectedInteractable);
+				//////trace (selectedInteractable);
 				interactables[selectedInteractable].interact(player);
 			}
 			else if (delayInteract)
 			{
 				delayInteract = false;
 			}
+			
+			
 		}
 		
 		/*if (FlxG.keys.anyJustPressed(["g"]))
@@ -358,7 +398,7 @@ class PlayState extends FlxState
 			inventory[0][0] = "assets/images/sprite_sheets/mondrian.png";
 			inventory_items[0][0] = null;
 		}*/
-		//trace ("got here");
+		//////trace ("got here");
 		left_click_HUD();
 		right_click_HUD();
 		_hud.updateHUD(inventory, inventory_items, headI, headJ, bodyI, bodyJ, legsI, legsJ);

@@ -33,7 +33,7 @@ class Interactable extends FlxGroup
 	
 	public function interact(playerArg : Player)
 	{
-		trace("Yeah! I was interacted with!");
+		//trace("Yeah! I was interacted with!");
 	}
 	
 	public function setSubimage( subImage : Int)
