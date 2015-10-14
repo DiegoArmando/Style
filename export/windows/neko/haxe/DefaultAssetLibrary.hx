@@ -126,6 +126,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
 		Font.registerFont (__ASSET__assets_fonts_nokiafc22_ttf);
 		Font.registerFont (__ASSET__assets_fonts_arial_ttf);
 		
@@ -133,6 +135,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -758,6 +762,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_arial_ttf);
 		
@@ -775,8 +781,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/Background2.csv", AssetType.TEXT);
 		path.set ("assets/images/Background3.csv", "assets/images/Background3.csv");
 		type.set ("assets/images/Background3.csv", AssetType.TEXT);
+		path.set ("assets/images/Background4.csv", "assets/images/Background4.csv");
+		type.set ("assets/images/Background4.csv", AssetType.TEXT);
 		path.set ("assets/images/bars.png", "assets/images/bars.png");
 		type.set ("assets/images/bars.png", AssetType.IMAGE);
+		path.set ("assets/images/battlebackground.png", "assets/images/battlebackground.png");
+		type.set ("assets/images/battlebackground.png", AssetType.IMAGE);
 		path.set ("assets/images/bookshelf_book.png", "assets/images/bookshelf_book.png");
 		type.set ("assets/images/bookshelf_book.png", AssetType.IMAGE);
 		path.set ("assets/images/bookshelf_l.png", "assets/images/bookshelf_l.png");
@@ -929,7 +939,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/images/Background3.csv";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
+		id = "assets/images/Background4.csv";
+		path.set (id, id);
+		type.set (id, AssetType.TEXT);
 		id = "assets/images/bars.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/battlebackground.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/bookshelf_book.png";
@@ -1149,6 +1165,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -2013,11 +2031,15 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
+
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_arial_ttf extends null { }
 
 
 #elseif html5
+
+
 
 
 
