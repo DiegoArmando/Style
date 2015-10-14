@@ -4,14 +4,18 @@ import flixel.FlxSprite;
 
 class Item extends FlxSprite
 {
-	var asset_path:String;
-	var InClothing_type:String;
+	public var asset_path:String;
+	public var clothing_type:String;
 	
 	public function new(InX:Float, InY:Float, InAsset_path:String, InClothing_type:String)
 	{
-		super(InX, InY);
-		loadGraphic(asset_path, false, 32, 32);
-		scale.set(0.5, 0.5);
+		super();
+		asset_path = InAsset_path;
+		clothing_type = InClothing_type;
+		if (asset_path != "")
+		{
+			loadGraphic(asset_path, false, 64, 64);
+		}
 		x = InX;
 		y = InY;
 	}
