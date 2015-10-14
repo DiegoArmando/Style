@@ -20,8 +20,11 @@ class PlayState extends FlxState
 {
 	public var player : Player;
 	public var interactables : Array<Interactable>;
+	public var playerInDialog : Bool = false;
+	public var delayInteract : Bool = false;
 	public var interactableIndex : Int = -1;
 	public var selectedInteractable : Int = -1;
+	public var dialogHandler : DialogManager;
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
@@ -70,15 +73,23 @@ class PlayState extends FlxState
 		add (Disk3);
 		interactables.push(Disk3);
 		*/
-		var testDude = new NPC(300, 300, true, "android", "android", this);
+		var testDude = new NPC(300, 300, true, "android", "Android", this);
+		testDude.Dialog.push("HUH, so does it happen to be the case that if you have no dialog, you can't enter battle?");
+		testDude.Dialog.push("Be afraid, for this text is not even showing up.");
+		testDude.Dialog.push("Is it?");
+		testDude.Dialog.push("Oh look, a battle! (hopefully)");
 		add(testDude);
 		interactables.push(testDude);
 		
 		// player ini
 		player = new Player(FlxG.width/2, FlxG.height/2, this);
+		FlxG.camera.follow(player.referenceSprite, FlxCamera.STYLE_TOPDOWN, 1);
+
 		add( player);
 		
-		FlxG.camera.follow(player.referenceSprite, FlxCamera.STYLE_TOPDOWN, 1);
+		/// Keep this at the bottom of the create function
+		dialogHandler = new DialogManager(player, this);
+		add (dialogHandler);
 	}
 	
 	/**
@@ -125,6 +136,7 @@ class PlayState extends FlxState
 					if (interactableIndex == itemsInRange)
 					{
 						itemSelected = true;
+						selectedInteractable = itemIndex;
 						item.setSubimage(2);
 					}
 					else
@@ -146,11 +158,17 @@ class PlayState extends FlxState
 			selectedInteractable = -1;
 		}
 		
-		if (FlxG.keys.anyJustPressed(["space"]))
+		if (FlxG.keys.anyJustReleased(["space"]) && !playerInDialog)
 		{
-			if (selectedInteractable >= 0 && selectedInteractable <= interactables.length)
+			if (selectedInteractable >= 0 && selectedInteractable <= interactables.length && !delayInteract)
 			{
+				//menu.stateMem = this;
+				//trace (selectedInteractable);
 				interactables[selectedInteractable].interact(player);
+			}
+			else if (delayInteract)
+			{
+				delayInteract = false;
 			}
 		}
 		

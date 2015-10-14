@@ -125,6 +125,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
 		Font.registerFont (__ASSET__assets_fonts_nokiafc22_ttf);
 		Font.registerFont (__ASSET__assets_fonts_arial_ttf);
 		
@@ -132,6 +133,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -755,6 +757,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_arial_ttf);
 		
@@ -888,6 +891,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/TileMap2.png", AssetType.IMAGE);
 		path.set ("assets/images/TileMap3.png", "assets/images/TileMap3.png");
 		type.set ("assets/images/TileMap3.png", AssetType.IMAGE);
+		path.set ("assets/images/titlepage.png", "assets/images/titlepage.png");
+		type.set ("assets/images/titlepage.png", AssetType.IMAGE);
 		path.set ("assets/images/wall.png", "assets/images/wall.png");
 		type.set ("assets/images/wall.png", AssetType.IMAGE);
 		path.set ("assets/music/Culex.wav", "assets/music/Culex.wav");
@@ -1098,6 +1103,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/images/TileMap3.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+		id = "assets/images/titlepage.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/images/wall.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
@@ -1141,6 +1149,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -2003,11 +2012,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_arial_ttf extends null { }
 
 
 #elseif html5
+
 
 
 

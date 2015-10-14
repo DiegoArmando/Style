@@ -148,6 +148,7 @@ class Enemy extends FlxSpriteGroup
 			LegsSprite = new FlxSprite();
 			TorsoSprite = new FlxSprite();
 			HeadSprite = new FlxSprite();
+			sprite.kill();
 			if (Name.split(" ")[0] == "Android")
 			{
 				setNPCSpritesToSheet(20, 1, Position, Total_Number, "android");
