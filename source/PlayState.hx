@@ -307,7 +307,7 @@ class PlayState extends FlxState
 			{
 				remove (StateManager.npcToKill);
 				var isAlive = function (item : Interactable) return item != StateManager.npcToKill;
-				interactables.filter(isAlive);
+				interactables = interactables.filter(isAlive);
 			}
 		}
 		
@@ -336,17 +336,17 @@ class PlayState extends FlxState
 		//************************************
 		inventory[0][0] = "assets/images/sprite_sheets/android.png";
 		inventory[0][1] = "assets/images/sprite_sheets/baymax.png";
-		inventory[0][2] = "assets/images/sprite_sheets/minion_bot.png";
+		inventory[0][2] = "assets/images/sprite_sheets/mondrian.png";
 		inventory[0][3] = "assets/images/sprite_sheets/mummy.png";
 		
 		inventory[1][0] = "assets/images/sprite_sheets/android.png";
 		inventory[1][1] = "assets/images/sprite_sheets/baymax.png";
-		inventory[1][2] = "assets/images/sprite_sheets/minion_bot.png";
+		inventory[1][2] = "assets/images/sprite_sheets/mondrian.png";
 		inventory[1][3] = "assets/images/sprite_sheets/mummy.png";
 		
 		inventory[2][0] = "assets/images/sprite_sheets/android.png";
 		inventory[2][1] = "assets/images/sprite_sheets/baymax.png";
-		inventory[2][2] = "assets/images/sprite_sheets/minion_bot.png";
+		inventory[2][2] = "assets/images/sprite_sheets/mondrian.png";
 		inventory[2][3] = "assets/images/sprite_sheets/mummy.png";
 		//************************************/
 		
