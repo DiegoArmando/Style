@@ -70,6 +70,8 @@ class AssetData {
 			type.set ("assets/images/enemies/cocoa2.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/enemies/cocoaSheet.png", "assets/images/enemies/cocoaSheet.png");
 			type.set ("assets/images/enemies/cocoaSheet.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/enemies/curvea.png", "assets/images/enemies/curvea.png");
+			type.set ("assets/images/enemies/curvea.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/enemies/enemies.7z", "assets/images/enemies/enemies.7z");
 			type.set ("assets/images/enemies/enemies.7z", Reflect.field (AssetType, "binary".toUpperCase ()));
 			path.set ("assets/images/enemies/fobio1.png", "assets/images/enemies/fobio1.png");

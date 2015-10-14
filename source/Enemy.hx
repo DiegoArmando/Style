@@ -144,7 +144,7 @@ class Enemy extends FlxSpriteGroup
 			speed = 1;
 		}
 		else if (Name.split(" ")[0] == "Fobio") {
-			sprite.loadGraphic("assets/images/enemies/fabioSheet.png", true, 192, 192);
+			sprite.loadGraphic("assets/images/enemies/fobioSheet.png", true, 192, 192);
 			this.x = FlxG.width / 3 * 2;
 			this.y = FlxG.height / (Total_Number + 2) * Position;
 			hp = hpmax = 10;
