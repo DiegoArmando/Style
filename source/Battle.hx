@@ -51,6 +51,7 @@ class Battle extends FlxSubState
 	var player_health:FlxText;
 	var player_style:FlxText;
 	static public var second_message:Array<String>;
+	public static var boss1Bool : Bool = false;
 	var relaying_damage:Bool;
 	
 	var fight_state = "Intro";
@@ -67,7 +68,7 @@ class Battle extends FlxSubState
 	 */
 	override public function create():Void
 	{
-		//trace("Player members in battle scene: " + playerObject.members);
+		////trace("Player members in battle scene: " + playerObject.members);
 		
 		background = new FlxSprite(0, 0);
 		background.loadGraphic("assets/images/battlebackground.png");
@@ -102,6 +103,7 @@ class Battle extends FlxSubState
 		
 		if (enemy1.name.split(" ")[0] == "Fobio" || enemy2.name.split(" ")[0] == "Fobio" || enemy3.name.split(" ")[0] == "Fobio") {
 			battle_music.loadStream("assets/music/BossMusic.wav", true, false);
+			battle_sound.loadStream("assets/sounds/oh_yeah.wav", false, false);
 		}
 		
 		else if (enemy1.name.split(" ")[0] == "Kitschy" || enemy2.name.split(" ")[0] == "Kitschy" || enemy3.name.split(" ")[0] == "Kitschy") {
@@ -115,6 +117,8 @@ class Battle extends FlxSubState
 		else {
 			battle_music.loadStream("assets/music/BattleMusic.wav", true, false);
 		}
+		
+		battle_sound.play(true);
 		
 		battle_music.play(true);
 		
@@ -289,8 +293,6 @@ class Battle extends FlxSubState
 		
 		second_message = new Array<String>();
 		
-		battle_sound.play(true);
-		
 		super.create();
 	}
 	
@@ -342,6 +344,7 @@ class Battle extends FlxSubState
 	}
 	
 	public function checkForVictory():Bool {
+		
 		return (temp_enemy_text1.text == "" && temp_enemy_text2.text == "" && temp_enemy_text3.text == "" && player.hp > 0);
 	}
 	
@@ -513,7 +516,7 @@ class Battle extends FlxSubState
 					case 3: message_text.text = "Escaped successfully";
 							actionBoxDisappear();
 							fight_state = "Victory";
-							close();
+							//close();
 							//FlxG.switchState(StateManager.play);
 				}
 			}
@@ -758,6 +761,7 @@ class Battle extends FlxSubState
 		else if (fight_state == "Game Over") {
 			if (FlxG.keys.anyJustPressed(["ENTER", "SPACE"])) {
 				FlxG.sound.play("assets/sounds/menu.wav", 1, false, true);
+				StateManager.killNPC = false;
 				close();
 				FlxG.sound.pause();
 			}
@@ -766,6 +770,7 @@ class Battle extends FlxSubState
 			if (FlxG.keys.anyJustPressed(["ENTER", "SPACE"])) {
 				FlxG.sound.play("assets/sounds/menu.wav", 1, false, true);
 				battle_music.stop();
+				StateManager.killNPC = true;
 				close();
 				FlxG.sound.pause();
 			}

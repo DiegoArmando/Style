@@ -170,10 +170,16 @@ class AssetData {
 			type.set ("assets/sounds/attack.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
 			path.set ("assets/sounds/battle_start.wav", "assets/sounds/battle_start.wav");
 			type.set ("assets/sounds/battle_start.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
+			path.set ("assets/sounds/hallelujah.wav", "assets/sounds/hallelujah.wav");
+			type.set ("assets/sounds/hallelujah.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
 			path.set ("assets/sounds/menu.wav", "assets/sounds/menu.wav");
 			type.set ("assets/sounds/menu.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
 			path.set ("assets/sounds/menu2.wav", "assets/sounds/menu2.wav");
 			type.set ("assets/sounds/menu2.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
+			path.set ("assets/sounds/oh_yeah.wav", "assets/sounds/oh_yeah.wav");
+			type.set ("assets/sounds/oh_yeah.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
+			path.set ("assets/sounds/robot_attack.wav", "assets/sounds/robot_attack.wav");
+			type.set ("assets/sounds/robot_attack.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
 			path.set ("assets/sounds/sounds-go-here.txt", "assets/sounds/sounds-go-here.txt");
 			type.set ("assets/sounds/sounds-go-here.txt", Reflect.field (AssetType, "text".toUpperCase ()));
 			path.set ("assets/sounds/beep.ogg", "assets/sounds/beep.ogg");

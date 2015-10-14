@@ -138,6 +138,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+<<<<<<< HEAD
+=======
+		
+		
+		
+>>>>>>> f1d8551e217b28e5a6ac31737d234c2b83c853b5
 		Font.registerFont (__ASSET__assets_fonts_nokiafc22_ttf);
 		Font.registerFont (__ASSET__assets_fonts_arial_ttf);
 		
@@ -227,6 +233,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
+<<<<<<< HEAD
+=======
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+>>>>>>> f1d8551e217b28e5a6ac31737d234c2b83c853b5
 		
 		className.set ("assets/fonts/nokiafc22.ttf", __ASSET__assets_fonts_nokiafc22_ttf);
 		type.set ("assets/fonts/nokiafc22.ttf", AssetType.FONT);
@@ -794,6 +806,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+<<<<<<< HEAD
+=======
+		
+		
+		
+>>>>>>> f1d8551e217b28e5a6ac31737d234c2b83c853b5
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_arial_ttf);
 		
@@ -955,10 +973,16 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/sounds/attack.wav", AssetType.SOUND);
 		path.set ("assets/sounds/battle_start.wav", "assets/sounds/battle_start.wav");
 		type.set ("assets/sounds/battle_start.wav", AssetType.SOUND);
+		path.set ("assets/sounds/hallelujah.wav", "assets/sounds/hallelujah.wav");
+		type.set ("assets/sounds/hallelujah.wav", AssetType.SOUND);
 		path.set ("assets/sounds/menu.wav", "assets/sounds/menu.wav");
 		type.set ("assets/sounds/menu.wav", AssetType.SOUND);
 		path.set ("assets/sounds/menu2.wav", "assets/sounds/menu2.wav");
 		type.set ("assets/sounds/menu2.wav", AssetType.SOUND);
+		path.set ("assets/sounds/oh_yeah.wav", "assets/sounds/oh_yeah.wav");
+		type.set ("assets/sounds/oh_yeah.wav", AssetType.SOUND);
+		path.set ("assets/sounds/robot_attack.wav", "assets/sounds/robot_attack.wav");
+		type.set ("assets/sounds/robot_attack.wav", AssetType.SOUND);
 		path.set ("assets/sounds/sounds-go-here.txt", "assets/sounds/sounds-go-here.txt");
 		type.set ("assets/sounds/sounds-go-here.txt", AssetType.TEXT);
 		path.set ("assets/sounds/beep.ogg", "assets/sounds/beep.ogg");
@@ -1205,10 +1229,19 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/sounds/battle_start.wav";
 		path.set (id, id);
 		type.set (id, AssetType.SOUND);
+		id = "assets/sounds/hallelujah.wav";
+		path.set (id, id);
+		type.set (id, AssetType.SOUND);
 		id = "assets/sounds/menu.wav";
 		path.set (id, id);
 		type.set (id, AssetType.SOUND);
 		id = "assets/sounds/menu2.wav";
+		path.set (id, id);
+		type.set (id, AssetType.SOUND);
+		id = "assets/sounds/oh_yeah.wav";
+		path.set (id, id);
+		type.set (id, AssetType.SOUND);
+		id = "assets/sounds/robot_attack.wav";
 		path.set (id, id);
 		type.set (id, AssetType.SOUND);
 		id = "assets/sounds/sounds-go-here.txt";
@@ -1327,6 +1360,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
+<<<<<<< HEAD
+=======
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+>>>>>>> f1d8551e217b28e5a6ac31737d234c2b83c853b5
 		
 		className.set ("assets/fonts/nokiafc22.ttf", __ASSET__assets_fonts_nokiafc22_ttf);
 		type.set ("assets/fonts/nokiafc22.ttf", AssetType.FONT);
@@ -2133,6 +2172,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> f1d8551e217b28e5a6ac31737d234c2b83c853b5
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_arial_ttf extends null { }
 
@@ -2221,6 +2266,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> f1d8551e217b28e5a6ac31737d234c2b83c853b5
 @:keep #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends lime.text.Font { public function new () { super (); name = "Nokia Cellphone FC Small"; } } 
 @:keep #if display private #end class __ASSET__assets_fonts_arial_ttf extends lime.text.Font { public function new () { super (); name = "Arial"; } } 
 
