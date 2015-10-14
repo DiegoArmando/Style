@@ -168,7 +168,6 @@ class DialogManager extends FlxSpriteGroup
 			{
 				menu_sound.play(true);
 				trace("dialog SPACE");
-				dialogIndex++;
 				if (dialogIndex < npc.Dialog.length)
 				{
 					graphicText.text = npc.Dialog[dialogIndex];
@@ -183,6 +182,7 @@ class DialogManager extends FlxSpriteGroup
 					terminateDialog();
 					playState.delayInteract = true;
 				}
+				dialogIndex++;
 			}
 			else if ((dialogIndex >= npc.Dialog.length-1) && (FlxG.keys.anyJustReleased(["enter"])))
 			{
