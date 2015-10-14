@@ -191,6 +191,12 @@ class PlayState extends FlxState
 		add(mond);
 		interactables.push(mond);
 		
+		var hmswarm = new NPC(2001, 2886, false, "hm", "Hertz and Mech 2", this);
+		hmswarm.Dialog.push("Hertz and Mech had a major heart-to-heart together.");
+		hmswarm.Dialog.push("Prepare for our new and improved makeover techniques!");
+		add(hmswarm);
+		interactables.push(hmswarm);
+		
 		// player ini
 		player = new Player(3300, 3300, this);
 		FlxG.camera.follow(player.referenceSprite, FlxCamera.STYLE_TOPDOWN, 1);

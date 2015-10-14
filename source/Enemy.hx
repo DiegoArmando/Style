@@ -370,11 +370,11 @@ class Enemy extends FlxSpriteGroup
 			}
 			else if (random_number < 40) {
 				PlayerObject.damage(3, [], this);
-				return name + " double-hit you with their matching covers!";
+				return name + " hit you with their matching covers!";
 			}
 			else {
 				PlayerObject.damage(2, [], this);
-				return name + " push you around as they take turns posing!";
+				return name + " push you around as they pose!";
 			}
 		}
 		else if (name.split(" ")[0] == "Arm-Many") {

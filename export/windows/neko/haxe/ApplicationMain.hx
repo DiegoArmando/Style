@@ -499,7 +499,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "32",
+			build: "36",
 			company: "HaxeFlixel",
 			file: "Stylish Combat",
 			fps: 60,
