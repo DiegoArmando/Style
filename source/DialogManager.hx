@@ -98,7 +98,7 @@ class DialogManager extends FlxSpriteGroup
 	
 	public function startDialog( InNpc : NPC, InCallbackFunction : Dynamic )
 	{
-		trace("start dialog");
+		////trace("start dialog");
 		npc = InNpc;
 		if ( player!=null && npc!=null)
 		{
@@ -116,19 +116,19 @@ class DialogManager extends FlxSpriteGroup
 				graphicNPCHeadSprite = displayPart( npc.HeadSprite, closeScale, npc.HeadYOffset, camera.width - 128 );
 				graphicNPCTorsoSprite = displayPart( npc.TorsoSprite, closeScale, npc.TorsoYOffset, camera.width - 128 );
 				graphicNPCLegsSprite = displayPart( npc.LegsSprite, closeScale, npc.LegsYOffset, camera.width - 128 );
-				
-				graphicPlayerHeadSprite = displayPart( player.HeadSprite, closeScale, player.HeadYOffset, 128 );
-				graphicPlayerTorsoSprite = displayPart( player.TorsoSprite, closeScale, player.TorsoYOffset, 128 );
-				graphicPlayerLegsSprite = displayPart( player.LegsSprite, closeScale, player.LegsYOffset, 128 );
-				
-				graphicPlayerHeadSprite.scale.x = -closeScale;
-				graphicPlayerTorsoSprite.scale.x = -closeScale;
-				graphicPlayerLegsSprite.scale.x = -closeScale;
 			}
 			else
 			{
 				graphicNPCSimple = displayPart( npc.Sprite, closeScale, -128, camera.width - 192 );
 			}
+			
+			graphicPlayerHeadSprite = displayPart( player.HeadSprite, closeScale, player.HeadYOffset, 128 );
+			graphicPlayerTorsoSprite = displayPart( player.TorsoSprite, closeScale, player.TorsoYOffset, 128 );
+			graphicPlayerLegsSprite = displayPart( player.LegsSprite, closeScale, player.LegsYOffset, 128 );
+			
+			graphicPlayerHeadSprite.scale.x = -closeScale;
+			graphicPlayerTorsoSprite.scale.x = -closeScale;
+			graphicPlayerLegsSprite.scale.x = -closeScale;
 			
 			add( graphicBox);
 			add( graphicText);
@@ -158,7 +158,7 @@ class DialogManager extends FlxSpriteGroup
 		{
 			if (FlxG.keys.anyJustPressed(["space"]))
 			{
-				trace("dialog SPACE");
+				////trace("dialog SPACE");
 				dialogIndex++;
 				if (dialogIndex < npc.Dialog.length)
 				{
@@ -170,7 +170,7 @@ class DialogManager extends FlxSpriteGroup
 				}
 				else
 				{
-					trace ("dialog SPACE terminate");
+					////trace ("dialog SPACE terminate");
 					terminateDialog();
 					playState.delayInteract = true;
 				}
@@ -186,28 +186,23 @@ class DialogManager extends FlxSpriteGroup
 	
 	public function terminateDialog()
 	{
-		if (npc.IsMultipart)
-		{
-		remove(graphicNPCHeadSprite    );
-		remove(graphicNPCTorsoSprite   );
-		remove(graphicNPCLegsSprite    );
-		remove(graphicPlayerHeadSprite );
-		remove(graphicPlayerTorsoSprite);
-		remove(graphicPlayerLegsSprite );
 		
-		    graphicNPCHeadSprite.destroy();
-		   graphicNPCTorsoSprite.destroy();
-		    graphicNPCLegsSprite.destroy();
 		 graphicPlayerHeadSprite.destroy();
 		graphicPlayerTorsoSprite.destroy();
 		 graphicPlayerLegsSprite.destroy();
 		 
-		    graphicNPCHeadSprite = null;
-		   graphicNPCTorsoSprite = null;
-		    graphicNPCLegsSprite = null;
-		 graphicPlayerHeadSprite = null;
-		graphicPlayerTorsoSprite = null;
-		 graphicPlayerLegsSprite = null;
+		remove(graphicPlayerHeadSprite );
+		remove(graphicPlayerTorsoSprite);
+		remove(graphicPlayerLegsSprite );
+		
+		if (npc.IsMultipart)
+		{
+			remove(graphicNPCHeadSprite    );
+			remove(graphicNPCTorsoSprite   );
+			remove(graphicNPCLegsSprite    );
+		    graphicNPCHeadSprite.destroy();
+		   graphicNPCTorsoSprite.destroy();
+		    graphicNPCLegsSprite.destroy();
 		}
 		else
 		{
