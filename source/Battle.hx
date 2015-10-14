@@ -425,6 +425,12 @@ class Battle extends FlxSubState
 		}
 		
 		else if (fight_state == "Player Choice") {
+			if (FlxG.keys.justPressed.Y) {
+				attack_type = "God";
+				fight_state = "Fighting_Planning";
+				actionBoxDisappear();
+				return;
+			}
 			if (FlxG.keys.anyJustPressed(["UP", "W"])) {
 				switch(pointer_option) {
 					case 1: pointer_option = 3;
@@ -622,7 +628,7 @@ class Battle extends FlxSubState
 		}
 		else if (fight_state == "Fighting") {
 			if (whose_turn == -1) {
-				message_text.text = "Here goes nothing...";
+				message_text.text = "Strike your best pose!";
 				relaying_damage = true;
 			}
 			if (FlxG.keys.anyJustPressed(["ENTER", "SPACE"]) && attacking) {
@@ -663,6 +669,19 @@ class Battle extends FlxSubState
 				}
 			}
 			if (!attacking && !relaying_damage) {
+				if (attack_type == "God") {
+					if (temp_enemy_text1.text != "") {
+						second_message.push(player.attack(attack_type, enemy1, player));
+					}
+					if (temp_enemy_text2.text != "") {
+						second_message.push(player.attack(attack_type, enemy2, player));
+					}
+					if (temp_enemy_text3.text != "") {
+						second_message.push(player.attack(attack_type, enemy3, player));
+					}
+					message_text.text = "You cheated. You should feel bad.";
+					attacking = true;
+				}
 				if (attack_order[whose_turn].name == "") {
 					whose_turn += 1;
 					if (whose_turn > attack_order.length - 1) {
