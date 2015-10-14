@@ -197,6 +197,38 @@ class PlayState extends FlxState
 		add(hmswarm);
 		interactables.push(hmswarm);
 		
+		var hero6 = new NPC(3579, 3384, true, "baymax", "Baymax", this);
+		hero6.Dialog.push("My programming prevented me from harming a human.");
+		hero6.Dialog.push("Good thing I replaced that function with one on fashion.");
+		hero6.Dialog.push("...and break-dance fighting.");
+		add(hero6);
+		interactables.push(hero6);
+		
+		var manno = new NPC(1202, 3431, true, "DemoRobot", "MannoBot", this);
+		manno.Dialog.push("Processing glib insult...");
+		manno.Dialog.push("Processing...");
+		manno.Dialog.push("Processing......");
+		manno.Dialog.push("Processing.........");
+		manno.Dialog.push("...");
+		manno.Dialog.push("Your hair looks stupid.");
+		add(manno);
+		interactables.push(manno);
+		
+		var witch = new NPC(1526, 2939, true, "kirisame_marisa", "Kirisame", this);
+		witch.Dialog.push("I'm a huge fan of some more cultured fashion.");
+		witch.Dialog.push("But I've lived my lifetime following one motto.");
+		witch.Dialog.push("It ain't fashion if it ain't flashy.");
+		add(witch);
+		interactables.push(witch);
+		
+		var octo = new NPC(3612, 3990, true, "octobot", "Octobot", this);
+		octo.Dialog.push("I picked up a fashion magazine early on.");
+		octo.Dialog.push("It told me that sexiness was all in the legs");
+		octo.Dialog.push("So clearly, I'm the most fashionable one here!");
+		octo.Dialog.push("...Get that tartar sauce away from me...");
+		add(octo);
+		interactables.push(octo);
+		
 		// player ini
 		player = new Player(3300, 3300, this);
 		FlxG.camera.follow(player.referenceSprite, FlxCamera.STYLE_TOPDOWN, 1);

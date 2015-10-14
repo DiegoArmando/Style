@@ -105,12 +105,28 @@ class NPC extends Interactable
 			StateManager.ENEMIES = [name+" A", name+" B", ""];
 		}
 		
-		if (name == "Minion") {
+		else if (name == "Minion") {
 			StateManager.ENEMIES = ["Minion A", "Minion B", "Minion C"];
 		}
 		
-		if (name == "Hertz and Mech 2") {
+		else if (name == "Hertz and Mech 2") {
 			StateManager.ENEMIES = ["Hertz A", "Hertz B", "Hertz C"];
+		}
+		
+		else if (name == "Baymax") {
+			StateManager.ENEMIES = ["Baymax A", "Baymax B", "Baymax C"];
+		}
+		
+		else if (name == "MannoBot") {
+			StateManager.ENEMIES = ["MannoBot A", "MannoBot B", "MannoBot C"];
+		}
+		
+		else if (name == "Kirisame") {
+			StateManager.ENEMIES = ["Kirisame A", "Kirisame B", "Kirisame C"];
+		}
+		
+		else if (name == "Octobot") {
+			StateManager.ENEMIES = ["OctoBot A", "OctoBot B", "OctoBot C"];
 		}
 		
 		InCombat = true;

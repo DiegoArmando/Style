@@ -188,31 +188,34 @@ class Enemy extends FlxSpriteGroup
 			sprite.kill();
 			if (Name.split(" ")[0] == "Android")
 			{
-				setNPCSpritesToSheet(20, 1, Position, Total_Number, "android");
+				setNPCSpritesToSheet(3, 1, Position, Total_Number, "android");
 			}
 			else if (Name.split(" ")[0] == "Baymax")
 			{
-				setNPCSpritesToSheet(20, 1, Position, Total_Number, "baymax");
+				setNPCSpritesToSheet(3, 1, Position, Total_Number, "baymax");
 			}
-			else if (Name.split(" ")[0] == "Kirimsame")
+			else if (Name.split(" ")[0] == "Kirisame")
 			{
-				setNPCSpritesToSheet(20, 1, Position, Total_Number, "kirimsame_marisa");
+				setNPCSpritesToSheet(3, 1, Position, Total_Number, "kirisame_marisa");
 			}
 			else if (Name.split(" ")[0] == "Minion")
 			{
-				setNPCSpritesToSheet(20, 1, Position, Total_Number, "minion_bot");
+				setNPCSpritesToSheet(3, 1, Position, Total_Number, "minion_bot");
 			} 
 			else if (Name.split(" ")[0] == "Mondrian")
 			{
-				setNPCSpritesToSheet(20, 1, Position, Total_Number, "mondrian");
+				setNPCSpritesToSheet(4, 1, Position, Total_Number, "mondrian");
 			}
 			else if (Name.split(" ")[0] == "Mummy")
 			{
-				setNPCSpritesToSheet(20, 1, Position, Total_Number, "mummy");
+				setNPCSpritesToSheet(3, 1, Position, Total_Number, "mummy");
 			}
-			else if (Name.split(" ")[0] == "Octobot")
+			else if (Name.split(" ")[0] == "OctoBot")
 			{
-				setNPCSpritesToSheet(20, 1, Position, Total_Number, "octobot");
+				setNPCSpritesToSheet(3, 1, Position, Total_Number, "octobot");
+			}
+			else if (Name.split(" ")[0] == "MannoBot") {
+				setNPCSpritesToSheet(4, 1, Position, Total_Number, "DemoRobot");
 			}
 		}
 		
