@@ -291,7 +291,7 @@ class Enemy extends FlxSpriteGroup
 			}
 			else if (AttackName == "God") {
 				Target.damage(9001, [], this);
-				return "You introduce a segmentation fault into their code!";
+				return "You introduce a seg fault into their code!";
 			}
 		}
 		else if (name.split(" ")[0] == "Basic") {

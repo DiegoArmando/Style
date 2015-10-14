@@ -656,7 +656,6 @@ class Battle extends FlxSubState
 					//var newState : PlayState = new PlayState();
 					//newState.setPlayer(playerObject);
 					//FlxG.switchState(newState);
-					close();
 					return;
 				}
 				whose_turn += 1;
@@ -671,16 +670,17 @@ class Battle extends FlxSubState
 			if (!attacking && !relaying_damage) {
 				if (attack_type == "God") {
 					if (temp_enemy_text1.text != "") {
-						second_message.push(player.attack(attack_type, enemy1, player));
+						player.attack(attack_type, enemy1, player);
 					}
 					if (temp_enemy_text2.text != "") {
-						second_message.push(player.attack(attack_type, enemy2, player));
+						player.attack(attack_type, enemy2, player);
 					}
 					if (temp_enemy_text3.text != "") {
-						second_message.push(player.attack(attack_type, enemy3, player));
+						player.attack(attack_type, enemy3, player);
 					}
 					message_text.text = "You cheated. You should feel bad.";
 					attacking = true;
+					return;
 				}
 				if (attack_order[whose_turn].name == "") {
 					whose_turn += 1;
@@ -701,13 +701,13 @@ class Battle extends FlxSubState
 			}
 		}
 		else if (fight_state == "Game Over") {
-			if (FlxG.keys.justPressed.ESCAPE) {
+			if (FlxG.keys.anyJustPressed(["ENTER", "SPACE"])) {
 				close();
 				FlxG.sound.pause();
 			}
 		}
 		else if (fight_state == "Victory") {
-			if (FlxG.keys.justPressed.ESCAPE) {
+			if (FlxG.keys.anyJustPressed(["ENTER", "SPACE"])) {
 				close();
 				FlxG.sound.pause();
 			}
