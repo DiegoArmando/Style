@@ -136,6 +136,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
 		Font.registerFont (__ASSET__assets_fonts_nokiafc22_ttf);
 		Font.registerFont (__ASSET__assets_fonts_arial_ttf);
 		
@@ -143,6 +145,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -788,6 +792,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__assets_fonts_arial_ttf);
 		
@@ -933,12 +939,16 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/titlepage.png", AssetType.IMAGE);
 		path.set ("assets/images/wall.png", "assets/images/wall.png");
 		type.set ("assets/images/wall.png", AssetType.IMAGE);
-		path.set ("assets/music/awake10_megaWall.wav", "assets/music/awake10_megaWall.wav");
-		type.set ("assets/music/awake10_megaWall.wav", AssetType.SOUND);
-		path.set ("assets/music/A_Journey_Awaits.wav", "assets/music/A_Journey_Awaits.wav");
-		type.set ("assets/music/A_Journey_Awaits.wav", AssetType.SOUND);
+		path.set ("assets/music/BattleMusic.wav", "assets/music/BattleMusic.wav");
+		type.set ("assets/music/BattleMusic.wav", AssetType.SOUND);
+		path.set ("assets/music/BossMusic.wav", "assets/music/BossMusic.wav");
+		type.set ("assets/music/BossMusic.wav", AssetType.SOUND);
 		path.set ("assets/music/Culex.wav", "assets/music/Culex.wav");
 		type.set ("assets/music/Culex.wav", AssetType.SOUND);
+		path.set ("assets/music/MainMenu.wav", "assets/music/MainMenu.wav");
+		type.set ("assets/music/MainMenu.wav", AssetType.SOUND);
+		path.set ("assets/music/MapMusic.wav", "assets/music/MapMusic.wav");
+		type.set ("assets/music/MapMusic.wav", AssetType.SOUND);
 		path.set ("assets/music/music-goes-here.txt", "assets/music/music-goes-here.txt");
 		type.set ("assets/music/music-goes-here.txt", AssetType.TEXT);
 		path.set ("assets/sounds/attack.wav", "assets/sounds/attack.wav");
@@ -1171,13 +1181,19 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/images/wall.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
-		id = "assets/music/awake10_megaWall.wav";
+		id = "assets/music/BattleMusic.wav";
 		path.set (id, id);
 		type.set (id, AssetType.SOUND);
-		id = "assets/music/A_Journey_Awaits.wav";
+		id = "assets/music/BossMusic.wav";
 		path.set (id, id);
 		type.set (id, AssetType.SOUND);
 		id = "assets/music/Culex.wav";
+		path.set (id, id);
+		type.set (id, AssetType.SOUND);
+		id = "assets/music/MainMenu.wav";
+		path.set (id, id);
+		type.set (id, AssetType.SOUND);
+		id = "assets/music/MapMusic.wav";
 		path.set (id, id);
 		type.set (id, AssetType.SOUND);
 		id = "assets/music/music-goes-here.txt";
@@ -1229,6 +1245,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -2113,11 +2131,15 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
+
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_nokiafc22_ttf extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_fonts_arial_ttf extends null { }
 
 
 #elseif html5
+
+
 
 
 
