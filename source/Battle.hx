@@ -3,6 +3,7 @@ package;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
+import flixel.system.FlxSound;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
@@ -14,7 +15,7 @@ import flixel.FlxSubState;
  */
 class Battle extends FlxSubState
 {
-	
+	var background:FlxSprite;
 	var player:Enemy;
 	public var playerObject : Player;
 	var enemy1:Enemy;
@@ -55,6 +56,10 @@ class Battle extends FlxSubState
 	var fight_state = "Intro";
 	var previous_fight_state:String;
 	
+	var menu:FlxSound;
+	var menu2:FlxSound;
+	var battle_sound:FlxSound;
+	
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
@@ -62,6 +67,19 @@ class Battle extends FlxSubState
 	{
 		//trace("Player members in battle scene: " + playerObject.members);
 		
+		background = new FlxSprite(0, 0);
+		background.loadGraphic("assets/images/battlebackground.png");
+		background.scrollFactor.set(0, 0);
+		add(background);
+		
+		menu = new FlxSound();
+		menu.loadStream("assets/sounds/menu.wav", false, false);
+		
+		menu2 = new FlxSound();
+		menu2.loadStream("assets/sounds/menu2.wav", false, false);
+		
+		battle_sound = new FlxSound();
+		battle_sound.loadStream("assets/sounds/battle_start.wav", false, false);
 		
 		enemy1 = new Enemy(1, StateManager.ENEMIES.length, StateManager.ENEMIES[0], this);
 		enemy2 = new Enemy(2, StateManager.ENEMIES.length, StateManager.ENEMIES[1], this);
@@ -214,7 +232,7 @@ class Battle extends FlxSubState
 		ability_text1.y = message_box.y + (message_box.height / 5) - (ability_text1.size / 2);
 		ability_text1.color = FlxColor.BLACK;
 		ability_text1.visible = false;
-		ability_box.scrollFactor.set(0, 0);
+		ability_text1.scrollFactor.set(0, 0);
 		
 		ability_text2 = new FlxText(0, 0, FlxG.width / 4);
 		ability_text2.text = "3  Heal";
@@ -248,6 +266,8 @@ class Battle extends FlxSubState
 		pointer.scrollFactor.set(0, 0);
 		
 		second_message = new Array<String>();
+		
+		battle_sound.play(true);
 		
 		super.create();
 	}
@@ -432,6 +452,7 @@ class Battle extends FlxSubState
 				return;
 			}
 			if (FlxG.keys.anyJustPressed(["UP", "W"])) {
+				menu.play(true);
 				switch(pointer_option) {
 					case 1: pointer_option = 3;
 					
@@ -442,6 +463,7 @@ class Battle extends FlxSubState
 				updatePointer();
 			}
 			if (FlxG.keys.anyJustPressed(["DOWN", "S"])) {
+				menu.play(true);
 				switch(pointer_option) {
 					case 1: pointer_option = 2;
 					
@@ -452,6 +474,7 @@ class Battle extends FlxSubState
 				updatePointer();
 			}
 			if (FlxG.keys.anyJustPressed(["SPACE", "ENTER"])) {
+				menu.play(true);
 				switch(pointer_option) {
 					case 1: targetBoxAppear();
 							previous_fight_state = fight_state;
@@ -476,6 +499,7 @@ class Battle extends FlxSubState
 		
 		else if (fight_state == "Choose Target") {
 			if (FlxG.keys.anyJustPressed(["UP", "W"])) {
+				menu.play(true);
 				switch(pointer_option) {
 					case 1:	if (temp_enemy_text3.text != "") {
 								pointer_option = 3;
@@ -501,6 +525,7 @@ class Battle extends FlxSubState
 				updatePointer();
 			}
 			if (FlxG.keys.anyJustPressed(["DOWN", "S"])) {
+				menu.play(true);
 				switch(pointer_option) {
 					case 1: if (temp_enemy_text2.text != ""){
 								pointer_option = 2;
@@ -526,6 +551,7 @@ class Battle extends FlxSubState
 				updatePointer();
 			}
 			if (FlxG.keys.anyJustPressed(["ENTER", "SPACE"])) {
+				menu.play(true);
 				targetBoxDisappear();
 				pointer.visible = false;
 				if (pointer_option == 1) {
@@ -541,6 +567,7 @@ class Battle extends FlxSubState
 				actionBoxDisappear();				
 			}
 			if (FlxG.keys.justPressed.BACKSPACE) {
+				menu.play(true);
 				targetBoxDisappear();
 				if (previous_fight_state == "Player Choice"){
 					pointer.x = action_box.x + 10;
@@ -557,6 +584,7 @@ class Battle extends FlxSubState
 		
 		else if (fight_state == "Choose Ability") {
 			if (FlxG.keys.anyJustPressed(["UP", "W"])) {
+				menu.play(true);
 				pointer_option -= 1;
 				if (pointer_option < 1) {
 					pointer_option = ability_number;
@@ -564,6 +592,7 @@ class Battle extends FlxSubState
 				updatePointer2();
 			}
 			if (FlxG.keys.anyJustPressed(["DOWN", "S"])) {
+				menu.play(true);
 				pointer_option += 1;
 				if (pointer_option > ability_number) {
 					pointer_option = 1;
@@ -571,10 +600,12 @@ class Battle extends FlxSubState
 				updatePointer2();
 			}
 			if (FlxG.keys.justPressed.BACKSPACE) {
+				menu.play(true);
 				abilityBoxDisappear();
 				fight_state = "Player Choice";
 			}
 			if (FlxG.keys.anyJustPressed(["ENTER", "SPACE"])) {
+				menu.play(true);
 				if (pointer_option == 1 && player.mp < 2) {
 					message_text.text = "Not enough style!";
 					return;
@@ -632,6 +663,7 @@ class Battle extends FlxSubState
 				relaying_damage = true;
 			}
 			if (FlxG.keys.anyJustPressed(["ENTER", "SPACE"]) && attacking) {
+				menu2.play(true);
 				if (second_message.length != 0){
 					message_text.text = second_message[0];
 					second_message.remove(message_text.text);
@@ -641,6 +673,7 @@ class Battle extends FlxSubState
 				relaying_damage = true;
 			}
 			if (FlxG.keys.anyJustPressed(["ENTER", "SPACE"]) && relaying_damage) {
+				//menu2.play(true);
 				if (player.hp <= 0) {
 					fight_state = "Game Over";
 					message_text.text = "Game Over...";
@@ -702,12 +735,14 @@ class Battle extends FlxSubState
 		}
 		else if (fight_state == "Game Over") {
 			if (FlxG.keys.anyJustPressed(["ENTER", "SPACE"])) {
+				FlxG.sound.play("assets/sounds/menu.wav", 1, false, true);
 				close();
 				FlxG.sound.pause();
 			}
 		}
 		else if (fight_state == "Victory") {
 			if (FlxG.keys.anyJustPressed(["ENTER", "SPACE"])) {
+				FlxG.sound.play("assets/sounds/menu.wav", 1, false, true);
 				close();
 				FlxG.sound.pause();
 			}

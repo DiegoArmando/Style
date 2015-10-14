@@ -3,6 +3,7 @@ package;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
+import flixel.system.FlxSound;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
@@ -44,10 +45,15 @@ class Enemy extends FlxSpriteGroup
 	public var TorsoSprite : FlxSprite;
 	public var HeadSprite : FlxSprite;
 	
+	var attack_sound:FlxSound;
+	
 	public function new(Position:Int, Total_Number:Int, Name:String, Parent:Battle) 
 	{
 		super();
 		name = Name;
+		
+		attack_sound = new FlxSound();
+		attack_sound.loadStream("assets/sounds/attack.wav", false, false);
 		
 		var EnemyIsComplex : Bool = false;
 		
@@ -266,6 +272,7 @@ class Enemy extends FlxSpriteGroup
 				return "The player couldn't see a thing!";
 			}
 			if (AttackName == "Attack") {
+				attack_sound.play(true);
 				returner = "Player attacks " + Target.name + "!";
 				Target.damage(1, [], this);
 				return returner;

@@ -15,7 +15,7 @@ import flixel.FlxSprite;
   */
 class Player extends FlxSpriteGroup
 {
-	public static inline var RUN_SPEED_SEC:Int = 64 * 3;
+	public static inline var RUN_SPEED_SEC:Int = 64 * 6;
 	
 	public var referenceSprite: FlxObject;
 	
