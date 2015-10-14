@@ -18,6 +18,7 @@ class Player extends FlxSpriteGroup
 	public static inline var RUN_SPEED_SEC:Int = 64 * 6;
 	
 	public var referenceSprite: FlxObject;
+	static public var thing : Int = 0;
 	
 	public var Parent : Dynamic;
 	
@@ -82,7 +83,11 @@ class Player extends FlxSpriteGroup
 	
 	override public function update()
 	{
+		
+		////trace("Position: " + x + ", " + y);
 		var IsRunning : Bool = false;
+		
+		//trace("PPos: " + x + ", " + y);
 		
 		var xOffset : Float = 0;
 		var yOffset : Float = 0;

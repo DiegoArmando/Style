@@ -51,6 +51,7 @@ class Battle extends FlxSubState
 	var player_health:FlxText;
 	var player_style:FlxText;
 	static public var second_message:Array<String>;
+	public static var boss1Bool : Bool = false;
 	var relaying_damage:Bool;
 	
 	var fight_state = "Intro";
@@ -60,12 +61,14 @@ class Battle extends FlxSubState
 	var menu2:FlxSound;
 	var battle_sound:FlxSound;
 	
+	var battle_music:FlxSound;
+	
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
 	override public function create():Void
 	{
-		//trace("Player members in battle scene: " + playerObject.members);
+		////trace("Player members in battle scene: " + playerObject.members);
 		
 		background = new FlxSprite(0, 0);
 		background.loadGraphic("assets/images/battlebackground.png");
@@ -80,7 +83,7 @@ class Battle extends FlxSubState
 		
 		battle_sound = new FlxSound();
 		battle_sound.loadStream("assets/sounds/battle_start.wav", false, false);
-		
+				
 		enemy1 = new Enemy(1, StateManager.ENEMIES.length, StateManager.ENEMIES[0], this);
 		enemy2 = new Enemy(2, StateManager.ENEMIES.length, StateManager.ENEMIES[1], this);
 		enemy3 = new Enemy(3, StateManager.ENEMIES.length, StateManager.ENEMIES[2], this);
@@ -95,6 +98,29 @@ class Battle extends FlxSubState
 		add(enemy1_health = enemy1.health_text);
 		add(enemy2_health = enemy2.health_text);
 		add(enemy3_health = enemy3.health_text);
+		
+		battle_music = new FlxSound();
+		
+		if (enemy1.name.split(" ")[0] == "Fobio" || enemy2.name.split(" ")[0] == "Fobio" || enemy3.name.split(" ")[0] == "Fobio") {
+			battle_music.loadStream("assets/music/BossMusic.wav", true, false);
+			battle_sound.loadStream("assets/sounds/oh_yeah.wav", false, false);
+		}
+		
+		else if (enemy1.name.split(" ")[0] == "Kitschy" || enemy2.name.split(" ")[0] == "Kitschy" || enemy3.name.split(" ")[0] == "Kitschy") {
+			battle_music.loadStream("assets/music/BossMusic.wav", true, false);
+		}
+		
+		else if (enemy1.name.split(" ")[0] == "Curve-A" || enemy2.name.split(" ")[0] == "Curve-A" || enemy3.name.split(" ")[0] == "Curve-A") {
+			battle_music.loadStream("assets/music/BossMusic.wav", true, false);
+		}
+		
+		else {
+			battle_music.loadStream("assets/music/BattleMusic.wav", true, false);
+		}
+		
+		battle_sound.play(true);
+		
+		battle_music.play(true);
 		
 		player = new Enemy(0, 0, "Player", this);
 		add(player);
@@ -267,8 +293,6 @@ class Battle extends FlxSubState
 		
 		second_message = new Array<String>();
 		
-		battle_sound.play(true);
-		
 		super.create();
 	}
 	
@@ -320,6 +344,7 @@ class Battle extends FlxSubState
 	}
 	
 	public function checkForVictory():Bool {
+		
 		return (temp_enemy_text1.text == "" && temp_enemy_text2.text == "" && temp_enemy_text3.text == "" && player.hp > 0);
 	}
 	
@@ -491,7 +516,7 @@ class Battle extends FlxSubState
 					case 3: message_text.text = "Escaped successfully";
 							actionBoxDisappear();
 							fight_state = "Victory";
-							close();
+							//close();
 							//FlxG.switchState(StateManager.play);
 				}
 			}
@@ -736,6 +761,7 @@ class Battle extends FlxSubState
 		else if (fight_state == "Game Over") {
 			if (FlxG.keys.anyJustPressed(["ENTER", "SPACE"])) {
 				FlxG.sound.play("assets/sounds/menu.wav", 1, false, true);
+				StateManager.killNPC = false;
 				close();
 				FlxG.sound.pause();
 			}
@@ -743,6 +769,8 @@ class Battle extends FlxSubState
 		else if (fight_state == "Victory") {
 			if (FlxG.keys.anyJustPressed(["ENTER", "SPACE"])) {
 				FlxG.sound.play("assets/sounds/menu.wav", 1, false, true);
+				battle_music.stop();
+				StateManager.killNPC = true;
 				close();
 				FlxG.sound.pause();
 			}

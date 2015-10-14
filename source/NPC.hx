@@ -11,6 +11,7 @@ import flixel.FlxSubState;
 class NPC extends Interactable
 {
 	public var IsMultipart : Bool;
+	public var InCombat : Bool = false;
 	
 	public var name : String = "def name";
 	public var Parent : Dynamic;
@@ -91,7 +92,7 @@ class NPC extends Interactable
 	
 	public override function interact(playerArg : Player)
 	{
-		//trace("active dialog from "+this);
+		////trace("active dialog from "+this);
 		Parent.playerInDialog = true;
 		Parent.dialogHandler.startDialog(this,this.goToBattle);
 	}
@@ -100,12 +101,16 @@ class NPC extends Interactable
 	{
 		StateManager.ENEMIES = ["", name+" A", ""];
 		
+		InCombat = true;
+		
 		var battleState = new Battle();
 		battleState.playerObject = Parent.player;
 		//battleState.setPlayer(playerArg);
 		
-		//trace("Player members in battlestate before state switch: " + battleState.playerObject.members);
+		////trace("Player members in battlestate before state switch: " + battleState.playerObject.members);
 		//parent.remove(parent.
+		Parent.map_music.stop();
+		StateManager.npcToKill = this;
 		Parent.openSubState(battleState);
 		//openSubState(battleState);
 
