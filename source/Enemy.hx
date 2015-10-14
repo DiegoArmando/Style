@@ -133,6 +133,7 @@ class Enemy extends FlxSprite
 		health_text.text = hpmax + "";
 		health_text.x = this.x;
 		health_text.y = this.y + this.height / 2;
+		health_text.scrollFactor.set(0, 0);
 		
 		magic_text = new FlxText(0, 0, 64);
 		magic_text.size = 20;
@@ -140,6 +141,7 @@ class Enemy extends FlxSprite
 		magic_text.text = mp + "";
 		magic_text.x = this.x;
 		magic_text.y = this.y + this.height / 2 - magic_text.size;
+		magic_text.scrollFactor.set(0, 0);
 		
 	}
 	

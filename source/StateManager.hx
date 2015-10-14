@@ -11,6 +11,8 @@ class StateManager extends FlxState
 {
 
 	public static var ENEMIES:Array<String>;
+	public static var X : Float;
+	public static var Y : Float;
 	public static var play : PlayState;
 	public static var player : Player;
 	//var player : Player;

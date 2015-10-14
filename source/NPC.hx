@@ -82,6 +82,7 @@ class NPC extends Interactable
 	{
 		trace("Player members in interact: " + playerArg.members);
 		StateManager.ENEMIES = ["", name2, ""];
+		
 		var battleState = new Battle();
 		//battleState.setPlayer(playerArg);
 		
