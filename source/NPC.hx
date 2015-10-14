@@ -77,8 +77,8 @@ class NPC extends Interactable
 		{
 			Sprite = new FlxSprite( x-(192/2), y-192);
 			Sprite.loadGraphic("assets/images/enemies/" + fileName + "Sheet.png", true, 192, 192);
-			Sprite.animation.add("still", [0,1], 1, true);
-			Sprite.animation.play("Still");
+			Sprite.animation.add("still", [0, 1], 1, true);
+			Sprite.animation.play("still");
 			add( Sprite);
 		}
 	}
@@ -101,6 +101,7 @@ class NPC extends Interactable
 		StateManager.ENEMIES = ["", name+" A", ""];
 		
 		var battleState = new Battle();
+		battleState.playerObject = Parent.player;
 		//battleState.setPlayer(playerArg);
 		
 		//trace("Player members in battlestate before state switch: " + battleState.playerObject.members);

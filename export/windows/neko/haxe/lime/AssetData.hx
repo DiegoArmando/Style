@@ -70,14 +70,16 @@ class AssetData {
 			type.set ("assets/images/enemies/cocoa2.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/enemies/cocoaSheet.png", "assets/images/enemies/cocoaSheet.png");
 			type.set ("assets/images/enemies/cocoaSheet.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/enemies/curvea.png", "assets/images/enemies/curvea.png");
+			type.set ("assets/images/enemies/curvea.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/enemies/enemies.7z", "assets/images/enemies/enemies.7z");
 			type.set ("assets/images/enemies/enemies.7z", Reflect.field (AssetType, "binary".toUpperCase ()));
-			path.set ("assets/images/enemies/fabioSheet.png", "assets/images/enemies/fabioSheet.png");
-			type.set ("assets/images/enemies/fabioSheet.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/enemies/fobio1.png", "assets/images/enemies/fobio1.png");
 			type.set ("assets/images/enemies/fobio1.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/enemies/fobio2.png", "assets/images/enemies/fobio2.png");
 			type.set ("assets/images/enemies/fobio2.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/enemies/fobioSheet.png", "assets/images/enemies/fobioSheet.png");
+			type.set ("assets/images/enemies/fobioSheet.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/enemies/hm1.png", "assets/images/enemies/hm1.png");
 			type.set ("assets/images/enemies/hm1.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/enemies/hm2.png", "assets/images/enemies/hm2.png");
