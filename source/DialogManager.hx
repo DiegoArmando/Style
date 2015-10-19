@@ -108,7 +108,7 @@ class DialogManager extends FlxSpriteGroup
 	{
 		_hud.visible = false;
 		menu_sound.play(true);
-		trace("start dialog");
+		//trace("start dialog");
 		dialogIndex = 0;
 		delayStart = true;
 
@@ -174,7 +174,7 @@ class DialogManager extends FlxSpriteGroup
 			if (FlxG.keys.anyJustPressed(["space"]))
 			{
 				menu_sound.play(true);
-				trace("dialog SPACE");
+				//trace("dialog SPACE");
 				if (dialogIndex < npc.Dialog.length)
 				{
 					graphicText.text = npc.Dialog[dialogIndex];
@@ -185,7 +185,7 @@ class DialogManager extends FlxSpriteGroup
 				}
 				else
 				{
-					////trace ("dialog SPACE terminate");
+					//////trace ("dialog SPACE terminate");
 					terminateDialog();
 					playState.delayInteract = true;
 				}
